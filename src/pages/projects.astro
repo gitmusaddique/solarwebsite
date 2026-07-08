@@ -10,10 +10,10 @@ import site from '../../config/site.json';
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-20 band-light" aria-labelledby="projects-heading">
     <div class="container text-center">
-      <h1 id="projects-heading" class="type-display-xl" style="margin-bottom: 24px;">
+      <h1 id="projects-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="projects.hero.title">
         Real Projects, Real Savings
       </h1>
-      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="projects.hero.subtitle">
         Every project we complete is a step towards a cleaner Maharashtra. Here are some of our most impactful solar installations.
       </p>
     </div>
@@ -26,7 +26,7 @@ import site from '../../config/site.json';
         {site.statistics.map(stat => (
           <div>
             <div style="font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: #0a0b0d; letter-spacing: -0.5px; margin-bottom: 4px;">{stat.value}</div>
-            <div style="font-size: 14px; color: var(--body-color);">{stat.label}</div>
+            <div style="font-size: 14px; color: var(--body-color);" data-i18n={stat.label === "Installations Completed" ? "stats.installations" : stat.label === "Total Capacity Installed" ? "stats.capacity" : stat.label === "Subsidy Secured" ? "stats.subsidy" : "stats.satisfaction"}>{stat.label}</div>
           </div>
         ))}
       </div>
@@ -36,10 +36,11 @@ import site from '../../config/site.json';
   <!-- Featured Projects — band-soft -->
   <section class="section band-soft" aria-labelledby="featured-projects-heading">
     <div class="container">
-      <h2 id="featured-projects-heading" class="type-display-md" style="margin-bottom: 48px;">Featured Case Studies</h2>
+      <h2 id="featured-projects-heading" class="type-display-md" style="margin-bottom: 48px;" data-i18n="projects.featured.title">Featured Case Studies</h2>
       <div style="display: flex; flex-direction: column; gap: 40px;">
         {[
           {
+            id: 'project1',
             title: '500 kW Industrial Solar Plant – Pune, Maharashtra',
             category: 'Industrial',
             client: 'Auto Components Manufacturer',
@@ -53,6 +54,7 @@ import site from '../../config/site.json';
             tags: ['Industrial', 'Rooftop', 'Net Metering'],
           },
           {
+            id: 'project2',
             title: '25 kW Commercial Solar – IT Office, Pune, Maharashtra',
             category: 'Commercial',
             client: 'IT Services Company',
@@ -66,6 +68,7 @@ import site from '../../config/site.json';
             tags: ['Commercial', 'Smart Monitoring', 'Green Building'],
           },
           {
+            id: 'project3',
             title: '6.6 kW Residential Solar – Mumbai Bungalow',
             category: 'Residential',
             client: 'Private Homeowner',
@@ -79,6 +82,7 @@ import site from '../../config/site.json';
             tags: ['Residential', 'Hybrid', 'Battery Storage'],
           },
           {
+            id: 'project4',
             title: '5 HP Solar Pump – Farm, Nashik, Maharashtra',
             category: 'Agricultural',
             client: 'Grape Farmer',
@@ -94,30 +98,30 @@ import site from '../../config/site.json';
         ].map((project) => (
           <div class="feature-card" style="display: grid; grid-template-columns: 1fr; gap: 32px; background: var(--canvas);" class="md:grid-cols-2">
             <div>
-              <span class="badge-pill" style="margin-bottom: 16px;">{project.category}</span>
-              <h3 class="type-title-lg" style="margin-bottom: 16px; font-weight: 600;">{project.title}</h3>
-              <p style="font-size: 15px; line-height: 1.6; color: var(--body-color); margin-bottom: 24px;">{project.description}</p>
+              <span class="badge-pill" style="margin-bottom: 16px;" data-i18n={"services." + project.category.toLowerCase().replace("agricultural", "agriculture") + ".title"}>{project.category}</span>
+              <h3 class="type-title-lg" style="margin-bottom: 16px; font-weight: 600;" data-i18n={"projects." + project.id + ".title"}>{project.title}</h3>
+              <p style="font-size: 15px; line-height: 1.6; color: var(--body-color); margin-bottom: 24px;" data-i18n={"projects." + project.id + ".desc"}>{project.description}</p>
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
                 {project.tags.map(tag => (
-                  <span class="badge-pill" style="background: var(--surface-soft); color: var(--body-color); font-size: 11px; font-weight: 500;">{tag}</span>
+                  <span class="badge-pill" style="background: var(--surface-soft); color: var(--body-color); font-size: 11px; font-weight: 500;" data-i18n={tag === 'Rooftop' ? 'projects.tag.rooftop' : tag === 'Smart Monitoring' ? 'projects.tag.smart_monitoring' : tag === 'Green Building' ? 'projects.tag.green_building' : tag === 'Hybrid' ? 'projects.tag.hybrid' : tag === 'Battery Storage' ? 'projects.tag.battery_storage' : tag === 'PM-KUSUM' ? 'projects.tag.pm_kusum' : tag === 'Drip Irrigation' ? 'projects.tag.drip_irrigation' : tag === 'Net Metering' ? 'process.step5.title' : tag === 'Industrial' ? 'services.industrial.title' : tag === 'Commercial' ? 'services.commercial.title' : tag === 'Residential' ? 'services.residential.title' : 'services.agriculture.title'}>{tag}</span>
                 ))}
               </div>
-              <a href="/contact" style="font-size: 14px; font-weight: 600; color: #e57c00; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+              <a href="/contact" style="font-size: 14px; font-weight: 600; color: #e57c00; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" data-i18n="projects.cta.similar_quote">
                 Get similar system quote →
               </a>
             </div>
             <div style="display: flex; flex-direction: column; gap: 2px;">
               {[
-                { label: 'System Size', value: project.size },
-                { label: 'Annual Savings', value: project.savings },
-                { label: 'Solar Panels', value: project.panels },
-                { label: 'Inverter', value: project.inverter },
-                { label: 'Installation Time', value: project.time },
-                { label: 'Subsidy / Incentive', value: project.subsidy },
+                { label: 'System Size', value: project.size, key: 'projects.table.system_size' },
+                { label: 'Annual Savings', value: project.savings, key: 'projects.table.annual_savings' },
+                { label: 'Solar Panels', value: project.panels, key: 'projects.table.solar_panels', valKey: `projects.${project.id}.panels` },
+                { label: 'Inverter', value: project.inverter, key: 'projects.table.inverter', valKey: `projects.${project.id}.inverter` },
+                { label: 'Installation Time', value: project.time, key: 'services.table.installation_time', valKey: `projects.${project.id}.time` },
+                { label: 'Subsidy / Incentive', value: project.subsidy, key: 'projects.table.subsidy_incentive', valKey: `projects.${project.id}.subsidy` },
               ].map(detail => (
                 <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 10px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
-                  <span style="font-size: 13px; color: var(--muted);">{detail.label}</span>
-                  <span style="font-size: 13px; font-weight: 600; color: var(--ink); text-align: right; max-width: 60%;">{detail.value}</span>
+                  <span style="font-size: 13px; color: var(--muted);" data-i18n={detail.key}>{detail.label}</span>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--ink); text-align: right; max-width: 60%;" data-i18n={detail.valKey}>{detail.value}</span>
                 </div>
               ))}
             </div>
@@ -131,15 +135,15 @@ import site from '../../config/site.json';
   <section class="section band-light" aria-labelledby="coverage-heading">
     <div class="container">
       <div style="text-align: center; margin-bottom: 48px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Coverage</p>
-        <h2 id="coverage-heading" class="type-display-md" style="margin-bottom: 16px;">We serve Maharashtra.</h2>
-        <p style="font-size: 16px; color: var(--body-color);">Providing premium solar engineering and empanelled subsidies across key districts.</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="projects.coverage.badge">Coverage</p>
+        <h2 id="coverage-heading" class="type-display-md" style="margin-bottom: 16px;" data-i18n="projects.coverage.title">We serve Maharashtra.</h2>
+        <p style="font-size: 16px; color: var(--body-color);" data-i18n="projects.coverage.subtitle">Providing premium solar engineering and empanelled subsidies across key districts.</p>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {site.coverage.primaryCities.map(city => (
           <div class="feature-card" style="text-align: center; padding: 20px; background: var(--canvas);">
-            <div style="font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px;">{city.city}</div>
-            <div style="font-size: 12px; color: var(--muted);">{city.state}</div>
+            <div style="font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px;" data-i18n={`city.${city.city.toLowerCase().replace(' ', '_')}`}>{city.city}</div>
+            <div style="font-size: 12px; color: var(--muted);" data-i18n={`state.${city.state.toLowerCase()}`}>{city.state}</div>
           </div>
         ))}
       </div>
@@ -149,11 +153,11 @@ import site from '../../config/site.json';
   <!-- CTA — band-dark -->
   <section class="section band-soft" style="text-align: center;">
     <div class="container">
-      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">Become Our Next Success Story</h2>
-      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;">Join thousands of satisfied customers and start your solar journey today.</p>
+      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;" data-i18n="projects.cta.title">Become Our Next Success Story</h2>
+      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;" data-i18n="projects.cta.subtitle">Join thousands of satisfied customers and start your solar journey today.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
-        <a href="/contact" class="btn-primary-lg">Get Free Consultation</a>
-        <a href="/gallery" class="btn-outline-dark">View Gallery</a>
+        <a href="/contact" class="btn-primary-lg" data-i18n="hero.cta.consult">Get Free Consultation</a>
+        <a href="/gallery" class="btn-outline-dark" data-i18n="projects.cta.gallery">View Gallery</a>
       </div>
     </div>
   </section>

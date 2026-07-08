@@ -10,8 +10,8 @@ import site from '../../config/site.json';
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-16 band-light" aria-labelledby="calc-hero-heading">
     <div class="container text-center">
-      <h1 id="calc-hero-heading" class="type-display-xl" style="margin-bottom: 24px;">Calculate Your Solar Savings</h1>
-      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+      <h1 id="calc-hero-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="calc.hero.title">Calculate Your Solar Savings</h1>
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="calc.hero.subtitle">
         Enter your details to get an instant estimate of your solar system size, cost, subsidy, and lifetime savings in Maharashtra.
       </p>
     </div>
@@ -23,12 +23,12 @@ import site from '../../config/site.json';
       <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
         <!-- Inputs -->
         <div>
-          <h2 class="type-display-sm" style="margin-bottom: 32px;">Your Details</h2>
+          <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="calc.details.title">Your Details</h2>
           <form id="calc-form" class="space-y-6" novalidate>
 
             <!-- State -->
             <div>
-              <label for="state-select" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">State</label>
+              <label for="state-select" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.state">State</label>
               <select id="state-select" name="state" class="cb-select">
                 {site.calculator.states.map(s => (
                   <option value={s.name} data-irradiation={s.irradiation} data-tariff={s.tariff}>{s.name}</option>
@@ -39,14 +39,14 @@ import site from '../../config/site.json';
             <!-- Monthly Bill -->
             <!-- Calculation Mode Toggle -->
             <div class="calc-mode-container" style="margin-bottom: 24px;">
-              <button type="button" id="calc-mode-bill" class="btn-calc-mode active">By Bill (₹)</button>
-              <button type="button" id="calc-mode-units" class="btn-calc-mode">By Units (kWh)</button>
+              <button type="button" id="calc-mode-bill" class="btn-calc-mode active" data-i18n="calc.mode.bill">By Bill (₹)</button>
+              <button type="button" id="calc-mode-units" class="btn-calc-mode" data-i18n="calc.mode.units">By Units (kWh)</button>
             </div>
 
             <!-- Monthly Bill -->
             <div id="bill-container">
               <label for="monthly-bill" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">
-                Monthly Electricity Bill (₹)
+                <span data-i18n="contact.form.monthlyBill">Monthly Electricity Bill (₹)</span>
                 <span style="font-weight: 400; color: var(--muted); margin-left: 4px;" id="bill-display">₹3,000</span>
               </label>
               <input type="range" id="monthly-bill" name="monthlyBill" min="500" max="50000" step="500" value="3000"
@@ -62,7 +62,7 @@ import site from '../../config/site.json';
             <!-- Monthly Units -->
             <div id="units-container" class="hidden">
               <label for="monthly-units" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">
-                Monthly Units Consumed (kWh)
+                <span data-i18n="calc.monthlyUnits">Monthly Units Consumed (kWh)</span>
                 <span style="font-weight: 400; color: var(--muted); margin-left: 4px;" id="units-display">400 kWh</span>
               </label>
               <input type="range" id="monthly-units" name="monthlyUnits" min="50" max="5000" step="50" value="400"
@@ -78,12 +78,12 @@ import site from '../../config/site.json';
             <!-- Connection Type -->
             <div>
               <fieldset>
-                <legend style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 12px;">Connection Type</legend>
+                <legend style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 12px;" data-i18n="calc.connectionType">Connection Type</legend>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" role="group">
                   {['Residential', 'Commercial', 'Industrial', 'Agricultural'].map((type, i) => (
                     <label class="relative">
                       <input type="radio" name="connectionType" value={type} class="sr-only calc-radio-input" checked={i === 0} />
-                      <span class="calc-radio-label">{type}</span>
+                      <span class="calc-radio-label" data-i18n={`calc.connection.${type.toLowerCase().replace('agricultural', 'agricultural')}`}>{type}</span>
                     </label>
                   ))}
                 </div>
@@ -93,7 +93,7 @@ import site from '../../config/site.json';
             <!-- Roof Area -->
             <div>
               <label for="roof-area" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">
-                Available Roof Area (sq ft)
+                <span data-i18n="calc.roofArea">Available Roof Area (sq ft)</span>
                 <span style="font-weight: 400; color: var(--muted); margin-left: 4px;" id="roof-display">500 sq ft</span>
               </label>
               <input type="range" id="roof-area" name="roofArea" min="100" max="10000" step="100" value="500"
@@ -106,7 +106,7 @@ import site from '../../config/site.json';
               </div>
             </div>
 
-            <button type="submit" class="btn-primary-lg w-full justify-center">
+            <button type="submit" class="btn-primary-lg w-full justify-center" data-i18n="hero.cta.calc">
               Calculate My Savings
             </button>
           </form>
@@ -114,37 +114,37 @@ import site from '../../config/site.json';
 
         <!-- Results -->
         <div id="calc-results" aria-live="polite" aria-label="Calculation results">
-          <h2 class="type-display-sm" style="margin-bottom: 32px;">Your Solar Estimate</h2>
+          <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="calc.estimate.title">Your Solar Estimate</h2>
           <div class="space-y-4">
 
             <!-- Primary Metrics — card-on-card layering -->
             <div class="grid grid-cols-2 gap-4">
               <div class="feature-card" style="padding: 24px; background: var(--canvas);">
-                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;">Recommended Size</div>
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;" data-i18n="calc.metrics.size">Recommended Size</div>
                 <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-size">3.0 kW</div>
               </div>
               <div class="feature-card" style="padding: 24px; background: var(--canvas);">
-                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;">Payback Period</div>
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;" data-i18n="calc.metrics.payback">Payback Period</div>
                 <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-payback">3.2 yrs</div>
               </div>
             </div>
 
             <!-- Cost Breakdown -->
             <div class="feature-card" style="background: var(--canvas);">
-              <h3 class="type-title-sm" style="margin-bottom: 16px;">Cost Breakdown</h3>
+              <h3 class="type-title-sm" style="margin-bottom: 16px;" data-i18n="calc.breakdown.title">Cost Breakdown</h3>
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 {[
-                  { label: 'Gross Installation Cost', id: 'result-gross' },
-                  { label: 'Government Subsidy', id: 'result-subsidy', highlight: true },
-                  { label: 'Net Investment', id: 'result-net', bold: true },
+                  { label: 'Gross Installation Cost', id: 'result-gross', key: 'calc.breakdown.gross' },
+                  { label: 'Government Subsidy', id: 'result-subsidy', highlight: true, key: 'calc.breakdown.subsidy' },
+                  { label: 'Net Investment', id: 'result-net', bold: true, key: 'calc.breakdown.net' },
                 ].map(item => (
                   <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
-                    <span style={item.highlight ? 'font-weight: 500; color: var(--semantic-up);' : 'font-size: 14px; color: var(--muted);'} id={item.id + '-label'}>{item.label}</span>
+                    <span style={item.highlight ? 'font-weight: 500; color: var(--semantic-up);' : 'font-size: 14px; color: var(--muted);'} id={item.id + '-label'} data-i18n={item.key}>{item.label}</span>
                     <span style={item.highlight ? 'font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--semantic-up);' : item.bold ? 'font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--ink);' : 'font-family: var(--font-mono); font-size: 14px; color: var(--body-color);'} id={item.id}>—</span>
                   </div>
                 ))}
                 <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
-                  <span style="font-size: 14px; color: var(--muted);" id="result-roof-util-label">Roof Space Utilized</span>
+                  <span style="font-size: 14px; color: var(--muted);" id="result-roof-util-label" data-i18n="calc.breakdown.roof">Roof Space Utilized</span>
                   <span style="font-family: var(--font-mono); font-size: 14px; color: var(--body-color);" id="result-roof-util">—</span>
                 </div>
               </div>
@@ -152,16 +152,16 @@ import site from '../../config/site.json';
 
             <!-- Savings -->
             <div class="feature-card" style="background: var(--canvas);">
-              <h3 class="type-title-sm" style="margin-bottom: 16px;">Projected Savings</h3>
+              <h3 class="type-title-sm" style="margin-bottom: 16px;" data-i18n="calc.savings.title">Projected Savings</h3>
               <div style="display: flex; flex-direction: column; gap: 2px;">
                 {[
-                  { label: 'Monthly Savings', id: 'result-monthly' },
-                  { label: 'Annual Savings', id: 'result-annual' },
-                  { label: '10-Year Savings', id: 'result-10y' },
-                  { label: '25-Year Savings', id: 'result-25y' },
+                  { label: 'Monthly Savings', id: 'result-monthly', key: 'calc.savings.monthly' },
+                  { label: 'Annual Savings', id: 'result-annual', key: 'calc.savings.annual' },
+                  { label: '10-Year Savings', id: 'result-10y', key: 'calc.savings.10y' },
+                  { label: '25-Year Savings', id: 'result-25y', key: 'calc.savings.25y' },
                 ].map(item => (
                   <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
-                    <span style="font-size: 14px; color: var(--muted);">{item.label}</span>
+                    <span style="font-size: 14px; color: var(--muted);" data-i18n={item.key}>{item.label}</span>
                     <span style="font-family: var(--font-mono); font-size: 14px; font-weight: 500; color: var(--ink);" id={item.id}>—</span>
                   </div>
                 ))}
@@ -170,19 +170,19 @@ import site from '../../config/site.json';
 
             <!-- Environmental Impact -->
             <div class="feature-card" style="background: var(--canvas);">
-              <h3 class="type-title-sm" style="margin-bottom: 16px;">Environmental Impact (Annual)</h3>
+              <h3 class="type-title-sm" style="margin-bottom: 16px;" data-i18n="calc.environmental.title">Environmental Impact (Annual)</h3>
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 14px; color: var(--muted);">CO₂ Reduction</span>
+                <span style="font-size: 14px; color: var(--muted);" data-i18n="calc.environmental.co2">CO₂ Reduction</span>
                 <span style="font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--semantic-up);" id="result-co2">—</span>
               </div>
             </div>
 
             <!-- Disclaimer -->
-            <p style="font-size: 12px; line-height: 1.5; color: var(--muted);">
+            <p style="font-size: 12px; line-height: 1.5; color: var(--muted);" data-i18n="calc.disclaimer">
               *Estimates are indicative based on average solar irradiation and electricity tariffs. Actual savings may vary based on panel orientation, shading, tariff changes, and government policy. Contact us for a precise assessment.
             </p>
 
-            <a href="/contact" class="btn-primary w-full justify-center">
+            <a href="/contact" class="btn-primary w-full justify-center" data-i18n="calc.cta.expert">
               Get Accurate Quote from Our Experts
             </a>
           </div>
@@ -298,6 +298,23 @@ import site from '../../config/site.json';
     return parseFloat(selectedOption?.dataset.tariff || calcConfig.electricityTariff);
   }
 
+  // Set the tariff options label correctly depending on current language
+  function translateStates() {
+    const lang = localStorage.getItem('solarelites_lang') || 'en';
+    const isHindi = lang === 'hi';
+    const isMarathi = lang === 'mr';
+    const stateName = isHindi || isMarathi ? 'महाराष्ट्र' : 'Maharashtra';
+    
+    // Update the state dropdown option text
+    if (stateEl) {
+      Array.from(stateEl.options).forEach(opt => {
+        if (opt.value === 'Maharashtra') {
+          opt.textContent = stateName;
+        }
+      });
+    }
+  }
+
   function getIrradiation() {
     const selectedOption = stateEl?.options[stateEl.selectedIndex];
     return parseFloat(selectedOption?.dataset.irradiation || calcConfig.solarIrradiation);
@@ -380,10 +397,13 @@ import site from '../../config/site.json';
       billSlider.value = Math.round(unitsVal * tariff);
     }
 
+    const lang = localStorage.getItem('solarelites_lang') || 'en';
+    const sqftSuffix = lang === 'en' ? ' sq ft' : ' चौ. फूट';
+
     // Update labels
     billDisplay.textContent = '₹' + Number(billSlider.value).toLocaleString('en-IN');
     unitsDisplay.textContent = Number(unitsSlider.value).toLocaleString('en-IN') + ' kWh';
-    roofDisplay.textContent = Number(roofSlider.value).toLocaleString('en-IN') + ' sq ft';
+    roofDisplay.textContent = Number(roofSlider.value).toLocaleString('en-IN') + sqftSuffix;
   }
 
   // Bind events for range sliders
@@ -400,7 +420,9 @@ import site from '../../config/site.json';
   });
 
   roofSlider?.addEventListener('input', () => {
-    roofDisplay.textContent = Number(roofSlider.value).toLocaleString('en-IN') + ' sq ft';
+    const lang = localStorage.getItem('solarelites_lang') || 'en';
+    const sqftSuffix = lang === 'en' ? ' sq ft' : ' चौ. फूट';
+    roofDisplay.textContent = Number(roofSlider.value).toLocaleString('en-IN') + sqftSuffix;
     saveSettings();
     calculate();
   });
@@ -429,6 +451,9 @@ import site from '../../config/site.json';
   });
 
   function calculate() {
+    // Make sure state is translated
+    translateStates();
+
     const tariff = getTariff();
     const irradiation = getIrradiation();
     const roofAreaSqFt = parseFloat(roofSlider.value);
@@ -464,8 +489,11 @@ import site from '../../config/site.json';
     const subsidyLabelEl = document.getElementById('result-subsidy-label');
     const subsidyValEl = document.getElementById('result-subsidy');
 
+    const lang = localStorage.getItem('solarelites_lang') || 'en';
+    const trans = window.__translations?.[lang] || window.__translations?.['en'] || {};
+
     if (type === 'Residential') {
-      subsidyLabelEl.textContent = 'Government Subsidy (PM Surya Ghar)';
+      subsidyLabelEl.textContent = trans['calc.subsidy.residential_label'] || 'Government Subsidy (PM Surya Ghar)';
       subsidyLabelEl.style.color = 'var(--semantic-up)';
       subsidyValEl.style.color = 'var(--semantic-up)';
       
@@ -476,18 +504,19 @@ import site from '../../config/site.json';
       
       subsidyValEl.textContent = '- ' + fmt(subsidy);
     } else if (type === 'Agricultural') {
-      subsidyLabelEl.textContent = 'Government Subsidy (PM-KUSUM 60%)';
+      subsidyLabelEl.textContent = trans['calc.subsidy.agricultural_label'] || 'Government Subsidy (PM-KUSUM 60%)';
       subsidyLabelEl.style.color = 'var(--semantic-up)';
       subsidyValEl.style.color = 'var(--semantic-up)';
       subsidy = grossCost * 0.60;
       subsidyValEl.textContent = '- ' + fmt(subsidy);
     } else {
-      subsidyLabelEl.textContent = 'Tax Benefit (40% Depreciation)';
+      subsidyLabelEl.textContent = trans['calc.subsidy.commercial_label'] || 'Tax Benefit (40% Depreciation)';
       subsidyLabelEl.style.color = 'var(--muted)';
       subsidyValEl.style.color = 'var(--body-color)';
       subsidy = 0;
       const taxSavings = grossCost * 0.40 * 0.25;
-      subsidyValEl.textContent = '₹' + Math.round(taxSavings).toLocaleString('en-IN') + ' saved';
+      const savedTemplate = trans['calc.subsidy.tax_saved'] || '₹{val} saved';
+      subsidyValEl.textContent = savedTemplate.replace('{val}', Math.round(taxSavings).toLocaleString('en-IN'));
     }
 
     const netCost = Math.max(0, grossCost - subsidy);
@@ -510,17 +539,34 @@ import site from '../../config/site.json';
     const spaceUsed = roundedSize * 100;
     const utilPercent = Math.min(100, Math.round((spaceUsed / roofAreaSqFt) * 100));
 
+    const yrsSuffix = lang === 'en' ? ' yrs' : ' वर्ष';
+    const co2Suffix = lang === 'en' ? ' kg CO₂' : ' किग्रा CO₂';
+    const sqftSuffix = lang === 'en' ? ' sq ft' : ' चौ. फूट';
+
     document.getElementById('result-size').textContent = roundedSize.toFixed(1) + ' kW';
-    document.getElementById('result-payback').textContent = roundedSize > 0 ? payback.toFixed(1) + ' yrs' : '—';
+    document.getElementById('result-payback').textContent = roundedSize > 0 ? payback.toFixed(1) + yrsSuffix : '—';
     document.getElementById('result-gross').textContent = fmt(grossCost);
     document.getElementById('result-net').textContent = fmt(netCost);
-    document.getElementById('result-monthly').textContent = fmt(monthlySavings) + '/mo';
-    document.getElementById('result-annual').textContent = fmt(annualSavings) + '/yr';
+    document.getElementById('result-monthly').textContent = fmt(monthlySavings) + (lang === 'en' ? '/mo' : '/माह');
+    document.getElementById('result-annual').textContent = fmt(annualSavings) + (lang === 'en' ? '/yr' : '/वर्ष');
     document.getElementById('result-10y').textContent = fmt(savings10);
     document.getElementById('result-25y').textContent = fmt(savings25);
-    document.getElementById('result-co2').textContent = fmtNum(co2) + ' kg CO₂';
-    document.getElementById('result-roof-util').textContent = `${Math.round(spaceUsed).toLocaleString('en-IN')} / ${Math.round(roofAreaSqFt).toLocaleString('en-IN')} sq ft (${utilPercent}%)`;
+    document.getElementById('result-co2').textContent = fmtNum(co2) + co2Suffix;
+    document.getElementById('result-roof-util').textContent = `${Math.round(spaceUsed).toLocaleString('en-IN')} / ${Math.round(roofAreaSqFt).toLocaleString('en-IN')}${sqftSuffix} (${utilPercent}%)`;
   }
+
+  // Re-calculate when language dropdown changes
+  document.querySelectorAll('.lang-select-dropdown').forEach(sel => {
+    sel.addEventListener('change', () => {
+      setTimeout(calculate, 50);
+    });
+  });
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'solarelites_lang') {
+      calculate();
+    }
+  });
 
   // Initialize
   const loaded = loadSettings();

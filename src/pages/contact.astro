@@ -10,10 +10,10 @@ import site from '../../config/site.json';
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-16 band-light" aria-labelledby="contact-heading">
     <div class="container text-center">
-      <h1 id="contact-heading" class="type-display-xl" style="margin-bottom: 24px;">
+      <h1 id="contact-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="contact.hero.title">
         Let's Talk Solar
       </h1>
-      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="contact.hero.subtitle">
         Our solar experts are ready to help you make the switch. Free consultation, no obligation.
       </p>
     </div>
@@ -26,20 +26,20 @@ import site from '../../config/site.json';
 
         <!-- Form -->
         <div>
-          <h2 class="type-display-sm" style="margin-bottom: 32px;">Request a Free Quote</h2>
+          <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="contact.form.title">Request a Free Quote</h2>
           <form id="contact-form" class="space-y-5" novalidate aria-label="Contact and quote request form" data-email={site.contact.email}>
 
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label for="name" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Full Name <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
+                <label for="name" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;"><span data-i18n="contact.form.name">Full Name</span> <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
                 <input type="text" id="name" name="name" required autocomplete="name"
                   class="cb-input w-full"
                   placeholder="Rajesh Sharma"
                 />
-                <span class="hidden text-xs mt-1" style="color: var(--semantic-down);" id="name-error" role="alert">Please enter your name.</span>
+                <span class="hidden text-xs mt-1" style="color: var(--semantic-down);" id="name-error" role="alert" data-i18n="contact.form.name-error">Please enter your name.</span>
               </div>
               <div>
-                <label for="phone" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Mobile Number <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
+                <label for="phone" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;"><span data-i18n="contact.form.phone">Mobile Number</span> <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
                 <div style="display: flex;">
                   <span style="display: inline-flex; align-items: center; padding-inline: 16px; font-size: 14px; font-weight: 500; border: 1px solid var(--hairline); border-right: 0; border-top-left-radius: 12px; border-bottom-left-radius: 12px; background: var(--surface-soft); color: var(--muted);">+91</span>
                   <input type="tel" id="phone" name="phone" required maxlength="10" pattern="[6-9][0-9]{9}" autocomplete="tel"
@@ -48,12 +48,12 @@ import site from '../../config/site.json';
                     placeholder="9822625918"
                   />
                 </div>
-                <span class="hidden text-xs mt-1" style="color: var(--semantic-down);" id="phone-error" role="alert">Enter a valid 10-digit Indian mobile number.</span>
+                <span class="hidden text-xs mt-1" style="color: var(--semantic-down);" id="phone-error" role="alert" data-i18n="contact.form.phone-error">Enter a valid 10-digit Indian mobile number.</span>
               </div>
             </div>
 
             <div>
-              <label for="email" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Email Address</label>
+              <label for="email" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.email">Email Address</label>
               <input type="email" id="email" name="email" autocomplete="email"
                 class="cb-input w-full"
                 placeholder="rajesh@example.com"
@@ -62,14 +62,14 @@ import site from '../../config/site.json';
 
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label for="state" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">State <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
+                <label for="state" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;"><span data-i18n="contact.form.state">State</span> <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
                 <select id="state" name="state" required class="cb-select w-full">
-                  <option value="">Select State</option>
+                  <option value="" data-i18n="contact.form.select_state">Select State</option>
                   {site.coverage.states.map(s => <option value={s} selected={s === 'Maharashtra'}>{s}</option>)}
                 </select>
               </div>
               <div>
-                <label for="city" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">City / District</label>
+                <label for="city" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.city">City / District</label>
                 <input type="text" id="city" name="city" autocomplete="address-level2"
                   class="cb-input w-full"
                   placeholder="Mumbai"
@@ -78,7 +78,7 @@ import site from '../../config/site.json';
             </div>
 
             <div>
-              <label for="address" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Property Address</label>
+              <label for="address" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.address">Property Address</label>
               <input type="text" id="address" name="address" autocomplete="street-address"
                 class="cb-input w-full"
                 placeholder="Flat/Building, Street, Area, Pincode"
@@ -87,19 +87,19 @@ import site from '../../config/site.json';
 
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label for="propertyType" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Property Type</label>
+                <label for="propertyType" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.propertyType">Property Type</label>
                 <select id="propertyType" name="propertyType" class="cb-select w-full">
-                  <option value="">Select Type</option>
-                  <option>Residential – Independent House</option>
-                  <option>Residential – Apartment</option>
-                  <option>Commercial – Office</option>
-                  <option>Commercial – Retail</option>
-                  <option>Industrial – Factory/Warehouse</option>
-                  <option>Agricultural – Farm</option>
+                  <option value="" data-i18n="contact.form.select_type">Select Type</option>
+                  <option value="Residential – Independent House" data-i18n="contact.form.prop_res_ind">Residential – Independent House</option>
+                  <option value="Residential – Apartment" data-i18n="contact.form.prop_res_apt">Residential – Apartment</option>
+                  <option value="Commercial – Office" data-i18n="contact.form.prop_com_off">Commercial – Office</option>
+                  <option value="Commercial – Retail" data-i18n="contact.form.prop_com_ret">Commercial – Retail</option>
+                  <option value="Industrial – Factory/Warehouse" data-i18n="contact.form.prop_ind">Industrial – Factory/Warehouse</option>
+                  <option value="Agricultural – Farm" data-i18n="contact.form.prop_agri">Agricultural – Farm</option>
                 </select>
               </div>
               <div>
-                <label for="monthlyBill" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Monthly Electricity Bill (₹)</label>
+                <label for="monthlyBill" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.monthlyBill">Monthly Electricity Bill (₹)</label>
                 <input type="number" id="monthlyBill" name="monthlyBill" min="0" inputmode="numeric"
                   class="cb-input w-full"
                   placeholder="3000"
@@ -109,19 +109,19 @@ import site from '../../config/site.json';
 
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label for="roofArea" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Approximate Roof Area (sq ft)</label>
+                <label for="roofArea" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.roofArea">Approximate Roof Area (sq ft)</label>
                 <input type="number" id="roofArea" name="roofArea" min="0" inputmode="numeric"
                   class="cb-input w-full"
                   placeholder="500"
                 />
               </div>
               <div>
-                <label for="callbackTime" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Preferred Callback Time</label>
+                <label for="callbackTime" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.callbackTime">Preferred Callback Time</label>
                 <select id="callbackTime" name="callbackTime" class="cb-select w-full">
-                  <option value="">Any Time</option>
-                  <option>Morning (9 AM – 12 PM)</option>
-                  <option>Afternoon (12 PM – 3 PM)</option>
-                  <option>Evening (3 PM – 6 PM)</option>
+                  <option value="" data-i18n="contact.form.time_any">Any Time</option>
+                  <option value="Morning (9 AM – 12 PM)" data-i18n="contact.form.time_morning">Morning (9 AM – 12 PM)</option>
+                  <option value="Afternoon (12 PM – 3 PM)" data-i18n="contact.form.time_afternoon">Afternoon (12 PM – 3 PM)</option>
+                  <option value="Evening (3 PM – 6 PM)" data-i18n="contact.form.time_evening">Evening (3 PM – 6 PM)</option>
                 </select>
               </div>
             </div>
@@ -129,28 +129,29 @@ import site from '../../config/site.json';
             <!-- Subsidy checkbox -->
             <div style="display: flex; align-items: center; gap: 10px;">
               <input type="checkbox" id="subsidyRequired" name="subsidyRequired" class="w-4 h-4 rounded" style="accent-color: #e57c00; cursor: pointer;" />
-              <label for="subsidyRequired" style="font-size: 14px; color: var(--body-color); cursor: pointer;">I need assistance with government subsidy application</label>
+              <label for="subsidyRequired" style="font-size: 14px; color: var(--body-color); cursor: pointer;" data-i18n="contact.form.subsidyRequired">I need assistance with government subsidy application</label>
             </div>
 
             <div>
-              <label for="message" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">Additional Message</label>
+              <label for="message" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.message">Additional Message</label>
               <textarea id="message" name="message" rows="4"
                 class="cb-textarea w-full"
+                data-i18n="contact.form.message_placeholder"
                 placeholder="Tell us more about your solar requirements..."
               ></textarea>
             </div>
 
             <!-- Submit -->
-            <button type="submit" id="submit-btn" class="btn-primary w-full justify-center">
+            <button type="submit" id="submit-btn" class="btn-primary w-full justify-center" data-i18n="contact.form.submit">
               Submit Request
             </button>
 
             <!-- Success/Error messages -->
-            <div id="form-success" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(229,124,0,0.06); color: #e57c00; border: 1px solid rgba(229,124,0,0.15);" role="alert">
+            <div id="form-success" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(229,124,0,0.06); color: #e57c00; border: 1px solid rgba(229,124,0,0.15);" role="alert" data-i18n="contact.form.success">
               Thank you! We've received your request and will contact you within 24 hours.
             </div>
-            <div id="form-error" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(232,93,117,0.06); color: var(--semantic-down); border: 1px solid rgba(232,93,117,0.15);" role="alert">
-              Something went wrong. Please call us directly at {site.contact.phone}.
+            <div id="form-error" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(232,93,117,0.06); color: var(--semantic-down); border: 1px solid rgba(232,93,117,0.15);" role="alert" data-i18n="contact.form.error">
+              Something went wrong. Please call us directly.
             </div>
           </form>
         </div>
@@ -159,10 +160,10 @@ import site from '../../config/site.json';
         <div style="display: flex; flex-direction: column; gap: 20px;">
           <!-- Quick Contact Cards -->
           {[
-            { icon: 'phone', label: 'Sales & Enquiry', value: site.contact.phone, href: `tel:${site.contact.phoneRaw}`, desc: site.contact.businessHours.weekdays },
-            { icon: 'message-circle', label: 'WhatsApp', value: 'Chat with us', href: `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(site.contact.whatsappMessage)}`, desc: 'Quick responses guaranteed' },
-            { icon: 'mail', label: 'Email', value: site.contact.email, href: `mailto:${site.contact.email}`, desc: 'Response within 4 hours' },
-            { icon: 'phone', label: '24/7 Emergency', value: site.contact.emergencyPhone, href: `tel:${site.contact.emergencyPhone.replace(/-/g,'')}`, desc: 'For urgent system issues' },
+            { icon: 'phone', labelKey: 'contact.sidebar.sales', value: site.contact.phone, href: `tel:${site.contact.phoneRaw}`, descKey: 'contact.sidebar.sales_desc' },
+            { icon: 'message-circle', labelKey: 'contact.sidebar.whatsapp', valueKey: 'contact.sidebar.chat_with_us', href: `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(site.contact.whatsappMessage)}`, descKey: 'contact.sidebar.quick_resp' },
+            { icon: 'mail', labelKey: 'contact.sidebar.email', value: site.contact.email, href: `mailto:${site.contact.email}`, descKey: 'contact.sidebar.resp_4h' },
+            { icon: 'phone', labelKey: 'contact.sidebar.emergency', value: site.contact.emergencyPhone, href: `tel:${site.contact.emergencyPhone.replace(/-/g,'')}`, descKey: 'contact.sidebar.urgent_issues' },
           ].map(card => (
             <a href={card.href} target={card.icon === 'message-circle' ? '_blank' : undefined} rel={card.icon === 'message-circle' ? 'noopener noreferrer' : undefined}
               class="feature-card block hover:border-[#e57c00]/40"
@@ -176,9 +177,9 @@ import site from '../../config/site.json';
                 </svg>
               </div>
               <div>
-                <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">{card.label}</div>
-                <div style="font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px;">{card.value}</div>
-                <div style="font-size: 12px; color: var(--muted);">{card.desc}</div>
+                <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;" data-i18n={card.labelKey}>Label</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px;" data-i18n={card.valueKey || ''}>{card.value}</div>
+                <div style="font-size: 12px; color: var(--muted);" data-i18n={card.descKey}>Description</div>
               </div>
             </a>
           ))}
@@ -187,8 +188,11 @@ import site from '../../config/site.json';
           <div class="feature-card" style="background: var(--canvas); display: flex; align-items: start; gap: 16px; padding: 20px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             <div>
-              <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Office Address</div>
-              <address style="font-size: 13px; color: var(--body-color); not-italic; line-height: 1.6;">{site.contact.address.line1},<br />{site.contact.address.line2}</address>
+              <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;" data-i18n="contact.sidebar.addressTitle">Office Address</div>
+              <address style="font-size: 13px; color: var(--body-color); not-italic; line-height: 1.6;">
+                <span data-i18n="contact.sidebar.address_line1">{site.contact.address.line1}</span>,<br />
+                <span data-i18n="contact.sidebar.address_line2">{site.contact.address.line2}</span>
+              </address>
             </div>
           </div>
 

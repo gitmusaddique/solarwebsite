@@ -51,8 +51,8 @@ if (images.length === 0) {
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-16 band-light">
     <div class="container text-center">
-      <h1 class="type-display-xl" style="margin-bottom: 24px;">Our Installations</h1>
-      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+      <h1 class="type-display-xl" style="margin-bottom: 24px;" data-i18n="gallery.hero.title">Our Installations</h1>
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="gallery.hero.subtitle">
         Every photo is a clean energy story. Browse our portfolio of completed solar installations across Maharashtra.
       </p>
     </div>
@@ -63,15 +63,22 @@ if (images.length === 0) {
     <div class="container">
       <!-- Filter Buttons — Coinbase pill buttons -->
       <div class="flex flex-wrap gap-2 mb-12 justify-center" role="group" aria-label="Filter gallery by category">
-        {['All', 'Residential', 'Commercial', 'Industrial', 'Agriculture'].map(cat => (
+        {[
+          { name: 'All', key: 'all' },
+          { name: 'Residential', key: 'residential' },
+          { name: 'Commercial', key: 'commercial' },
+          { name: 'Industrial', key: 'industrial' },
+          { name: 'Agriculture', key: 'agriculture' }
+        ].map(cat => (
           <button
             type="button"
             class="gallery-filter"
             style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; height: 38px; font-size: 14px; font-weight: 600; border-radius: var(--radius-pill); border: 1px solid var(--hairline); background: var(--canvas); color: var(--body-color); cursor: pointer; transition: all 0.15s ease;"
-            data-filter={cat === 'All' ? 'all' : cat.toLowerCase()}
-            aria-pressed={cat === 'All' ? 'true' : 'false'}
+            data-filter={cat.key}
+            data-i18n={`gallery.filter.${cat.key}`}
+            aria-pressed={cat.key === 'all' ? 'true' : 'false'}
           >
-            {cat}
+            {cat.name}
           </button>
         ))}
       </div>
@@ -96,7 +103,7 @@ if (images.length === 0) {
                 onerror="this.parentElement.style.minHeight='200px'; this.style.display='none'; this.parentElement.innerHTML += '<div style=\'display:flex;align-items:center;justify-content:center;height:200px;font-size:12px;color:var(--muted);\'>' + this.alt + '</div>';"
               />
               <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4" style="background: linear-gradient(to top, rgba(10,11,13,0.8), transparent);">
-                <span style="color: #ffffff; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">{img.category} Installation</span>
+                <span style="color: #ffffff; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n={`gallery.category.${img.category}`}>{img.category} Installation</span>
               </div>
             </div>
           </div>
@@ -105,8 +112,8 @@ if (images.length === 0) {
 
       {images.length === 0 && (
         <div class="text-center py-20" style="color: var(--muted);">
-          <p class="type-title-md" style="margin-bottom: 8px;">Gallery Coming Soon</p>
-          <p style="font-size: 14px;">We're uploading our project photos. Check back soon.</p>
+          <p class="type-title-md" style="margin-bottom: 8px;" data-i18n="gallery.empty.title">Gallery Coming Soon</p>
+          <p style="font-size: 14px;" data-i18n="gallery.empty.desc">We're uploading our project photos. Check back soon.</p>
         </div>
       )}
     </div>
@@ -115,9 +122,9 @@ if (images.length === 0) {
   <!-- CTA — band-dark -->
   <section class="section band-soft" style="text-align: center;">
     <div class="container">
-      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">Want Your Project Here?</h2>
-      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;">Join thousands of satisfied customers and start your solar journey today.</p>
-      <a href="/contact" class="btn-primary-lg">
+      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;" data-i18n="gallery.cta.title">Want Your Project Here?</h2>
+      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;" data-i18n="gallery.cta.subtitle">Join thousands of satisfied customers and start your solar journey today.</p>
+      <a href="/contact" class="btn-primary-lg" data-i18n="gallery.cta.btn">
         Get Free Consultation
       </a>
     </div>

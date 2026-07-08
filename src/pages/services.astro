@@ -10,10 +10,10 @@ import site from '../../config/site.json';
   <!-- Hero — hero-band-light: canvas bg, display-xl weight 400 headline -->
   <section class="relative pt-48 pb-20 band-light" aria-labelledby="services-hero-heading">
     <div class="container text-center">
-      <h1 id="services-hero-heading" class="type-display-xl" style="margin-bottom: 24px;">
+      <h1 id="services-hero-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="services.hero.title">
         End-to-End Solar Solutions
       </h1>
-      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="services.hero.subtitle">
         From a single rooftop to a multi-megawatt industrial park — we deliver precision-engineered solar systems that maximise your returns in Maharashtra.
       </p>
     </div>
@@ -30,27 +30,27 @@ import site from '../../config/site.json';
         <div class={`grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
           <div class={i % 2 !== 0 ? 'md:order-2' : ''}>
             <div class="badge-pill" style="margin-bottom: 24px;">
-              Starting from {service.startingPrice}
+              <span data-i18n="services.starting_from">Starting from</span> {service.startingPrice}
             </div>
-            <h2 id={`service-${service.id}-heading`} class="type-display-lg" style="margin-bottom: 24px;">
+            <h2 id={`service-${service.id}-heading`} class="type-display-lg" style="margin-bottom: 24px;" data-i18n={`services.${service.id}.title`}>
               {service.title}
             </h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--body-color); margin-bottom: 32px;">
+            <p style="font-size: 16px; line-height: 1.6; color: var(--body-color); margin-bottom: 32px;" data-i18n={`services.${service.id}.desc`}>
               {service.description}
             </p>
             <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;" role="list">
-              {service.features.map(feature => (
-                <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--body-color);">
+              {service.features.map((feature, idx) => (
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--body-color);" data-i18n={`services.${service.id}.feature.${idx}`}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"/></svg>
                   {feature}
                 </li>
               ))}
             </ul>
             <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-              <a href="/contact" class="btn-primary">
+              <a href="/contact" class="btn-primary" data-i18n="services.cta.quote">
                 Get {service.title} Quote
               </a>
-              <span style="font-size: 14px; color: var(--muted);">{service.timeline}</span>
+              <span style="font-size: 14px; color: var(--muted);" data-i18n={`services.timeline.${service.id}`}>{service.timeline}</span>
             </div>
           </div>
 
@@ -64,17 +64,19 @@ import site from '../../config/site.json';
                 {service.id === 'agriculture' && <><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></>}
               </svg>
             </div>
-            <h3 class="type-title-md" style="margin-bottom: 16px;">Why choose {service.title}?</h3>
+            <h3 class="type-title-md" style="margin-bottom: 16px;">
+              <span data-i18n="services.why_choose">Why choose</span> {service.title}?
+            </h3>
             <div style="display: flex; flex-direction: column; gap: 2px;">
               {[
-                { label: 'Installation Time', value: service.timeline },
-                { label: 'Starting Price', value: service.startingPrice },
-                { label: 'Warranty', value: '25-year panel performance' },
-                { label: 'Subsidy', value: service.id === 'residential' ? 'Up to ₹78,000' : service.id === 'agriculture' ? 'PM-KUSUM – 60% subsidy' : 'Accelerated depreciation 40%' },
+                { label: 'Installation Time', value: service.timeline, key: 'services.table.installation_time', valKey: `services.timeline.${service.id}` },
+                { label: 'Starting Price', value: service.startingPrice, key: 'services.table.starting_price' },
+                { label: 'Warranty', value: '25-year panel performance', key: 'services.table.warranty', valKey: 'services.warranty.value' },
+                { label: 'Subsidy', value: service.id === 'residential' ? 'Up to ₹78,000' : service.id === 'agriculture' ? 'PM-KUSUM – 60% subsidy' : 'Accelerated depreciation 40%', key: 'services.table.subsidy', valKey: `services.subsidy.${service.id}` },
               ].map(item => (
                 <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
-                  <span style="font-size: 14px; color: var(--muted);">{item.label}</span>
-                  <span style="font-size: 14px; font-weight: 600; color: var(--ink);">{item.value}</span>
+                  <span style="font-size: 14px; color: var(--muted);" data-i18n={item.key}>{item.label}</span>
+                  <span style="font-size: 14px; font-weight: 600; color: var(--ink);" data-i18n={item.valKey}>{item.value}</span>
                 </div>
               ))}
             </div>
@@ -88,8 +90,8 @@ import site from '../../config/site.json';
   <section class="section band-soft" aria-labelledby="services-process-heading">
     <div class="container">
       <div style="max-width: 480px; margin-bottom: 64px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Our Process</p>
-        <h2 id="services-process-heading" class="type-display-md">
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="services.process.badge">Our Process</p>
+        <h2 id="services-process-heading" class="type-display-md" data-i18n="services.process.title">
           How we deliver every project.
         </h2>
       </div>
@@ -97,8 +99,8 @@ import site from '../../config/site.json';
         {site.process.map(step => (
           <div class="feature-card">
             <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; margin-bottom: 16px;">Step {String(step.step).padStart(2,'0')}</div>
-            <h3 class="type-title-md" style="margin-bottom: 8px;">{step.title}</h3>
-            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;">{step.description}</p>
+            <h3 class="type-title-md" style="margin-bottom: 8px;" data-i18n={`process.step${step.step}.title`}>{step.title}</h3>
+            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;" data-i18n={`process.step${step.step}.desc`}>{step.description}</p>
           </div>
         ))}
       </div>
@@ -109,17 +111,17 @@ import site from '../../config/site.json';
   <section class="section band-light" id="maintenance" aria-labelledby="maintenance-heading">
     <div class="container max-w-4xl mx-auto">
       <div style="text-align: center; margin-bottom: 48px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">After-Sales</p>
-        <h2 id="maintenance-heading" class="type-display-md" style="margin-bottom: 16px;">
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="services.after_sales.badge">After-Sales</p>
+        <h2 id="maintenance-heading" class="type-display-md" style="margin-bottom: 16px;" data-i18n="services.after_sales.title">
           Lifetime maintenance & support.
         </h2>
-        <p style="font-size: 16px; color: var(--body-color); max-width: 520px; margin-inline: auto;">Your solar investment is protected with comprehensive post-installation support.</p>
+        <p style="font-size: 16px; color: var(--body-color); max-width: 520px; margin-inline: auto;" data-i18n="services.after_sales.subtitle">Your solar investment is protected with comprehensive post-installation support.</p>
       </div>
       <div class="grid sm:grid-cols-3 gap-6">
         {[
-          { title: 'Free First Year', desc: 'Complete Annual Maintenance Contract included in every installation at no extra cost.', icon: 'gift' },
-          { title: 'Real-Time Monitoring', desc: 'Monitor your system performance 24/7 via our mobile app with instant alerts.', icon: 'activity' },
-          { title: '24/7 Emergency Support', desc: 'Dedicated emergency helpline ensures any critical issue is resolved within 24 hours.', icon: 'headphones' },
+          { title: 'Free First Year', desc: 'Complete Annual Maintenance Contract included in every installation at no extra cost.', icon: 'gift', key: 'services.after_sales.gift' },
+          { title: 'Real-Time Monitoring', desc: 'Monitor your system performance 24/7 via our mobile app with instant alerts.', icon: 'activity', key: 'services.after_sales.activity' },
+          { title: '24/7 Emergency Support', desc: 'Dedicated emergency helpline ensures any critical issue is resolved within 24 hours.', icon: 'headphones', key: 'services.after_sales.headphones' },
         ].map(card => (
           <div class="feature-card" style="text-align: center;">
             <div style="width: 40px; height: 40px; border-radius: 9999px; background: var(--surface-strong); display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 20px;">
@@ -129,8 +131,8 @@ import site from '../../config/site.json';
                 {card.icon === 'headphones' && <><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></>}
               </svg>
             </div>
-            <h3 class="type-title-md" style="margin-bottom: 8px;">{card.title}</h3>
-            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;">{card.desc}</p>
+            <h3 class="type-title-md" style="margin-bottom: 8px;" data-i18n={`${card.key}.title`}>{card.title}</h3>
+            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;" data-i18n={`${card.key}.desc`}>{card.desc}</p>
           </div>
         ))}
       </div>
@@ -140,9 +142,9 @@ import site from '../../config/site.json';
   <!-- CTA — band-dark -->
   <section class="section band-soft" style="text-align: center;">
     <div class="container">
-      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">Get a Free Site Assessment</h2>
-      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;">Our engineers will visit your property, assess your energy needs, and provide a detailed proposal — completely free of charge.</p>
-      <a href="/contact" class="btn-primary-lg">
+      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;" data-i18n="services.cta.title">Get a Free Site Assessment</h2>
+      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;" data-i18n="services.cta.subtitle">Our engineers will visit your property, assess your energy needs, and provide a detailed proposal — completely free of charge.</p>
+      <a href="/contact" class="btn-primary-lg" data-i18n="services.cta.btn">
         Book Free Assessment
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
