@@ -278,9 +278,6 @@ import site from '../../config/site.json';
     if (message) text += `*Message:* ${message}\n`;
 
     const whatsappNumber = form.getAttribute('data-whatsapp') || '919822625918';
-    const cleanNumber = whatsappNumber.replace(/\D/g, '');
-    const finalNumber = cleanNumber.startsWith('91') && cleanNumber.length > 10 ? cleanNumber : `91${cleanNumber}`;
-    const whatsappLink = `https://wa.me/${finalNumber}?text=${encodeURIComponent(text)}`;
 
     setTimeout(() => {
       submitBtn.textContent = 'Submit Request';
@@ -288,8 +285,14 @@ import site from '../../config/site.json';
       successMsg?.classList.remove('hidden');
       form.reset();
       
-      // Redirect to WhatsApp message automatically
-      window.location.href = whatsappLink;
+      // Redirect to WhatsApp message automatically using our smart helper
+      if (typeof (window as any).openWhatsApp === 'function') {
+        (window as any).openWhatsApp(whatsappNumber, text, false);
+      } else {
+        const cleanNumber = whatsappNumber.replace(/\D/g, '');
+        const finalNumber = cleanNumber.startsWith('91') && cleanNumber.length > 10 ? cleanNumber : `91${cleanNumber}`;
+        window.location.href = `https://wa.me/${finalNumber}?text=${encodeURIComponent(text)}`;
+      }
     }, 1000);
   });
 
@@ -298,4 +301,83 @@ import site from '../../config/site.json';
     const val = (e.target as HTMLInputElement).value.replace(/\D/g, '').slice(0, 10);
     (e.target as HTMLInputElement).value = val;
   });
+
+  // Pre-fill from calculator settings/results if available
+  function prefillFromCalculator() {
+    try {
+      const savedSettingsStr = localStorage.getItem('solarelites_calc_settings');
+      const savedResultsStr = localStorage.getItem('solarelites_calc_results');
+      if (!savedSettingsStr) return;
+
+      const settings = JSON.parse(savedSettingsStr);
+      
+      const stateEl = document.getElementById('state') as HTMLSelectElement;
+      if (stateEl && settings.state) {
+        stateEl.value = settings.state;
+      }
+      
+      const propertyTypeEl = document.getElementById('propertyType') as HTMLSelectElement;
+      if (propertyTypeEl && settings.connectionType) {
+        const mapping: Record<string, string> = {
+          'Residential': 'Residential – Independent House',
+          'Commercial': 'Commercial – Office',
+          'Industrial': 'Industrial – Factory/Warehouse',
+          'Agricultural': 'Agricultural – Farm'
+        };
+        if (mapping[settings.connectionType]) {
+          propertyTypeEl.value = mapping[settings.connectionType];
+        }
+      }
+
+      const monthlyBillEl = document.getElementById('monthlyBill') as HTMLInputElement;
+      if (monthlyBillEl && settings.bill) {
+        monthlyBillEl.value = settings.bill;
+      }
+
+      const roofAreaEl = document.getElementById('roofArea') as HTMLInputElement;
+      if (roofAreaEl && settings.roofArea) {
+        roofAreaEl.value = settings.roofArea;
+      }
+
+      if (savedResultsStr) {
+        const results = JSON.parse(savedResultsStr);
+        const messageEl = document.getElementById('message') as HTMLTextAreaElement;
+        if (messageEl) {
+          const lang = localStorage.getItem('solarelites_lang') || 'en';
+          let msgText = '';
+          if (lang === 'hi') {
+            msgText = `नमस्ते, मैंने वेबसाइट पर सोलर कैलकुलेटर का उपयोग किया। मेरी अनुमानित जानकारी:\n`;
+            msgText += `- अनुशंसित सिस्टम आकार: ${results.systemSize || '—'}\n`;
+            msgText += `- अनुमानित वापसी अवधि: ${results.payback || '—'}\n`;
+            msgText += `- अनुमानित नेट निवेश: ${results.netCost || '—'}\n`;
+            msgText += `- अनुमानित मासिक बचत: ${results.monthlySavings || '—'}\n\n`;
+            msgText += `कृपया विस्तृत साइट सर्वेक्षण के लिए मुझसे संपर्क करें।`;
+          } else if (lang === 'mr') {
+            msgText = `नमस्कार, मी वेबसाईटवरील सोलर कॅल्क्युलेटरचा वापर केला. माझी अंदाजे माहिती:\n`;
+            msgText += `- शिफारस केलेला सिस्टम आकार: ${results.systemSize || '—'}\n`;
+            msgText += `- अंदाजे पेबॅक कालावधी: ${results.payback || '—'}\n`;
+            msgText += `- अंदाजे निव्वळ गुंतवणूक: ${results.netCost || '—'}\n`;
+            msgText += `- अंदाजे मासिक बचत: ${results.monthlySavings || '—'}\n\n`;
+            msgText += `कृपया सविस्तर साइट सर्वेक्षणासाठी माझ्याशी संपर्क साधा.`;
+          } else {
+            msgText = `Hi, I calculated my solar savings on the website. Here are my estimated details:\n`;
+            msgText += `- Recommended Solar System: ${results.systemSize || '—'}\n`;
+            msgText += `- Estimated Payback: ${results.payback || '—'}\n`;
+            msgText += `- Estimated Net Investment: ${results.netCost || '—'}\n`;
+            msgText += `- Estimated Monthly Savings: ${results.monthlySavings || '—'}\n\n`;
+            msgText += `Please contact me for a detailed site survey.`;
+          }
+          messageEl.value = msgText;
+        }
+      }
+    } catch (e) {
+      console.warn("Prefill failed: ", e);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', prefillFromCalculator);
+  } else {
+    prefillFromCalculator();
+  }
 </script>

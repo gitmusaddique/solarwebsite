@@ -553,6 +553,19 @@ import site from '../../config/site.json';
     document.getElementById('result-25y').textContent = fmt(savings25);
     document.getElementById('result-co2').textContent = fmtNum(co2) + co2Suffix;
     document.getElementById('result-roof-util').textContent = `${Math.round(spaceUsed).toLocaleString('en-IN')} / ${Math.round(roofAreaSqFt).toLocaleString('en-IN')}${sqftSuffix} (${utilPercent}%)`;
+
+    // Save results to localStorage
+    const results = {
+      systemSize: roundedSize.toFixed(1) + ' kW',
+      payback: roundedSize > 0 ? payback.toFixed(1) + yrsSuffix : '—',
+      netCost: fmt(netCost),
+      monthlySavings: fmt(monthlySavings) + (lang === 'en' ? '/mo' : '/माह')
+    };
+    try {
+      localStorage.setItem('solarelites_calc_results', JSON.stringify(results));
+    } catch (e) {
+      console.warn("Storage write blocked: ", e);
+    }
   }
 
   // Re-calculate when language dropdown changes
