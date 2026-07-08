@@ -232,7 +232,7 @@
       "location": "Ahmedabad, Gujarat",
       "role": "Farmer",
       "content": "PM-KUSUM yojana ke through mujhe bahut fayda mila. Solarelites ne poori subsidy process sambhali aur mera pump bilkul free mein chalta hai ab. Bahut bahut shukriya.",
-      "rating": 5,
+      "rating": 4,
       "system": "5 HP Solar Pump",
       "savings": "₹1.2L/year"
     },
@@ -242,7 +242,7 @@
       "location": "Chennai, Tamil Nadu",
       "role": "Factory Manager",
       "content": "Our 500 kW industrial installation has been flawless for 2 years. The remote monitoring system gives us full visibility and the O&M team is extremely responsive. Best investment we've made.",
-      "rating": 5,
+      "rating": 4,
       "system": "500 kW Industrial System",
       "savings": "₹48L/year"
     }
@@ -350,15 +350,42 @@
       "Maharashtra"
     ],
     "primaryCities": [
-      { "city": "Latur", "state": "Maharashtra" },
-      { "city": "Ausa", "state": "Maharashtra" },
-      { "city": "Solapur", "state": "Maharashtra" },
-      { "city": "Pune", "state": "Maharashtra" },
-      { "city": "Mumbai", "state": "Maharashtra" },
-      { "city": "Sambhaji Nager", "state": "Maharashtra" },
-      { "city": "Beed", "state": "Maharashtra" },
-      { "city": "Dharashiv", "state": "Maharashtra" },
-      { "city": "Tuljapur", "state": "Maharashtra" }
+      {
+        "city": "Latur",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Ausa",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Solapur",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Pune",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Mumbai",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Sambhaji Nager",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Beed",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Dharashiv",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Tuljapur",
+        "state": "Maharashtra"
+      }
     ]
   },
   "calculator": {
