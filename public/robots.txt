@@ -1,7 +1,29 @@
+# Optimized robots.txt for Google and Bing
+# For more information about robots.txt rules, visit: https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+# Group 1: Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /_astro/
+Allow: /images/
+Allow: /gallery/
+Disallow: /404.html
+Disallow: /404/
+
+# Group 2: Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /
+Allow: /_astro/
+Allow: /images/
+Allow: /gallery/
+Disallow: /404.html
+Disallow: /404/
+
+# Group 3: Default rules for all other crawlers
 User-agent: *
 Allow: /
+Disallow: /404.html
+Disallow: /404/
 
-Sitemap: https://www.solarelites.in/sitemap-index.xml
-
-# Disallow admin or private paths (none for static site)
-Disallow: /dist/
+# Link to the dynamic sitemap
+Sitemap: https://www.solarelites.in/sitemap.xml

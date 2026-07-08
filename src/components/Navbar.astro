@@ -118,6 +118,32 @@ function isActive(href: string) {
     border-color: #e57c00;
     box-shadow: 0 0 0 2px rgba(229, 124, 0, 0.15);
   }
+
+  .phone-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(229, 124, 0, 0.25);
+    background: rgba(229, 124, 0, 0.05);
+    color: #e57c00;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .phone-icon-btn:hover {
+    background: #e57c00;
+    color: #ffffff;
+    border-color: #e57c00;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(229, 124, 0, 0.2);
+  }
+
+  .phone-icon-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(229, 124, 0, 0.1);
+  }
 </style>
 
     <!-- Right: Language switcher + phone + CTA -->
@@ -132,15 +158,14 @@ function isActive(href: string) {
         </select>
       </div>
 
-      <!-- Phone -->
+      <!-- Phone Icon Button -->
       <a
         href={`tel:${site.contact.phoneRaw}`}
-        class="flex items-center gap-1.5 shrink-0 whitespace-nowrap"
-        style="font-size: 14px; font-weight: 600; color: #e57c00; text-decoration: none; white-space: nowrap;"
-        aria-label="Call Solarelites"
+        class="phone-icon-btn"
+        aria-label={`Call us at ${site.contact.phone}`}
+        title={`Call us at ${site.contact.phone}`}
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #e57c00;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>{site.contact.phone}</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </a>
 
       <!-- button-primary pill -->
@@ -199,9 +224,9 @@ function isActive(href: string) {
         ))}
       </ul>
       <div class="mt-4 pt-4 flex flex-col gap-3" style="border-top: 1px solid rgba(10, 11, 13, 0.1);">
-        <a href={`tel:${site.contact.phoneRaw}`} class="flex items-center gap-2 px-3 py-2" style="font-size: 14px; color: #e57c00; text-decoration: none; font-weight: 600;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          {site.contact.phone}
+        <a href={`tel:${site.contact.phoneRaw}`} class="btn-secondary justify-center gap-2" style="height: 44px; border: 1px solid var(--hairline);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>{site.contact.phone}</span>
         </a>
         <a href="/contact" class="btn-primary justify-center" style="height: 44px;" data-i18n="nav.quote">Get Free Quote</a>
       </div>
