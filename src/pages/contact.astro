@@ -27,7 +27,7 @@ import site from '../../config/site.json';
         <!-- Form -->
         <div>
           <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="contact.form.title">Request a Free Quote</h2>
-          <form id="contact-form" class="space-y-5" novalidate aria-label="Contact and quote request form" data-email={site.contact.email}>
+          <form id="contact-form" class="space-y-5" novalidate aria-label="Contact and quote request form" data-email={site.contact.email} data-whatsapp={site.contact.whatsapp}>
 
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
@@ -247,28 +247,49 @@ import site from '../../config/site.json';
 
     if (!valid) return;
 
-    // Simulate form submission (static site – open email client)
+    // Simulate form submission
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const state = (document.getElementById('state') as HTMLSelectElement).value;
+    const city = (document.getElementById('city') as HTMLInputElement).value.trim();
+    const address = (document.getElementById('address') as HTMLInputElement).value.trim();
+    const propertyType = (document.getElementById('propertyType') as HTMLSelectElement).value;
+    const monthlyBill = (document.getElementById('monthlyBill') as HTMLInputElement).value.trim();
+    const roofArea = (document.getElementById('roofArea') as HTMLInputElement).value.trim();
+    const callbackTime = (document.getElementById('callbackTime') as HTMLSelectElement).value;
+    const subsidyRequired = (document.getElementById('subsidyRequired') as HTMLInputElement).checked ? 'Yes' : 'No';
+    const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
 
-    // Build mailto link as fallback for static site
-    const subject = encodeURIComponent(`Solar Quote Request – ${data.name}`);
-    const body = encodeURIComponent(
-      Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n')
-    );
-    const formEmail = form.getAttribute('data-email') || 'solarelites17@gmail.com';
-    const mailtoLink = `mailto:${formEmail}?subject=${subject}&body=${body}`;
+    // Construct beautiful message
+    let text = `*New Solar Quote Request* ☀️\n\n`;
+    text += `*Name:* ${name}\n`;
+    text += `*Phone:* +91 ${phone}\n`;
+    if (email) text += `*Email:* ${email}\n`;
+    text += `*State:* ${state || 'Maharashtra'}\n`;
+    if (city) text += `*City/District:* ${city}\n`;
+    if (address) text += `*Address:* ${address}\n`;
+    if (propertyType) text += `*Property Type:* ${propertyType}\n`;
+    if (monthlyBill) text += `*Monthly Bill:* ₹${monthlyBill}\n`;
+    if (roofArea) text += `*Roof Area:* ${roofArea} sq ft\n`;
+    text += `*Subsidy Assistance:* ${subsidyRequired}\n`;
+    if (callbackTime) text += `*Callback Time:* ${callbackTime}\n`;
+    if (message) text += `*Message:* ${message}\n`;
+
+    const whatsappNumber = form.getAttribute('data-whatsapp') || '919822625918';
+    const cleanNumber = whatsappNumber.replace(/\D/g, '');
+    const finalNumber = cleanNumber.startsWith('91') && cleanNumber.length > 10 ? cleanNumber : `91${cleanNumber}`;
+    const whatsappLink = `https://wa.me/${finalNumber}?text=${encodeURIComponent(text)}`;
 
     setTimeout(() => {
       submitBtn.textContent = 'Submit Request';
       submitBtn.disabled = false;
       successMsg?.classList.remove('hidden');
       form.reset();
-      // Open email client
-      window.location.href = mailtoLink;
+      
+      // Redirect to WhatsApp message automatically
+      window.location.href = whatsappLink;
     }, 1000);
   });
 

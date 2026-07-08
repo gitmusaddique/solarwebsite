@@ -569,6 +569,25 @@ main {
 }
 .cb-select:focus { border: 2px solid var(--primary); }
 
+.cb-textarea {
+  width: 100%;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 14px 16px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.15s ease;
+  resize: vertical;
+}
+.cb-textarea:focus {
+  border: 2px solid var(--primary);
+}
+.cb-textarea::placeholder { color: var(--muted); }
+
 /* ---- Semantic Colors ---- */
 .text-up   { color: var(--semantic-up); }
 .text-down { color: var(--semantic-down); }
