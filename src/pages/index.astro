@@ -34,22 +34,23 @@ const faqSchema = {
         <h1
           id="hero-heading"
           style="font-family: var(--font-display); font-size: clamp(44px, 7vw, 80px); font-weight: 400; line-height: 1.0; letter-spacing: -2px; color: var(--ink); margin-bottom: 28px;"
+          data-i18n="hero.title"
         >
           Clean energy.<br/>Measurable savings.
         </h1>
 
         <!-- Sub: body-md 16px / 400 / muted -->
-        <p style="font-size: 18px; font-weight: 400; line-height: 1.6; color: var(--body-color); max-width: 580px; margin-inline: auto; margin-bottom: 40px;">
+        <p style="font-size: 18px; font-weight: 400; line-height: 1.6; color: var(--body-color); max-width: 580px; margin-inline: auto; margin-bottom: 40px;" data-i18n="hero.subtitle">
           {site.hero.subheadline}
         </p>
 
         <!-- CTAs: button-pill-cta (56px) + button-secondary-dark -->
         <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center;">
           <a href="/contact" class="btn-primary-lg">
-            Get Free Consultation
+            <span data-i18n="hero.cta.consult">Get Free Consultation</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="/calculator" class="btn-outline-lg">
+          <a href="/calculator" class="btn-outline-lg" data-i18n="hero.cta.calc">
             Calculate Savings
           </a>
         </div>
@@ -62,12 +63,19 @@ const faqSchema = {
   <section class="band-light" style="padding-block: 48px;" aria-label="Company statistics">
     <div class="container">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
-        {site.statistics.map(stat => (
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: #0a0b0d; letter-spacing: -0.5px; margin-bottom: 4px;">{stat.value}</div>
-            <div style="font-size: 14px; color: var(--body-color);">{stat.label}</div>
-          </div>
-        ))}
+        {site.statistics.map(stat => {
+          let key = "";
+          if (stat.label.includes("Installations")) key = "stats.installations";
+          else if (stat.label.includes("Capacity")) key = "stats.capacity";
+          else if (stat.label.includes("Subsidy")) key = "stats.subsidy";
+          else if (stat.label.includes("Satisfaction")) key = "stats.satisfaction";
+          return (
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: #0a0b0d; letter-spacing: -0.5px; margin-bottom: 4px;">{stat.value}</div>
+              <div style="font-size: 14px; color: var(--body-color);" data-i18n={key}>{stat.label}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -76,9 +84,9 @@ const faqSchema = {
   <section class="section band-soft" aria-labelledby="services-heading">
     <div class="container">
       <div style="max-width: 560px; margin-bottom: 64px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Services</p>
-        <h2 id="services-heading" class="type-display-lg" style="margin-bottom: 16px;">Solar for every need.</h2>
-        <p style="font-size: 16px; color: var(--body-color); line-height: 1.6;">From a single rooftop to a multi-megawatt industrial park, we deliver precision-engineered systems that maximise your returns in Maharashtra.</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="services.badge">Services</p>
+        <h2 id="services-heading" class="type-display-lg" style="margin-bottom: 16px;" data-i18n="services.title">Solar for every need.</h2>
+        <p style="font-size: 16px; color: var(--body-color); line-height: 1.6;" data-i18n="services.subtitle">From a single rooftop to a multi-megawatt industrial park, we deliver precision-engineered systems that maximise your returns in Maharashtra.</p>
       </div>
 
       <!-- feature-card 4-up grid -->
@@ -94,11 +102,11 @@ const faqSchema = {
                 {service.id === 'agriculture' && <><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></>}
               </svg>
             </div>
-            <h3 class="type-title-md" style="margin-bottom: 8px;">{service.title}</h3>
-            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6; margin-bottom: 16px;">{service.shortDescription}</p>
+            <h3 class="type-title-md" style="margin-bottom: 8px;" data-i18n={`services.${service.id}.title`}>{service.title}</h3>
+            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6; margin-bottom: 16px;" data-i18n={`services.${service.id}.desc`}>{service.shortDescription}</p>
             <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--muted);">
-              <span>From {service.startingPrice}</span>
-              <span style="color: #e57c00; font-weight: 500;">Learn more →</span>
+              <span><span data-i18n="services.starting_from">From</span> {service.startingPrice}</span>
+              <span style="color: #e57c00; font-weight: 500;" data-i18n="services.learn_more">Learn more →</span>
             </div>
           </a>
         ))}
@@ -112,16 +120,16 @@ const faqSchema = {
       <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 64px; align-items: center;" class="md:grid-cols-2">
         <div>
           <!-- badge-pill -->
-          <span class="badge-pill" style="margin-bottom: 24px; display: inline-flex;">Government Scheme</span>
-          <h2 id="subsidy-heading" style="font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px;">
+          <span class="badge-pill" style="margin-bottom: 24px; display: inline-flex;" data-i18n="subsidy.badge">Government Scheme</span>
+          <h2 id="subsidy-heading" style="font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px;" data-i18n="subsidy.title">
             Get up to ₹78,000 subsidy.
           </h2>
-          <p style="font-size: 16px; line-height: 1.7; color: var(--body-color); margin-bottom: 36px; max-width: 440px;">
+          <p style="font-size: 16px; line-height: 1.7; color: var(--body-color); margin-bottom: 36px; max-width: 440px;" data-i18n="subsidy.desc">
             PM Surya Ghar Muft Bijli Yojana provides substantial subsidies for rooftop solar in Maharashtra. We handle the entire application — from registration to disbursement.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-            <a href="/subsidy" class="btn-primary">Learn About Subsidies</a>
-            <a href="/contact" class="btn-secondary-dark">Talk to an Expert</a>
+            <a href="/subsidy" class="btn-primary" data-i18n="subsidy.cta.learn">Learn About Subsidies</a>
+            <a href="/contact" class="btn-secondary-dark" data-i18n="subsidy.cta.talk">Talk to an Expert</a>
           </div>
         </div>
 
@@ -142,15 +150,15 @@ const faqSchema = {
   <section class="section band-light" aria-labelledby="process-heading">
     <div class="container">
       <div style="max-width: 480px; margin-bottom: 64px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">How It Works</p>
-        <h2 id="process-heading" class="type-display-md">From consultation to commissioning.</h2>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="process.badge">How It Works</p>
+        <h2 id="process-heading" class="type-display-md" data-i18n="process.title">From consultation to commissioning.</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {site.process.map(step => (
           <div class="feature-card">
             <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: #a8acb3; text-transform: uppercase; margin-bottom: 16px;">Step {String(step.step).padStart(2,'0')}</div>
-            <h3 class="type-title-md" style="margin-bottom: 10px;">{step.title}</h3>
-            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;">{step.description}</p>
+            <h3 class="type-title-md" style="margin-bottom: 10px;" data-i18n={`process.step${step.step}.title`}>{step.title}</h3>
+            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;" data-i18n={`process.step${step.step}.desc`}>{step.description}</p>
           </div>
         ))}
       </div>
@@ -161,8 +169,8 @@ const faqSchema = {
   <section class="section band-soft" aria-labelledby="testimonials-heading">
     <div class="container">
       <div style="max-width: 480px; margin-bottom: 64px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Customers</p>
-        <h2 id="testimonials-heading" class="type-display-md">Trusted by 5,000+ families in Maharashtra.</h2>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="testimonials.badge">Customers</p>
+        <h2 id="testimonials-heading" class="type-display-md" data-i18n="testimonials.title">Trusted by 5,000+ families in Maharashtra.</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {site.testimonials.map(t => (
@@ -245,14 +253,14 @@ const faqSchema = {
   <!-- ===== FAQ/CTA BAND LIGHT ===== -->
   <section class="band-soft" style="padding-block: 96px; text-align: center;" aria-labelledby="cta-heading">
     <div class="container">
-      <h2 id="cta-heading" style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">
+      <h2 id="cta-heading" style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;" data-i18n="testimonials.cta.text">
         Start saving with solar today.
       </h2>
-      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 440px; margin-inline: auto; line-height: 1.6;">
+      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 440px; margin-inline: auto; line-height: 1.6;" data-i18n="testimonials.cta.sub">
         Free consultation, subsidy assistance, and lifetime support in Maharashtra, for every system we install.
       </p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center;">
-        <a href="/contact" class="btn-primary-lg">Get Free Consultation</a>
+        <a href="/contact" class="btn-primary-lg" data-i18n="hero.cta.consult">Get Free Consultation</a>
         <a href={`tel:${site.contact.phoneRaw}`} class="btn-outline-lg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           {site.contact.phone}
