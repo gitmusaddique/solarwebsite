@@ -4,25 +4,25 @@ import site from '../../config/site.json';
 ---
 
 <Layout
-  title="About Us – India's Solar Energy Leaders"
-  description="Learn about Solarelites – our mission, team, values, and 7-year journey to becoming India's most trusted solar installation company."
+  title="About Us – Maharashtra's Solar Energy Leaders"
+  description="Learn about Solarelites – our mission, team, values, and 7-year journey to becoming Maharashtra's most trusted solar installation company."
 >
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-16 band-light" aria-labelledby="about-heading">
     <div class="container text-center">
       <div class="max-w-3xl" style="margin-inline: auto;">
         <h1 id="about-heading" class="type-display-xl" style="margin-bottom: 24px;">
-          We believe every Indian deserves clean, affordable energy.
+          We believe every home and business deserves clean, affordable energy.
         </h1>
         <p style="font-size: 18px; color: var(--body-color); line-height: 1.6;">
-          Founded in 2018, Solarelites has grown from a small Maharashtra-based installer to one of India's most trusted solar energy companies — completing 5,000+ installations across 10 states.
+          Founded in 2018, Solarelites is Maharashtra's most trusted solar energy company — completing 5,000+ installations across the state.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Stats Banner — light band -->
-  <section class="band-light" style="padding-block: 48px; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);" aria-label="Company milestones">
+  <section class="band-light" style="padding-block: 48px;" aria-label="Company milestones">
     <div class="container">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
         {site.statistics.map(stat => (
@@ -42,18 +42,18 @@ import site from '../../config/site.json';
         <div>
           <h2 id="mission-heading" class="type-display-sm" style="margin-bottom: 16px;">Our Mission</h2>
           <p style="font-size: 15px; line-height: 1.6; color: var(--body-color); margin-bottom: 32px;">
-            To accelerate India's transition to renewable energy by making world-class solar installations accessible and affordable for every home, farm, and business — while ensuring maximum financial returns for our customers through government subsidies and premium engineering.
+            To accelerate Maharashtra's transition to renewable energy by making world-class solar installations accessible and affordable for every home, farm, and business — while ensuring maximum financial returns for our customers through government subsidies and premium engineering.
           </p>
           <h2 class="type-display-sm" style="margin-bottom: 16px;">Our Vision</h2>
           <p style="font-size: 15px; line-height: 1.6; color: var(--body-color);">
-            A solar panel on every Indian rooftop. A clean energy future for every Indian family. By 2030, we aim to complete 1 lakh solar installations — contributing to India's 500 GW renewable energy target.
+            A solar panel on every rooftop in Maharashtra. A clean energy future for every family. By 2030, we aim to complete 1 lakh solar installations — contributing to our state's green energy goals.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-4">
           {site.values.map(value => (
             <div class="feature-card" style="background: var(--canvas);">
               <div style="width: 36px; height: 36px; border-radius: 9999px; background: var(--surface-strong); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0052ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   {value.icon === 'shield-check' && <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></>}
                   {value.icon === 'award' && <><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></>}
                   {value.icon === 'leaf' && <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>}
@@ -70,26 +70,26 @@ import site from '../../config/site.json';
   </section>
 
   <!-- Timeline — band-light -->
-  <section class="section band-light" style="border-top: 1px solid var(--hairline);" aria-labelledby="timeline-heading">
+  <section class="section band-light" aria-labelledby="timeline-heading">
     <div class="container">
       <div style="max-width: 480px; margin-bottom: 64px; margin-inline: auto; text-align: center;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">Our Journey</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Our Journey</p>
         <h2 id="timeline-heading" class="type-display-md">7 years of solar excellence.</h2>
       </div>
       <div class="max-w-3xl mx-auto">
         {[
           { year: '2018', event: 'Solarelites founded in Navi Mumbai with a team of 4 engineers. First 10 residential installations completed in Maharashtra.' },
-          { year: '2019', event: 'Expanded to Gujarat and Rajasthan. Secured MNRE empanelment. Crossed 200 installations milestone.' },
+          { year: '2019', event: 'Expanded coverage across western Maharashtra. Secured MNRE empanelment. Crossed 200 installations milestone.' },
           { year: '2020', event: 'Launched commercial solar division. First 1 MW installation for a Pune industrial client despite pandemic challenges.' },
           { year: '2021', event: 'Introduced agricultural solar and PM-KUSUM assistance. Crossed 1,000 installations. Team grew to 80+ members.' },
-          { year: '2022', event: 'Expanded to 8 states. Launched 24/7 monitoring platform. Secured ₹10 Cr+ in subsidies for clients.' },
+          { year: '2022', event: 'Expanded coverage across the entire state of Maharashtra. Launched 24/7 monitoring platform. Secured ₹10 Cr+ in subsidies for clients.' },
           { year: '2023', event: 'Crossed 3,000 installations. Launched industrial solar division. ISO 9001:2015 certification achieved.' },
-          { year: '2024–25', event: 'PM Surya Ghar launch creates massive demand. 5,000+ installations. ₹48 Cr+ in subsidies secured. 10-state presence.' },
+          { year: '2024–25', event: 'PM Surya Ghar launch creates massive demand. 5,000+ installations. ₹48 Cr+ in subsidies secured. Leading solar player in Maharashtra.' },
         ].map((item) => (
           <div style="display: flex; gap: 32px; margin-bottom: 48px;" class="last:mb-0">
-            <div style="flex-shrink: 0; width: 64px; font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: #0052ff; padding-top: 2px;">{item.year}</div>
+            <div style="flex-shrink: 0; width: 64px; font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: #e57c00; padding-top: 2px;">{item.year}</div>
             <div style="position: relative; padding-left: 32px; border-left: 1px solid var(--hairline);">
-              <div style="position: absolute; left: 0; top: 6px; width: 8px; height: 8px; border-radius: 9999px; background: #0052ff; transform: translateX(-50%);"></div>
+              <div style="position: absolute; left: 0; top: 6px; width: 8px; height: 8px; border-radius: 9999px; background: #e57c00; transform: translateX(-50%);"></div>
               <p style="font-size: 14px; line-height: 1.6; color: var(--body-color);">{item.event}</p>
             </div>
           </div>
@@ -99,20 +99,20 @@ import site from '../../config/site.json';
   </section>
 
   <!-- Team — band-soft -->
-  <section class="section band-soft" style="border-top: 1px solid var(--hairline);" id="team" aria-labelledby="team-heading">
+  <section class="section band-soft" id="team" aria-labelledby="team-heading">
     <div class="container">
       <div style="max-width: 480px; margin-bottom: 64px; margin-inline: auto; text-align: center;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">Leadership</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Leadership</p>
         <h2 id="team-heading" class="type-display-md">Meet the team.</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {site.team.map(member => (
           <div class="feature-card" style="text-align: center; background: var(--canvas);">
-            <div style="width: 80px; height: 80px; border-radius: 9999px; margin-inline: auto; margin-bottom: 20px; background: var(--surface-strong); color: #0052ff; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600;">
+            <div style="width: 80px; height: 80px; border-radius: 9999px; margin-inline: auto; margin-bottom: 20px; background: var(--surface-strong); color: #e57c00; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600;">
               {member.name.split(' ').map((n: string) => n[0]).join('').slice(0,2)}
             </div>
             <h3 class="type-title-sm" style="margin-bottom: 4px;">{member.name}</h3>
-            <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">{member.role}</p>
+            <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">{member.role}</p>
             <p style="font-size: 13px; color: var(--body-color); line-height: 1.6;">{member.bio}</p>
           </div>
         ))}
@@ -121,10 +121,10 @@ import site from '../../config/site.json';
   </section>
 
   <!-- Certifications — band-light -->
-  <section class="section band-light" style="border-top: 1px solid var(--hairline);" id="certifications" aria-labelledby="cert-heading">
+  <section class="section band-light" id="certifications" aria-labelledby="cert-heading">
     <div class="container">
       <div style="max-width: 480px; margin-bottom: 48px; margin-inline: auto; text-align: center;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">Quality Assurance</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Quality Assurance</p>
         <h2 id="cert-heading" class="type-display-md">Certifications & standards.</h2>
       </div>
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
@@ -138,10 +138,10 @@ import site from '../../config/site.json';
   </section>
 
   <!-- CTA — band-dark -->
-  <section class="section band-soft" style="text-align: center; border-top: 1px solid var(--hairline);">
+  <section class="section band-soft" style="text-align: center;">
     <div class="container">
       <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">
-        Ready to work with India's best?
+        Ready to work with Maharashtra's best?
       </h2>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
         <a href="/contact" class="btn-primary-lg">Get Free Consultation</a>

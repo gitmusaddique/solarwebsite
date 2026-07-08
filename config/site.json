@@ -5,8 +5,8 @@
     "shortTagline": "India's Trusted Solar Partner",
     "description": "Solarelites is India's premier solar energy company, delivering world-class residential, commercial, industrial, and agricultural solar installations with government subsidy assistance.",
     "founded": "2018",
-    "registrationNumber": "CIN: U40100MH2018PTC301234",
-    "gstNumber": "27AABCS1234A1ZV"
+    "registrationNumber": "",
+    "gstNumber": ""
   },
   "contact": {
     "phone": "+91-98765-43210",
@@ -44,6 +44,7 @@
     "defaultTitle": "Solarelites – India's Premier Solar Energy Company",
     "titleSuffix": " | Solarelites",
     "defaultDescription": "India's leading solar installation company for residential, commercial, industrial, and agricultural projects. Government subsidy assistance. Get a free consultation today.",
+    "defaultKeywords": "solar panel, solar system for home, solar panel price, solar subsidy, best solar panels, solar energy, rooftop solar, solar panels india, home solar system, solar installation",
     "siteUrl": "https://www.solarelites.in",
     "ogImage": "/images/og-image.jpg",
     "twitterHandle": "@solarelites_in",
@@ -346,16 +347,7 @@
   },
   "coverage": {
     "states": [
-      "Maharashtra",
-      "Gujarat",
-      "Rajasthan",
-      "Tamil Nadu",
-      "Karnataka",
-      "Telangana",
-      "Andhra Pradesh",
-      "Madhya Pradesh",
-      "Uttar Pradesh",
-      "Delhi NCR"
+      "Maharashtra"
     ],
     "primaryCities": [
       {
@@ -371,32 +363,24 @@
         "state": "Maharashtra"
       },
       {
-        "city": "Ahmedabad",
-        "state": "Gujarat"
+        "city": "Nagpur",
+        "state": "Maharashtra"
       },
       {
-        "city": "Surat",
-        "state": "Gujarat"
+        "city": "Thane",
+        "state": "Maharashtra"
       },
       {
-        "city": "Jaipur",
-        "state": "Rajasthan"
+        "city": "Chhatrapati Sambhajinagar",
+        "state": "Maharashtra"
       },
       {
-        "city": "Chennai",
-        "state": "Tamil Nadu"
+        "city": "Solapur",
+        "state": "Maharashtra"
       },
       {
-        "city": "Bangalore",
-        "state": "Karnataka"
-      },
-      {
-        "city": "Hyderabad",
-        "state": "Telangana"
-      },
-      {
-        "city": "Delhi",
-        "state": "Delhi NCR"
+        "city": "Kalyan-Dombivli",
+        "state": "Maharashtra"
       }
     ]
   },
@@ -418,51 +402,6 @@
         "name": "Maharashtra",
         "irradiation": 5.5,
         "tariff": 8.0
-      },
-      {
-        "name": "Gujarat",
-        "irradiation": 6.0,
-        "tariff": 5.5
-      },
-      {
-        "name": "Rajasthan",
-        "irradiation": 6.5,
-        "tariff": 6.5
-      },
-      {
-        "name": "Tamil Nadu",
-        "irradiation": 5.8,
-        "tariff": 7.0
-      },
-      {
-        "name": "Karnataka",
-        "irradiation": 5.5,
-        "tariff": 6.0
-      },
-      {
-        "name": "Telangana",
-        "irradiation": 5.7,
-        "tariff": 7.5
-      },
-      {
-        "name": "Delhi NCR",
-        "irradiation": 5.3,
-        "tariff": 8.0
-      },
-      {
-        "name": "Andhra Pradesh",
-        "irradiation": 5.8,
-        "tariff": 6.5
-      },
-      {
-        "name": "Madhya Pradesh",
-        "irradiation": 5.7,
-        "tariff": 6.0
-      },
-      {
-        "name": "Uttar Pradesh",
-        "irradiation": 5.2,
-        "tariff": 5.5
       }
     ]
   },
@@ -488,7 +427,7 @@
     {
       "name": "Naina Patel",
       "role": "Chief Technical Officer",
-      "bio": "Solar engineer with expertise in large-scale MW installations. Led 50+ industrial projects across 8 states. Certified by MNRE.",
+      "bio": "Solar engineer with expertise in large-scale MW installations. Led 50+ industrial projects across Maharashtra. Certified by MNRE.",
       "image": "/images/team/naina-patel.jpg"
     },
     {

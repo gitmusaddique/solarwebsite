@@ -3,10 +3,12 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import site from '../../config/site.json';
+import { translations } from '../utils/i18n.js';
 
 export interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   ogImage?: string;
   canonical?: string;
   noIndex?: boolean;
@@ -16,6 +18,7 @@ export interface Props {
 const {
   title,
   description = site.seo.defaultDescription,
+  keywords = site.seo.defaultKeywords,
   ogImage = site.seo.ogImage,
   canonical,
   noIndex = false,
@@ -65,13 +68,18 @@ const companySchema = {
     <!-- Primary Meta -->
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalUrl} />
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#0052ff" />
+    <meta name="theme-color" content="#e57c00" />
+    
+    <script is:inline define:vars={{ translations }}>
+      window.__translations = translations;
+    </script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -151,6 +159,62 @@ const companySchema = {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      // Multi-language client-side i18n
+      function getStoredLanguage() {
+        return localStorage.getItem('solarelites_lang') || 'en';
+      }
+
+      function setStoredLanguage(lang: string) {
+        localStorage.setItem('solarelites_lang', lang);
+      }
+
+      function translatePage(lang: string) {
+        const dictionary = (window as any).__translations?.[lang];
+        if (!dictionary) return;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (!key) return;
+          const value = dictionary[key];
+          if (value) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.setAttribute('placeholder', value);
+            } else {
+              el.innerHTML = value;
+            }
+          }
+        });
+
+        // Sync dropdowns
+        document.querySelectorAll('.lang-select-dropdown').forEach(sel => {
+          (sel as HTMLSelectElement).value = lang;
+        });
+
+        // Set document language attribute
+        document.documentElement.setAttribute('lang', lang === 'en' ? 'en-IN' : lang === 'hi' ? 'hi-IN' : 'mr-IN');
+      }
+
+      // Initialize
+      const initialLang = getStoredLanguage();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          translatePage(initialLang);
+        });
+      } else {
+        translatePage(initialLang);
+      }
+
+      // Add event listeners for language selectors
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.lang-select-dropdown').forEach(sel => {
+          sel.addEventListener('change', (e) => {
+            const newLang = (e.target as HTMLSelectElement).value;
+            setStoredLanguage(newLang);
+            translatePage(newLang);
+          });
+        });
+      });
     </script>
   </body>
 </html>

@@ -11,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
         The page you're looking for has moved or doesn't exist. Let us help you find what you need.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-600 transition-all hover:opacity-90" style="background: #40F99B; color: #0f0f0e;">
+        <a href="/" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-600 transition-all hover:opacity-90" style="background: #e57c00; color: #ffffff;">
           Back to Homepage
         </a>
         <a href="/contact" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-600 border transition-all" style="border-color: var(--border);">
@@ -24,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
           { label: 'Our Services', href: '/services' },
           { label: 'Government Subsidy', href: '/subsidy' },
         ].map(link => (
-          <a href={link.href} class="p-4 rounded-xl border text-sm font-500 transition-all hover:border-[#40F99B]/50" style="border-color: var(--border);">{link.label}</a>
+          <a href={link.href} class="p-4 rounded-xl border text-sm font-500 transition-all hover:border-[#e57c00]/50" style="border-color: var(--border);">{link.label}</a>
         ))}
       </div>
     </div>

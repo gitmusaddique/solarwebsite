@@ -4,7 +4,7 @@ import site from '../../config/site.json';
 ---
 
 <Layout
-  title="Solar Savings Calculator – Estimate Your Solar ROI"
+  title="Solar Savings Calculator – Estimate Your Solar ROI in Maharashtra"
   description="Calculate your solar system size, estimated cost, government subsidy, annual savings, payback period and 25-year returns. Free interactive solar calculator."
 >
   <!-- Hero — band-light, display-xl weight 400 -->
@@ -12,13 +12,13 @@ import site from '../../config/site.json';
     <div class="container text-center">
       <h1 id="calc-hero-heading" class="type-display-xl" style="margin-bottom: 24px;">Calculate Your Solar Savings</h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
-        Enter your details to get an instant estimate of your solar system size, cost, subsidy, and lifetime savings.
+        Enter your details to get an instant estimate of your solar system size, cost, subsidy, and lifetime savings in Maharashtra.
       </p>
     </div>
   </section>
 
   <!-- Calculator — band-light or band-soft rotating -->
-  <section class="section band-soft" style="border-top: 1px solid var(--hairline);" aria-label="Solar savings calculator">
+  <section class="section band-soft" aria-label="Solar savings calculator">
     <div class="container">
       <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
         <!-- Inputs -->
@@ -51,7 +51,7 @@ import site from '../../config/site.json';
               </label>
               <input type="range" id="monthly-bill" name="monthlyBill" min="500" max="50000" step="500" value="3000"
                 class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
-                style="accent-color: #0052ff;"
+                style="accent-color: #e57c00;"
                 aria-describedby="bill-display"
               />
               <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
@@ -67,7 +67,7 @@ import site from '../../config/site.json';
               </label>
               <input type="range" id="monthly-units" name="monthlyUnits" min="50" max="5000" step="50" value="400"
                 class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
-                style="accent-color: #0052ff;"
+                style="accent-color: #e57c00;"
                 aria-describedby="units-display"
               />
               <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
@@ -98,7 +98,7 @@ import site from '../../config/site.json';
               </label>
               <input type="range" id="roof-area" name="roofArea" min="100" max="10000" step="100" value="500"
                 class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
-                style="accent-color: #0052ff;"
+                style="accent-color: #e57c00;"
                 aria-describedby="roof-display"
               />
               <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
@@ -120,11 +120,11 @@ import site from '../../config/site.json';
             <!-- Primary Metrics — card-on-card layering -->
             <div class="grid grid-cols-2 gap-4">
               <div class="feature-card" style="padding: 24px; background: var(--canvas);">
-                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 8px;">Recommended Size</div>
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;">Recommended Size</div>
                 <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-size">3.0 kW</div>
               </div>
               <div class="feature-card" style="padding: 24px; background: var(--canvas);">
-                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 8px;">Payback Period</div>
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;">Payback Period</div>
                 <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-payback">3.2 yrs</div>
               </div>
             </div>
@@ -208,7 +208,11 @@ import site from '../../config/site.json';
   const modeBillBtn = document.getElementById('calc-mode-bill');
   const modeUnitsBtn = document.getElementById('calc-mode-units');
   const billContainer = document.getElementById('bill-container');
-  const unitsContainer = document.getElementById('units-container');  // Save/Load Settings in localStorage
+  const unitsContainer = document.getElementById('units-container');
+
+  let activeMode = 'bill';
+
+  // Save/Load Settings in localStorage
   function saveSettings() {
     const settings = {
       state: stateEl.value,

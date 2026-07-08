@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import site from '../../config/site.json';
 ---
 
 <Layout title="Terms & Conditions" description="Solarelites Terms and Conditions – governing the use of our services and website." noIndex={true}>
@@ -37,10 +38,10 @@ import Layout from '../layouts/Layout.astro';
         <p>Solarelites' liability is limited to the value of the contracted services. We are not liable for indirect losses including loss of profits, business interruption, or grid-related issues beyond our control.</p>
 
         <h2>8. Governing Law</h2>
-        <p>These terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts in Navi Mumbai, Maharashtra.</p>
+        <p>These terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts in Mumbai, Maharashtra.</p>
 
         <h2>9. Contact</h2>
-        <p>For queries about these terms, contact us at <a href="mailto:info@solarelites.in">info@solarelites.in</a>.</p>
+        <p>For queries about these terms, contact us at <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.</p>
       </div>
     </div>
   </section>

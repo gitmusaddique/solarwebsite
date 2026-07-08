@@ -4,8 +4,8 @@ import site from '../../config/site.json';
 ---
 
 <Layout
-  title="Completed Solar Projects – Case Studies Across India"
-  description="Explore Solarelites' completed solar installation projects — residential, commercial, industrial, and agricultural case studies from across India."
+  title="Completed Solar Projects – Case Studies in Maharashtra"
+  description="Explore Solarelites' completed solar installation projects — residential, commercial, industrial, and agricultural case studies from across Maharashtra."
 >
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-20 band-light" aria-labelledby="projects-heading">
@@ -14,13 +14,13 @@ import site from '../../config/site.json';
         Real Projects, Real Savings
       </h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
-        Every project we complete is a step towards a cleaner India. Here are some of our most impactful solar installations.
+        Every project we complete is a step towards a cleaner Maharashtra. Here are some of our most impactful solar installations.
       </p>
     </div>
   </section>
 
   <!-- Stats — light band -->
-  <section class="band-light" style="padding-block: 48px; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);" aria-label="Company statistics">
+  <section class="band-light" style="padding-block: 48px;" aria-label="Company statistics">
     <div class="container">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
         {site.statistics.map(stat => (
@@ -53,7 +53,7 @@ import site from '../../config/site.json';
             tags: ['Industrial', 'Rooftop', 'Net Metering'],
           },
           {
-            title: '25 kW Commercial Solar – IT Office, Bangalore',
+            title: '25 kW Commercial Solar – IT Office, Pune, Maharashtra',
             category: 'Commercial',
             client: 'IT Services Company',
             size: '25 kW',
@@ -62,7 +62,7 @@ import site from '../../config/site.json';
             inverter: 'SolarEdge String Inverter',
             time: '5 days',
             subsidy: '40% Accelerated Depreciation',
-            description: 'A 25 kW rooftop solar system installed for an IT company in Bangalore\'s tech corridor. With 8,000+ sq ft of roof space, the system covers 65% of daytime electricity needs and integrates with the building\'s smart energy management system.',
+            description: 'A 25 kW rooftop solar system installed for an IT company in Pune\'s tech corridor. With 8,000+ sq ft of roof space, the system covers 65% of daytime electricity needs and integrates with the building\'s smart energy management system.',
             tags: ['Commercial', 'Smart Monitoring', 'Green Building'],
           },
           {
@@ -102,7 +102,7 @@ import site from '../../config/site.json';
                   <span class="badge-pill" style="background: var(--surface-soft); color: var(--body-color); font-size: 11px; font-weight: 500;">{tag}</span>
                 ))}
               </div>
-              <a href="/contact" style="font-size: 14px; font-weight: 600; color: #0052ff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+              <a href="/contact" style="font-size: 14px; font-weight: 600; color: #e57c00; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
                 Get similar system quote →
               </a>
             </div>
@@ -128,14 +128,14 @@ import site from '../../config/site.json';
   </section>
 
   <!-- Coverage Map — band-light -->
-  <section class="section band-light" style="border-top: 1px solid var(--hairline);" aria-labelledby="coverage-heading">
+  <section class="section band-light" aria-labelledby="coverage-heading">
     <div class="container">
       <div style="text-align: center; margin-bottom: 48px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">Coverage</p>
-        <h2 id="coverage-heading" class="type-display-md" style="margin-bottom: 16px;">We serve 10 states.</h2>
-        <p style="font-size: 16px; color: var(--body-color);">Growing our presence across India, one installation at a time.</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;">Coverage</p>
+        <h2 id="coverage-heading" class="type-display-md" style="margin-bottom: 16px;">We serve Maharashtra.</h2>
+        <p style="font-size: 16px; color: var(--body-color);">Providing premium solar engineering and empanelled subsidies across key districts.</p>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {site.coverage.primaryCities.map(city => (
           <div class="feature-card" style="text-align: center; padding: 20px; background: var(--canvas);">
             <div style="font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px;">{city.city}</div>
@@ -147,7 +147,7 @@ import site from '../../config/site.json';
   </section>
 
   <!-- CTA — band-dark -->
-  <section class="section band-soft" style="text-align: center; border-top: 1px solid var(--hairline);">
+  <section class="section band-soft" style="text-align: center;">
     <div class="container">
       <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">Become Our Next Success Story</h2>
       <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;">Join thousands of satisfied customers and start your solar journey today.</p>

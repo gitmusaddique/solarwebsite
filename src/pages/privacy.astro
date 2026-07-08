@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import site from '../../config/site.json';
 ---
 
 <Layout title="Privacy Policy" description="Solarelites Privacy Policy – how we collect, use, and protect your personal information." noIndex={true}>
@@ -46,7 +47,7 @@ import Layout from '../layouts/Layout.astro';
         </ul>
 
         <h2>7. Contact Us</h2>
-        <p>For any privacy-related questions, contact us at <a href="mailto:info@solarelites.in">info@solarelites.in</a> or call +91-98765-43210.</p>
+        <p>For any privacy-related questions, contact us at <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> or call <a href={`tel:${site.contact.phoneRaw}`}>{site.contact.phone}</a>.</p>
       </div>
     </div>
   </section>

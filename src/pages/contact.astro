@@ -5,7 +5,7 @@ import site from '../../config/site.json';
 
 <Layout
   title="Contact Us – Get a Free Solar Consultation"
-  description="Contact Solarelites for a free solar consultation, site assessment, and quote. Call, WhatsApp, or fill out our form. We serve 10 states across India."
+  description="Contact Solarelites for a free solar consultation, site assessment, and quote. Call, WhatsApp, or fill out our form. We serve Maharashtra."
 >
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-16 band-light" aria-labelledby="contact-heading">
@@ -20,7 +20,7 @@ import site from '../../config/site.json';
   </section>
 
   <!-- Content Section — band-soft -->
-  <section class="section band-soft" style="border-top: 1px solid var(--hairline);">
+  <section class="section band-soft">
     <div class="container">
       <div class="grid lg:grid-cols-[1fr_400px] gap-16 max-w-6xl mx-auto items-start">
 
@@ -65,7 +65,7 @@ import site from '../../config/site.json';
                 <label for="state" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">State <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
                 <select id="state" name="state" required class="cb-select w-full">
                   <option value="">Select State</option>
-                  {site.coverage.states.map(s => <option value={s}>{s}</option>)}
+                  {site.coverage.states.map(s => <option value={s} selected={s === 'Maharashtra'}>{s}</option>)}
                 </select>
               </div>
               <div>
@@ -128,7 +128,7 @@ import site from '../../config/site.json';
 
             <!-- Subsidy checkbox -->
             <div style="display: flex; align-items: center; gap: 10px;">
-              <input type="checkbox" id="subsidyRequired" name="subsidyRequired" class="w-4 h-4 rounded" style="accent-color: #0052ff; cursor: pointer;" />
+              <input type="checkbox" id="subsidyRequired" name="subsidyRequired" class="w-4 h-4 rounded" style="accent-color: #e57c00; cursor: pointer;" />
               <label for="subsidyRequired" style="font-size: 14px; color: var(--body-color); cursor: pointer;">I need assistance with government subsidy application</label>
             </div>
 
@@ -146,7 +146,7 @@ import site from '../../config/site.json';
             </button>
 
             <!-- Success/Error messages -->
-            <div id="form-success" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(0,82,255,0.06); color: #0052ff; border: 1px solid rgba(0,82,255,0.15);" role="alert">
+            <div id="form-success" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(229,124,0,0.06); color: #e57c00; border: 1px solid rgba(229,124,0,0.15);" role="alert">
               Thank you! We've received your request and will contact you within 24 hours.
             </div>
             <div id="form-error" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(232,93,117,0.06); color: var(--semantic-down); border: 1px solid rgba(232,93,117,0.15);" role="alert">
@@ -165,11 +165,11 @@ import site from '../../config/site.json';
             { icon: 'phone', label: '24/7 Emergency', value: site.contact.emergencyPhone, href: `tel:${site.contact.emergencyPhone.replace(/-/g,'')}`, desc: 'For urgent system issues' },
           ].map(card => (
             <a href={card.href} target={card.icon === 'message-circle' ? '_blank' : undefined} rel={card.icon === 'message-circle' ? 'noopener noreferrer' : undefined}
-              class="feature-card block hover:border-[#0052ff]/40"
+              class="feature-card block hover:border-[#e57c00]/40"
               style="text-decoration: none; background: var(--canvas); display: flex; align-items: start; gap: 16px; padding: 20px; transition: border-color 0.15s ease;"
             >
               <div style="width: 40px; height: 40px; border-radius: 9999px; background: var(--surface-strong); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   {card.icon === 'phone' && <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></>}
                   {card.icon === 'message-circle' && <><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></>}
                   {card.icon === 'mail' && <><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></>}
@@ -185,7 +185,7 @@ import site from '../../config/site.json';
 
           <!-- Address -->
           <div class="feature-card" style="background: var(--canvas); display: flex; align-items: start; gap: 16px; padding: 20px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             <div>
               <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;">Office Address</div>
               <address style="font-size: 13px; color: var(--body-color); not-italic; line-height: 1.6;">{site.contact.address.line1},<br />{site.contact.address.line2}</address>

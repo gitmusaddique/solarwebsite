@@ -10,20 +10,20 @@ const categories = ['All', ...new Set(posts.map(p => p.data.category))];
 
 <Layout
   title="Blog – Solar Energy Insights, Guides & News"
-  description="Expert insights on solar installation, government subsidies, ROI analysis, and the latest in India's solar energy sector."
+  description="Expert insights on solar installation, government subsidies, ROI analysis, and the latest in Maharashtra's solar energy sector."
 >
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative pt-48 pb-16 band-light">
     <div class="container text-center">
       <h1 class="type-display-xl" style="margin-bottom: 24px;">From Our Blog</h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
-        Expert guides, case studies, and policy updates to help you make the most of solar energy.
+        Expert guides, case studies, and policy updates to help you make the most of solar energy in Maharashtra.
       </p>
     </div>
   </section>
 
   <!-- Blog Grid — band-soft -->
-  <section class="section band-soft" style="border-top: 1px solid var(--hairline);" aria-label="Blog posts">
+  <section class="section band-soft" aria-label="Blog posts">
     <div class="container">
       <!-- Category Filter — Coinbase pill buttons -->
       <div class="flex flex-wrap gap-2 mb-12" role="tablist" aria-label="Filter blog posts by category">
@@ -98,9 +98,9 @@ const categories = ['All', ...new Set(posts.map(p => p.data.category))];
       b.style.borderColor = 'var(--hairline)';
     });
     activeBtn.setAttribute('aria-selected', 'true');
-    activeBtn.style.background = '#0052ff';
+    activeBtn.style.background = '#e57c00';
     activeBtn.style.color = '#ffffff';
-    activeBtn.style.borderColor = '#0052ff';
+    activeBtn.style.borderColor = '#e57c00';
   }
 
   btns.forEach(btn => {

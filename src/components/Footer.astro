@@ -23,27 +23,12 @@ const year = new Date().getFullYear();
 
       <!-- Brand -->
       <div class="col-span-2 md:col-span-3 lg:col-span-2">
-        <a href="/" class="inline-flex items-center gap-2 mb-5" aria-label="Solarelites homepage">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style="background: #0052ff;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="4.5" fill="white"/>
-              <line x1="12" y1="2" x2="12" y2="5.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="12" y1="18.5" x2="12" y2="22" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="2" y1="12" x2="5.5" y2="12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="18.5" y1="12" x2="22" y2="12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="4.93" y1="4.93" x2="7.34" y2="7.34" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="16.66" y1="16.66" x2="19.07" y2="19.07" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="19.07" y1="4.93" x2="16.66" y2="7.34" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="7.34" y1="16.66" x2="4.93" y2="19.07" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <span style="font-size: 16px; font-weight: 600; color: #0a0b0d; letter-spacing: -0.3px;">
-            Solar<span style="color: #0052ff;">elites</span>
-          </span>
+        <a href="/" class="inline-flex items-center mb-5" aria-label="Solarelites homepage">
+          <img src="/images/logo.png" alt="Solarelites Logo" class="h-9 w-auto" style="display: block;" />
         </a>
 
-        <p style="font-size: 14px; line-height: 1.6; color: var(--body-color); max-width: 260px; margin-bottom: 20px;">
-          India's trusted solar installation partner. MNRE empanelled. Serving 10 states.
+        <p style="font-size: 14px; line-height: 1.6; color: var(--body-color); max-width: 260px; margin-bottom: 20px;" data-i18n="footer.desc">
+          Maharashtra's trusted solar installation partner. MNRE empanelled. Serving Maharashtra.
         </p>
 
         <!-- Contact -->
@@ -85,7 +70,7 @@ const year = new Date().getFullYear();
           <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
             {items.map(link => (
               <li>
-                <a href={link.href} style="font-size: 14px; font-weight: 400; color: var(--body-color); text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#0a0b0d'" onmouseout="this.style.color='var(--body-color)'">
+                <a href={link.href} style="font-size: 14px; font-weight: 400; color: var(--body-color); text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#e57c00'" onmouseout="this.style.color='var(--body-color)'">
                   {link.label}
                 </a>
               </li>
@@ -110,7 +95,7 @@ const year = new Date().getFullYear();
     <!-- Legal band: caption / muted -->
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; border-top: 1px solid var(--hairline-soft);">
       <p style="font-size: 13px; color: var(--muted);">
-        &copy; {year} Solarelites. All rights reserved. {site.company.registrationNumber}
+        &copy; {year} Solarelites. <span data-i18n="footer.rights">All rights reserved.</span>{site.company.registrationNumber ? ` ${site.company.registrationNumber}` : ''}
       </p>
       <div style="display: flex; gap: 20px;">
         <a href="/privacy" style="font-size: 13px; color: var(--muted); text-decoration: none;">Privacy</a>
