@@ -1,0 +1,121 @@
+---
+import site from '../../config/site.json';
+
+const links = {
+  company:   [{ label: 'About', href: '/about' }, { label: 'Projects', href: '/projects' }, { label: 'Gallery', href: '/gallery' }, { label: 'Blog', href: '/blog' }],
+  services:  [{ label: 'Residential', href: '/services#residential' }, { label: 'Commercial', href: '/services#commercial' }, { label: 'Industrial', href: '/services#industrial' }, { label: 'Agricultural', href: '/services#agriculture' }, { label: 'Maintenance', href: '/services#maintenance' }],
+  resources: [{ label: 'Solar Calculator', href: '/calculator' }, { label: 'Government Subsidy', href: '/subsidy' }, { label: 'FAQ', href: '/#faq' }],
+  legal:     [{ label: 'Privacy Policy', href: '/privacy' }, { label: 'Terms & Conditions', href: '/terms' }],
+};
+
+const year = new Date().getFullYear();
+---
+
+<!-- footer-light: canvas bg, body color text, body-sm type -->
+<footer
+  style="background: var(--canvas); border-top: 1px solid var(--hairline);"
+  role="contentinfo"
+>
+  <div class="container" style="padding-top: 64px; padding-bottom: 48px;">
+
+    <!-- Grid: brand col + 4 link cols -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 lg:gap-8 mb-12">
+
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-3 lg:col-span-2">
+        <a href="/" class="inline-flex items-center gap-2 mb-5" aria-label="Solarelites homepage">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style="background: #0052ff;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.5" fill="white"/>
+              <line x1="12" y1="2" x2="12" y2="5.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="12" y1="18.5" x2="12" y2="22" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="2" y1="12" x2="5.5" y2="12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="18.5" y1="12" x2="22" y2="12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="4.93" y1="4.93" x2="7.34" y2="7.34" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="16.66" y1="16.66" x2="19.07" y2="19.07" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="19.07" y1="4.93" x2="16.66" y2="7.34" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="7.34" y1="16.66" x2="4.93" y2="19.07" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span style="font-size: 16px; font-weight: 600; color: #0a0b0d; letter-spacing: -0.3px;">
+            Solar<span style="color: #0052ff;">elites</span>
+          </span>
+        </a>
+
+        <p style="font-size: 14px; line-height: 1.6; color: var(--body-color); max-width: 260px; margin-bottom: 20px;">
+          India's trusted solar installation partner. MNRE empanelled. Serving 10 states.
+        </p>
+
+        <!-- Contact -->
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+          <a href={`tel:${site.contact.phoneRaw}`} style="font-size: 14px; color: var(--body-color); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {site.contact.phone}
+          </a>
+          <a href={`mailto:${site.contact.email}`} style="font-size: 14px; color: var(--body-color); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            {site.contact.email}
+          </a>
+        </div>
+
+        <!-- Socials -->
+        <div style="display: flex; gap: 8px;">
+          {[
+            { href: site.social.linkedin, label: 'LinkedIn', icon: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>' },
+            { href: site.social.instagram, label: 'Instagram', icon: '<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>' },
+            { href: site.social.youtube, label: 'YouTube', icon: '<path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>' },
+          ].map(s => (
+            <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+              style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid var(--hairline); color: var(--body-color); transition: background 0.15s, border-color 0.15s;"
+              onmouseover="this.style.borderColor='var(--ink)'; this.style.background='rgba(10, 11, 13, 0.02)';"
+              onmouseout="this.style.borderColor='var(--hairline)'; this.style.background='transparent';"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icon}></svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Link Columns -->
+      {Object.entries(links).map(([group, items]) => (
+        <div>
+          <h3 style="font-size: 12px; font-weight: 600; letter-spacing: 0; text-transform: uppercase; color: var(--ink); margin-bottom: 16px;">
+            {group.charAt(0).toUpperCase() + group.slice(1)}
+          </h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+            {items.map(link => (
+              <li>
+                <a href={link.href} style="font-size: 14px; font-weight: 400; color: var(--body-color); text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#0a0b0d'" onmouseout="this.style.color='var(--body-color)'">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Coverage strip -->
+    <div style="padding-block: 20px; border-top: 1px solid var(--hairline); margin-bottom: 20px;">
+      <p style="font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-bottom: 10px;">Service Coverage</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        {site.coverage.states.map(state => (
+          <span style="font-size: 12px; padding: 3px 10px; border-radius: 100px; border: 1px solid var(--hairline); color: var(--body-color);">
+            {state}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Legal band: caption / muted -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; border-top: 1px solid var(--hairline-soft);">
+      <p style="font-size: 13px; color: var(--muted);">
+        &copy; {year} Solarelites. All rights reserved. {site.company.registrationNumber}
+      </p>
+      <div style="display: flex; gap: 20px;">
+        <a href="/privacy" style="font-size: 13px; color: var(--muted); text-decoration: none;">Privacy</a>
+        <a href="/terms" style="font-size: 13px; color: var(--muted); text-decoration: none;">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>

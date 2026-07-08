@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../../config/site.json';
+---
+
+<Layout
+  title="Completed Solar Projects – Case Studies Across India"
+  description="Explore Solarelites' completed solar installation projects — residential, commercial, industrial, and agricultural case studies from across India."
+>
+  <!-- Hero — band-light, display-xl weight 400 -->
+  <section class="relative pt-48 pb-20 band-light" aria-labelledby="projects-heading">
+    <div class="container text-center">
+      <h1 id="projects-heading" class="type-display-xl" style="margin-bottom: 24px;">
+        Real Projects, Real Savings
+      </h1>
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+        Every project we complete is a step towards a cleaner India. Here are some of our most impactful solar installations.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats — light band -->
+  <section class="band-light" style="padding-block: 48px; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);" aria-label="Company statistics">
+    <div class="container">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
+        {site.statistics.map(stat => (
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: #0a0b0d; letter-spacing: -0.5px; margin-bottom: 4px;">{stat.value}</div>
+            <div style="font-size: 14px; color: var(--body-color);">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects — band-soft -->
+  <section class="section band-soft" aria-labelledby="featured-projects-heading">
+    <div class="container">
+      <h2 id="featured-projects-heading" class="type-display-md" style="margin-bottom: 48px;">Featured Case Studies</h2>
+      <div style="display: flex; flex-direction: column; gap: 40px;">
+        {[
+          {
+            title: '500 kW Industrial Solar Plant – Pune, Maharashtra',
+            category: 'Industrial',
+            client: 'Auto Components Manufacturer',
+            size: '500 kW',
+            savings: '₹48L/year',
+            panels: '1,200 Mono PERC panels',
+            inverter: 'SMA Central Inverter',
+            time: '6 weeks',
+            subsidy: 'Accelerated Depreciation – ₹60L Year 1',
+            description: 'A 500 kW rooftop solar installation on a 40,000 sq ft factory roof in Pune. The system generates 7.3 lakh units annually, offsetting 100% of the factory\'s daytime electricity consumption and delivering ₹48 lakh in annual savings.',
+            tags: ['Industrial', 'Rooftop', 'Net Metering'],
+          },
+          {
+            title: '25 kW Commercial Solar – IT Office, Bangalore',
+            category: 'Commercial',
+            client: 'IT Services Company',
+            size: '25 kW',
+            savings: '₹3.6L/year',
+            panels: '60 Bifacial panels',
+            inverter: 'SolarEdge String Inverter',
+            time: '5 days',
+            subsidy: '40% Accelerated Depreciation',
+            description: 'A 25 kW rooftop solar system installed for an IT company in Bangalore\'s tech corridor. With 8,000+ sq ft of roof space, the system covers 65% of daytime electricity needs and integrates with the building\'s smart energy management system.',
+            tags: ['Commercial', 'Smart Monitoring', 'Green Building'],
+          },
+          {
+            title: '6.6 kW Residential Solar – Mumbai Bungalow',
+            category: 'Residential',
+            client: 'Private Homeowner',
+            size: '6.6 kW',
+            savings: '₹90,000/year',
+            panels: '16 Waaree 415W panels',
+            inverter: 'Growatt Hybrid Inverter',
+            time: '2 days',
+            subsidy: 'PM Surya Ghar – ₹78,000',
+            description: 'A premium hybrid solar system with 10 kWh battery storage for a large family bungalow in South Mumbai. The system provides uninterrupted power during grid outages and has reduced the monthly electricity bill from ₹12,000 to under ₹800.',
+            tags: ['Residential', 'Hybrid', 'Battery Storage'],
+          },
+          {
+            title: '5 HP Solar Pump – Farm, Nashik, Maharashtra',
+            category: 'Agricultural',
+            client: 'Grape Farmer',
+            size: '5 HP',
+            savings: '₹1.2L/year',
+            panels: '12 panels (3.6 kW)',
+            inverter: 'IOCL Solar Pump Controller',
+            time: '3 days',
+            subsidy: 'PM-KUSUM – 60% subsidy',
+            description: 'A PM-KUSUM subsidised 5 HP solar pump installed on a grape farm in Nashik. The system powers drip irrigation for 5 acres, eliminating diesel pump costs and providing reliable daytime irrigation without grid dependency.',
+            tags: ['Agriculture', 'PM-KUSUM', 'Drip Irrigation'],
+          },
+        ].map((project) => (
+          <div class="feature-card" style="display: grid; grid-template-columns: 1fr; gap: 32px; background: var(--canvas);" class="md:grid-cols-2">
+            <div>
+              <span class="badge-pill" style="margin-bottom: 16px;">{project.category}</span>
+              <h3 class="type-title-lg" style="margin-bottom: 16px; font-weight: 600;">{project.title}</h3>
+              <p style="font-size: 15px; line-height: 1.6; color: var(--body-color); margin-bottom: 24px;">{project.description}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+                {project.tags.map(tag => (
+                  <span class="badge-pill" style="background: var(--surface-soft); color: var(--body-color); font-size: 11px; font-weight: 500;">{tag}</span>
+                ))}
+              </div>
+              <a href="/contact" style="font-size: 14px; font-weight: 600; color: #0052ff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                Get similar system quote →
+              </a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              {[
+                { label: 'System Size', value: project.size },
+                { label: 'Annual Savings', value: project.savings },
+                { label: 'Solar Panels', value: project.panels },
+                { label: 'Inverter', value: project.inverter },
+                { label: 'Installation Time', value: project.time },
+                { label: 'Subsidy / Incentive', value: project.subsidy },
+              ].map(detail => (
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 10px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
+                  <span style="font-size: 13px; color: var(--muted);">{detail.label}</span>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--ink); text-align: right; max-width: 60%;">{detail.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Map — band-light -->
+  <section class="section band-light" style="border-top: 1px solid var(--hairline);" aria-labelledby="coverage-heading">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">Coverage</p>
+        <h2 id="coverage-heading" class="type-display-md" style="margin-bottom: 16px;">We serve 10 states.</h2>
+        <p style="font-size: 16px; color: var(--body-color);">Growing our presence across India, one installation at a time.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl mx-auto">
+        {site.coverage.primaryCities.map(city => (
+          <div class="feature-card" style="text-align: center; padding: 20px; background: var(--canvas);">
+            <div style="font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px;">{city.city}</div>
+            <div style="font-size: 12px; color: var(--muted);">{city.state}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA — band-dark -->
+  <section class="section band-soft" style="text-align: center; border-top: 1px solid var(--hairline);">
+    <div class="container">
+      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">Become Our Next Success Story</h2>
+      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;">Join thousands of satisfied customers and start your solar journey today.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;">
+        <a href="/contact" class="btn-primary-lg">Get Free Consultation</a>
+        <a href="/gallery" class="btn-outline-dark">View Gallery</a>
+      </div>
+    </div>
+  </section>
+</Layout>

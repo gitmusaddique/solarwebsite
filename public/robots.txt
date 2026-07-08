@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.solarelites.in/sitemap-index.xml
+
+# Disallow admin or private paths (none for static site)
+Disallow: /dist/

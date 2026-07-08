@@ -1,0 +1,279 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../../config/site.json';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).filter(p => !p.data.draft).slice(0, 3);
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: site.faqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer }
+  }))
+};
+---
+
+<Layout title="India's Premier Solar Energy Company" schema={faqSchema}>
+
+  <!-- ===== HERO BAND LIGHT ===== -->
+  <section
+    class="relative flex items-center overflow-hidden band-light"
+    style="min-height: 100vh; padding-top: 64px; border-bottom: 1px solid var(--hairline);"
+    aria-labelledby="hero-heading"
+  >
+    <!-- Subtle blue glow — only one blue moment in the hero -->
+    <div class="absolute pointer-events-none" aria-hidden="true" style="inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,82,255,0.06) 0%, transparent 65%);"></div>
+
+    <div class="container relative" style="padding-top: 96px; padding-bottom: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+      <div class="max-w-3xl">
+
+        <!-- Headline: display-mega 80px / weight 400 / letter-spacing -2px -->
+        <h1
+          id="hero-heading"
+          style="font-family: var(--font-display); font-size: clamp(44px, 7vw, 80px); font-weight: 400; line-height: 1.0; letter-spacing: -2px; color: var(--ink); margin-bottom: 28px;"
+        >
+          Clean energy.<br/>Measurable savings.
+        </h1>
+
+        <!-- Sub: body-md 16px / 400 / muted -->
+        <p style="font-size: 18px; font-weight: 400; line-height: 1.6; color: var(--body-color); max-width: 580px; margin-inline: auto; margin-bottom: 40px;">
+          {site.hero.subheadline}
+        </p>
+
+        <!-- CTAs: button-pill-cta (56px) + button-secondary-dark -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center;">
+          <a href="/contact" class="btn-primary-lg">
+            Get Free Consultation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/calculator" class="btn-outline-lg">
+            Calculate Savings
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATISTICS — light band ===== -->
+  <section class="band-light" style="padding-block: 48px; border-bottom: 1px solid #dee1e6;" aria-label="Company statistics">
+    <div class="container">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
+        {site.statistics.map(stat => (
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: #0a0b0d; letter-spacing: -0.5px; margin-bottom: 4px;">{stat.value}</div>
+            <div style="font-size: 14px; color: var(--body-color);">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES — soft gray band ===== -->
+  <section class="section band-soft" aria-labelledby="services-heading">
+    <div class="container">
+      <div style="max-width: 560px; margin-bottom: 64px;">
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">Services</p>
+        <h2 id="services-heading" class="type-display-lg" style="margin-bottom: 16px;">Solar for every need.</h2>
+        <p style="font-size: 16px; color: var(--body-color); line-height: 1.6;">From a single rooftop to a multi-megawatt industrial park, we deliver precision-engineered systems that maximise your returns.</p>
+      </div>
+
+      <!-- feature-card 3-up grid (Coinbase spec: 24px radius, hairline border, 32px padding) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {site.services.map(service => (
+          <a href={service.href} class="feature-card" style="text-decoration: none; display: block;">
+            <!-- Asset icon circular (32px full radius) -->
+            <div style="width: 40px; height: 40px; border-radius: 9999px; background: rgba(0, 82, 255, 0.06); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0052ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                {service.id === 'residential' && <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>}
+                {service.id === 'commercial' && <><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></>}
+                {service.id === 'industrial' && <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>}
+                {service.id === 'agriculture' && <><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></>}
+              </svg>
+            </div>
+            <h3 class="type-title-md" style="margin-bottom: 8px;">{service.title}</h3>
+            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6; margin-bottom: 16px;">{service.shortDescription}</p>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--muted);">
+              <span>From {service.startingPrice}</span>
+              <span style="color: #0052ff; font-weight: 500;">Learn more →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUBSIDY — light CTA band ===== -->
+  <section class="section band-soft" style="border-top: 1px solid var(--hairline);" aria-labelledby="subsidy-heading">
+    <div class="container">
+      <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 64px; align-items: center;" class="md:grid-cols-2">
+        <div>
+          <!-- badge-pill -->
+          <span class="badge-pill" style="margin-bottom: 24px; display: inline-flex;">Government Scheme</span>
+          <h2 id="subsidy-heading" style="font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px;">
+            Get up to ₹78,000 subsidy.
+          </h2>
+          <p style="font-size: 16px; line-height: 1.7; color: var(--body-color); margin-bottom: 36px; max-width: 440px;">
+            PM Surya Ghar Muft Bijli Yojana provides substantial subsidies for rooftop solar. We handle the entire application — from registration to disbursement.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="/subsidy" class="btn-primary">Learn About Subsidies</a>
+            <a href="/contact" class="btn-secondary-dark">Talk to an Expert</a>
+          </div>
+        </div>
+
+        <!-- product-ui-card grid: subsidy rates -->
+        <div class="grid grid-cols-2 gap-4">
+          {site.subsidyInfo.pmSuryaGhar.subsidyRates.map(rate => (
+            <div class="product-ui-card">
+              <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 6px;">{rate.subsidy}</div>
+              <div style="font-size: 13px; color: var(--muted); line-height: 1.4;">{rate.capacity}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS — light band ===== -->
+  <section class="section band-light" aria-labelledby="process-heading">
+    <div class="container">
+      <div style="max-width: 480px; margin-bottom: 64px;">
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">How It Works</p>
+        <h2 id="process-heading" class="type-display-md">From consultation to commissioning.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {site.process.map(step => (
+          <div class="feature-card">
+            <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: #a8acb3; text-transform: uppercase; margin-bottom: 16px;">Step {String(step.step).padStart(2,'0')}</div>
+            <h3 class="type-title-md" style="margin-bottom: 10px;">{step.title}</h3>
+            <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS — soft gray band ===== -->
+  <section class="section band-soft" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div style="max-width: 480px; margin-bottom: 64px;">
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">Customers</p>
+        <h2 id="testimonials-heading" class="type-display-md">Trusted by 5,000+ families.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {site.testimonials.map(t => (
+          <div class="feature-card">
+            <!-- Stars -->
+            <div style="display: flex; gap: 3px; margin-bottom: 16px;" aria-label={`${t.rating} out of 5 stars`}>
+              {Array.from({length: t.rating}).map(() => (
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#0052ff" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ))}
+            </div>
+            <p style="font-size: 14px; line-height: 1.6; color: var(--body-color); margin-bottom: 20px; flex: 1;">"{t.content}"</p>
+            <div style="padding-top: 16px; border-top: 1px solid var(--hairline);">
+              <div style="font-size: 14px; font-weight: 600; color: var(--ink);">{t.name}</div>
+              <div style="font-size: 13px; color: var(--muted); margin-top: 2px;">{t.location} · {t.system}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG — light band ===== -->
+  {posts.length > 0 && (
+    <section class="section band-light" aria-labelledby="blog-heading" style="border-top: 1px solid var(--hairline);">
+      <div class="container">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; gap: 20px; flex-wrap: wrap;">
+          <div>
+            <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">From Our Blog</p>
+            <h2 id="blog-heading" class="type-display-md">Solar Insights</h2>
+          </div>
+          <a href="/blog" style="font-size: 14px; font-weight: 500; color: #0052ff; text-decoration: none; white-space: nowrap;">View all posts →</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {posts.map(post => (
+            <a href={`/blog/${post.id}`} style="text-decoration: none; display: block; group: true;">
+              <div style="aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; background: var(--surface-strong); margin-bottom: 20px; border: 1px solid var(--hairline);">
+                <img src={post.data.coverImage} alt={post.data.title} style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" loading="lazy" width="400" height="225"/>
+              </div>
+              <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 8px;">{post.data.category}</div>
+              <h3 style="font-size: 18px; font-weight: 400; color: var(--ink); line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 8px;">{post.data.title}</h3>
+              <p style="font-size: 14px; color: var(--body-color); line-height: 1.6;">{post.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ===== FAQ — soft gray band ===== -->
+  <section class="section band-soft" aria-labelledby="faq-heading" id="faq">
+    <div class="container">
+      <div style="max-width: 720px; margin: 0 auto;">
+        <div style="margin-bottom: 48px;">
+          <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 16px;">FAQ</p>
+          <h2 id="faq-heading" class="type-display-md">Common questions.</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;" id="faq-list">
+          {site.faqs.map((faq, i) => (
+            <div style="border-radius: 12px; overflow: hidden; background: var(--canvas); border: 1px solid var(--hairline);">
+              <button
+                type="button"
+                style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 20px; text-align: left; font-size: 15px; font-weight: 600; color: var(--ink); background: none; border: none; cursor: pointer; gap: 16px;"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${i}`}
+                id={`faq-btn-${i}`}
+              >
+                <span>{faq.question}</span>
+                <svg class="faq-icon shrink-0 transition-transform duration-200" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div id={`faq-answer-${i}`} role="region" aria-labelledby={`faq-btn-${i}`} class="hidden" style="padding: 0 20px 20px; font-size: 15px; line-height: 1.7; color: var(--body-color);">
+                {faq.answer}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND LIGHT ===== -->
+  <section class="band-soft" style="padding-block: 96px; text-align: center; border-top: 1px solid var(--hairline);" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading" style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">
+        Start saving with solar today.
+      </h2>
+      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 440px; margin-inline: auto; line-height: 1.6;">
+        Free consultation, subsidy assistance, and lifetime support, for every system we install.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center;">
+        <a href="/contact" class="btn-primary-lg">Get Free Consultation</a>
+        <a href={`tel:${site.contact.phoneRaw}`} class="btn-outline-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          {site.contact.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+// FAQ accordion
+document.querySelectorAll<HTMLButtonElement>('#faq-list button[aria-controls]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('aria-controls')!;
+    const answer = document.getElementById(id);
+    const icon = btn.querySelector('.faq-icon') as HTMLElement;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', (!expanded).toString());
+    answer?.classList.toggle('hidden', expanded);
+    if (icon) icon.style.transform = expanded ? '' : 'rotate(180deg)';
+  });
+});
+</script>

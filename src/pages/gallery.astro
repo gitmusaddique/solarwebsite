@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../../config/site.json';
+
+// Read gallery images from public/gallery subdirectories at build time
+import { readdir } from 'fs/promises';
+import { join } from 'path';
+
+const galleryBase = join(process.cwd(), 'public/gallery');
+const categories = ['residential','commercial','industrial','agriculture'];
+
+const images: { src: string; category: string; alt: string }[] = [];
+
+for (const cat of categories) {
+  try {
+    const files = await readdir(join(galleryBase, cat));
+    for (const file of files) {
+      if (/\.(jpg|jpeg|png|webp|avif)$/i.test(file)) {
+        images.push({
+          src: `/gallery/${cat}/${file}`,
+          category: cat,
+          alt: `${cat.charAt(0).toUpperCase() + cat.slice(1)} solar installation – ${file.replace(/\.[^.]+$/,'')}`,
+        });
+      }
+    }
+  } catch {
+    // directory may be empty during initial build
+  }
+}
+
+// Add placeholder images if no real images exist
+if (images.length === 0) {
+  const placeholders = [
+    { src: '/gallery/residential/home-solar-1.jpg', category: 'residential', alt: 'Residential rooftop solar panel installation' },
+    { src: '/gallery/residential/home-solar-2.jpg', category: 'residential', alt: 'Home solar system with net meter' },
+    { src: '/gallery/commercial/office-solar-1.jpg', category: 'commercial', alt: 'Commercial office building solar installation' },
+    { src: '/gallery/commercial/mall-solar-1.jpg', category: 'commercial', alt: 'Shopping mall rooftop solar system' },
+    { src: '/gallery/industrial/factory-solar-1.jpg', category: 'industrial', alt: 'Industrial factory solar installation' },
+    { src: '/gallery/industrial/warehouse-solar-1.jpg', category: 'industrial', alt: 'Warehouse rooftop solar panels' },
+    { src: '/gallery/agriculture/farm-solar-1.jpg', category: 'agriculture', alt: 'Agricultural solar pump installation' },
+    { src: '/gallery/agriculture/agri-solar-2.jpg', category: 'agriculture', alt: 'Farm solar water pump system' },
+  ];
+  images.push(...placeholders);
+}
+---
+
+<Layout
+  title="Solar Project Gallery – Residential, Commercial, Industrial & Agricultural"
+  description="Browse our gallery of completed solar installations across India. Residential, commercial, industrial, and agricultural solar projects."
+>
+  <!-- Hero — band-light, display-xl weight 400 -->
+  <section class="relative pt-48 pb-16 band-light">
+    <div class="container text-center">
+      <h1 class="type-display-xl" style="margin-bottom: 24px;">Our Installations</h1>
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+        Every photo is a clean energy story. Browse our portfolio of completed solar installations across India.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery — band-soft -->
+  <section class="section band-soft" style="border-top: 1px solid var(--hairline);" aria-label="Solar installation gallery">
+    <div class="container">
+      <!-- Filter Buttons — Coinbase pill buttons -->
+      <div class="flex flex-wrap gap-2 mb-12 justify-center" role="group" aria-label="Filter gallery by category">
+        {['All', 'Residential', 'Commercial', 'Industrial', 'Agriculture'].map(cat => (
+          <button
+            type="button"
+            class="gallery-filter"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; height: 38px; font-size: 14px; font-weight: 600; border-radius: var(--radius-pill); border: 1px solid var(--hairline); background: var(--canvas); color: var(--body-color); cursor: pointer; transition: all 0.15s ease;"
+            data-filter={cat === 'All' ? 'all' : cat.toLowerCase()}
+            aria-pressed={cat === 'All' ? 'true' : 'false'}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" id="gallery-grid" role="list" aria-label="Gallery images">
+        {images.map(img => (
+          <div
+            class="gallery-item break-inside-avoid rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300 border"
+            style="border-color: var(--hairline); background: var(--canvas);"
+            data-category={img.category}
+            role="listitem"
+          >
+            <div class="relative overflow-hidden" style="aspect-ratio: auto;">
+              <img
+                src={img.src}
+                alt={img.alt}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                width="400"
+                height="300"
+                onerror="this.parentElement.style.minHeight='200px'; this.style.display='none'; this.parentElement.innerHTML += '<div style=\'display:flex;align-items:center;justify-content:center;height:200px;font-size:12px;color:var(--muted);\'>' + this.alt + '</div>';"
+              />
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4" style="background: linear-gradient(to top, rgba(10,11,13,0.8), transparent);">
+                <span style="color: #ffffff; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">{img.category} Installation</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {images.length === 0 && (
+        <div class="text-center py-20" style="color: var(--muted);">
+          <p class="type-title-md" style="margin-bottom: 8px;">Gallery Coming Soon</p>
+          <p style="font-size: 14px;">We're uploading our project photos. Check back soon.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA — band-dark -->
+  <section class="section band-soft" style="text-align: center; border-top: 1px solid var(--hairline);">
+    <div class="container">
+      <h2 style="font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; line-height: 1.0; letter-spacing: -1.3px; color: var(--ink); margin-bottom: 20px; max-width: 560px; margin-inline: auto;">Want Your Project Here?</h2>
+      <p style="font-size: 16px; color: var(--body-color); margin-bottom: 40px; max-width: 480px; margin-inline: auto; line-height: 1.6;">Join thousands of satisfied customers and start your solar journey today.</p>
+      <a href="/contact" class="btn-primary-lg">
+        Get Free Consultation
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>('.gallery-filter');
+  const items = document.querySelectorAll<HTMLElement>('.gallery-item');
+
+  function updateActiveButton(activeBtn: HTMLButtonElement) {
+    filters.forEach(b => {
+      b.setAttribute('aria-pressed', 'false');
+      b.style.background = 'var(--canvas)';
+      b.style.color = 'var(--body-color)';
+      b.style.borderColor = 'var(--hairline)';
+    });
+    activeBtn.setAttribute('aria-pressed', 'true');
+    activeBtn.style.background = '#0052ff';
+    activeBtn.style.color = '#ffffff';
+    activeBtn.style.borderColor = '#0052ff';
+  }
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!;
+      updateActiveButton(btn);
+
+      items.forEach(item => {
+        const show = filter === 'all' || item.dataset.category === filter;
+        item.style.display = show ? '' : 'none';
+        item.style.opacity = '0';
+        if (show) setTimeout(() => { item.style.opacity = '1'; item.style.transition = 'opacity 0.3s'; }, 10);
+      });
+    });
+  });
+
+  // Initial state
+  const allBtn = document.querySelector<HTMLButtonElement>('.gallery-filter[data-filter="all"]');
+  if (allBtn) {
+    updateActiveButton(allBtn);
+  }
+</script>

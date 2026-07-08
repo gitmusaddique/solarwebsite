@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page Not Found – 404" description="The page you're looking for doesn't exist. Return to Solarelites homepage." noIndex={true}>
+  <section class="min-h-screen flex items-center justify-center gradient-hero pt-16">
+    <div class="container text-center">
+      <div class="font-display font-800 text-[12rem] leading-none opacity-10 select-none" aria-hidden="true">404</div>
+      <h1 class="font-display font-700 text-4xl md:text-5xl tracking-tight mb-4 -mt-8" style="letter-spacing: -0.02em;">Page Not Found</h1>
+      <p class="text-lg mb-10 max-w-md mx-auto" style="color: var(--muted-foreground);">
+        The page you're looking for has moved or doesn't exist. Let us help you find what you need.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-600 transition-all hover:opacity-90" style="background: #40F99B; color: #0f0f0e;">
+          Back to Homepage
+        </a>
+        <a href="/contact" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-600 border transition-all" style="border-color: var(--border);">
+          Contact Support
+        </a>
+      </div>
+      <div class="mt-16 grid sm:grid-cols-3 gap-4 max-w-xl mx-auto">
+        {[
+          { label: 'Solar Calculator', href: '/calculator' },
+          { label: 'Our Services', href: '/services' },
+          { label: 'Government Subsidy', href: '/subsidy' },
+        ].map(link => (
+          <a href={link.href} class="p-4 rounded-xl border text-sm font-500 transition-all hover:border-[#40F99B]/50" style="border-color: var(--border);">{link.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

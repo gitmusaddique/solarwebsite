@@ -1,0 +1,156 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import site from '../../config/site.json';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  noIndex?: boolean;
+  schema?: object;
+}
+
+const {
+  title,
+  description = site.seo.defaultDescription,
+  ogImage = site.seo.ogImage,
+  canonical,
+  noIndex = false,
+  schema,
+} = Astro.props;
+
+const pageTitle = title
+  ? `${title}${site.seo.titleSuffix}`
+  : site.seo.defaultTitle;
+
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site.seo.siteUrl).href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${site.seo.siteUrl}${ogImage}`;
+
+const companySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.company.name,
+  url: site.seo.siteUrl,
+  logo: `${site.seo.siteUrl}/images/logo.svg`,
+  description: site.company.description,
+  telephone: site.contact.phoneRaw,
+  email: site.contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: `${site.contact.address.line1}, ${site.contact.address.line2}`,
+    addressLocality: site.contact.address.city,
+    addressRegion: site.contact.address.state,
+    postalCode: site.contact.address.pincode,
+    addressCountry: 'IN',
+  },
+  sameAs: [
+    site.social.facebook,
+    site.social.instagram,
+    site.social.linkedin,
+    site.social.youtube,
+  ],
+};
+---
+
+<!DOCTYPE html>
+<html lang="en-IN" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0052ff" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={site.company.name} />
+    <meta property="og:locale" content={site.seo.locale} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={site.seo.twitterHandle} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(companySchema)} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+
+    <!-- Preload critical assets -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" />
+  </head>
+  <body class="antialiased">
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+    <!-- Navbar -->
+    <Navbar />
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+
+    <!-- Reading Progress (only for blog pages) -->
+    <div id="reading-progress" style="width: 0%"></div>
+
+    <script>
+      // Reading progress bar
+      const progress = document.getElementById('reading-progress');
+      if (progress) {
+        const article = document.querySelector('article');
+        if (article) {
+          progress.style.display = 'block';
+          window.addEventListener('scroll', () => {
+            const rect = article.getBoundingClientRect();
+            const total = article.offsetHeight - window.innerHeight;
+            const scrolled = Math.max(0, -rect.top);
+            const pct = Math.min(100, (scrolled / total) * 100);
+            progress.style.width = pct + '%';
+          });
+        } else {
+          progress.style.display = 'none';
+        }
+      }
+
+      // Back to top functionality
+      const backToTop = document.querySelector('[data-back-to-top]');
+      if (backToTop) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+            backToTop.classList.remove('opacity-0', 'pointer-events-none');
+          } else {
+            backToTop.classList.add('opacity-0', 'pointer-events-none');
+          }
+        });
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    </script>
+  </body>
+</html>

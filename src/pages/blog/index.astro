@@ -1,0 +1,123 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import site from '../../config/site.json';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).filter(p => !p.data.draft).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const categories = ['All', ...new Set(posts.map(p => p.data.category))];
+---
+
+<Layout
+  title="Blog – Solar Energy Insights, Guides & News"
+  description="Expert insights on solar installation, government subsidies, ROI analysis, and the latest in India's solar energy sector."
+>
+  <!-- Hero — band-light, display-xl weight 400 -->
+  <section class="relative pt-48 pb-16 band-light">
+    <div class="container text-center">
+      <h1 class="type-display-xl" style="margin-bottom: 24px;">From Our Blog</h1>
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+        Expert guides, case studies, and policy updates to help you make the most of solar energy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog Grid — band-soft -->
+  <section class="section band-soft" style="border-top: 1px solid var(--hairline);" aria-label="Blog posts">
+    <div class="container">
+      <!-- Category Filter — Coinbase pill buttons -->
+      <div class="flex flex-wrap gap-2 mb-12" role="tablist" aria-label="Filter blog posts by category">
+        {categories.map(cat => (
+          <button
+            type="button"
+            class="category-btn"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; height: 36px; font-size: 13px; font-weight: 600; border-radius: var(--radius-pill); border: 1px solid var(--hairline); background: var(--canvas); color: var(--body-color); cursor: pointer; transition: all 0.15s ease;"
+            data-category={cat}
+            role="tab"
+            aria-selected={cat === 'All' ? 'true' : 'false'}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+        {posts.map(post => (
+          <article
+            class="feature-card flex flex-col group"
+            style="background: var(--canvas); padding: 20px; transition: transform 0.2s ease, border-color 0.2s ease;"
+            data-category={post.data.category}
+          >
+            <a href={`/blog/${post.id}`} class="group block" style="text-decoration: none;" aria-label={`Read: ${post.data.title}`}>
+              <div class="aspect-[16/9] rounded-xl mb-5 overflow-hidden" style="background: var(--surface-soft); border: 1px solid var(--hairline-soft);">
+                <img
+                  src={post.data.coverImage}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  width="400"
+                  height="225"
+                />
+              </div>
+            </a>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+              <span class="badge-pill" style="font-size: 11px; padding: 4px 10px; font-weight: 600;">{post.data.category}</span>
+              <span style="font-size: 12px; color: var(--muted);">{post.data.readingTime}</span>
+            </div>
+            <h2 class="type-title-md" style="margin-bottom: 12px; font-weight: 600; line-height: 1.4;">
+              <a href={`/blog/${post.id}`} style="color: var(--ink); text-decoration: none;" class="hover:opacity-80 transition-opacity">{post.data.title}</a>
+            </h2>
+            <p style="font-size: 14px; line-height: 1.6; color: var(--body-color); margin-bottom: 24px; flex: 1;">{post.data.description}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--hairline-soft); padding-top: 16px;">
+              <span style="font-weight: 500; color: var(--ink);">{post.data.author}</span>
+              <time datetime={post.data.date}>{new Date(post.data.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <div class="text-center py-20" style="color: var(--muted);">
+          <p>No blog posts found.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.category-btn');
+  const articles = document.querySelectorAll<HTMLElement>('#posts-grid article');
+
+  function updateActiveButton(activeBtn: HTMLButtonElement) {
+    btns.forEach(b => {
+      b.setAttribute('aria-selected', 'false');
+      b.style.background = 'var(--canvas)';
+      b.style.color = 'var(--body-color)';
+      b.style.borderColor = 'var(--hairline)';
+    });
+    activeBtn.setAttribute('aria-selected', 'true');
+    activeBtn.style.background = '#0052ff';
+    activeBtn.style.color = '#ffffff';
+    activeBtn.style.borderColor = '#0052ff';
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.category!;
+      updateActiveButton(btn);
+
+      articles.forEach(article => {
+        const show = cat === 'All' || article.dataset.category === cat;
+        article.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  // Set initial active state
+  const firstBtn = document.querySelector<HTMLButtonElement>('.category-btn[data-category="All"]');
+  if (firstBtn) {
+    updateActiveButton(firstBtn);
+  }
+</script>

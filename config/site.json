@@ -1,0 +1,537 @@
+{
+  "company": {
+    "name": "Solarelites",
+    "tagline": "Powering India's Future, One Rooftop at a Time",
+    "shortTagline": "India's Trusted Solar Partner",
+    "description": "Solarelites is India's premier solar energy company, delivering world-class residential, commercial, industrial, and agricultural solar installations with government subsidy assistance.",
+    "founded": "2018",
+    "registrationNumber": "CIN: U40100MH2018PTC301234",
+    "gstNumber": "27AABCS1234A1ZV"
+  },
+  "contact": {
+    "phone": "+91-98765-43210",
+    "phoneRaw": "+919876543210",
+    "whatsapp": "+919876543210",
+    "whatsappMessage": "Hello, I'm interested in solar installation for my property.",
+    "email": "info@solarelites.in",
+    "supportEmail": "support@solarelites.in",
+    "salesEmail": "sales@solarelites.in",
+    "emergencyPhone": "+91-98765-43211",
+    "address": {
+      "line1": "4th Floor, Solarelites Tower, Tech Park",
+      "line2": "Navi Mumbai, Maharashtra - 400703",
+      "city": "Navi Mumbai",
+      "state": "Maharashtra",
+      "pincode": "400703",
+      "country": "India"
+    },
+    "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.6!2d73.0!3d19.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDAwJzAwLjAiTiA3M8KwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+    "businessHours": {
+      "weekdays": "Monday – Friday: 9:00 AM – 6:00 PM",
+      "saturday": "Saturday: 10:00 AM – 4:00 PM",
+      "sunday": "Sunday: Closed",
+      "support": "24/7 Emergency Support Available"
+    }
+  },
+  "social": {
+    "instagram": "https://instagram.com/solarelites.in",
+    "facebook": "https://facebook.com/solarelites.in",
+    "linkedin": "https://linkedin.com/company/solarelites",
+    "youtube": "https://youtube.com/@solarelites",
+    "twitter": "https://twitter.com/solarelites_in"
+  },
+  "seo": {
+    "defaultTitle": "Solarelites – India's Premier Solar Energy Company",
+    "titleSuffix": " | Solarelites",
+    "defaultDescription": "India's leading solar installation company for residential, commercial, industrial, and agricultural projects. Government subsidy assistance. Get a free consultation today.",
+    "siteUrl": "https://www.solarelites.in",
+    "ogImage": "/images/og-image.jpg",
+    "twitterHandle": "@solarelites_in",
+    "locale": "en_IN"
+  },
+  "analytics": {
+    "googleAnalyticsId": "",
+    "googleTagManagerId": "",
+    "clarityId": ""
+  },
+  "hero": {
+    "headline": "Clean Energy for Every Indian Home",
+    "subheadline": "From residential rooftops to industrial complexes — Solarelites delivers precision-engineered solar solutions backed by government subsidies and lifetime support.",
+    "primaryCTA": {
+      "text": "Get Free Consultation",
+      "href": "/contact"
+    },
+    "secondaryCTA": {
+      "text": "Calculate Savings",
+      "href": "/calculator"
+    }
+  },
+  "statistics": [
+    {
+      "value": "5000+",
+      "label": "Installations Completed",
+      "icon": "zap"
+    },
+    {
+      "value": "150MW+",
+      "label": "Total Capacity Installed",
+      "icon": "sun"
+    },
+    {
+      "value": "₹48Cr+",
+      "label": "Subsidy Secured for Clients",
+      "icon": "indian-rupee"
+    },
+    {
+      "value": "98%",
+      "label": "Customer Satisfaction",
+      "icon": "star"
+    }
+  ],
+  "services": [
+    {
+      "id": "residential",
+      "title": "Residential Solar",
+      "shortDescription": "Transform your home into a power plant. Cut electricity bills by up to 90% with premium rooftop solar systems.",
+      "description": "Our residential solar solutions are designed for Indian homes of all sizes. From small apartments to large bungalows, we engineer custom solar systems that maximize energy generation and minimize your electricity bills.",
+      "icon": "home",
+      "href": "/services#residential",
+      "color": "green",
+      "features": [
+        "On-grid, off-grid, and hybrid systems",
+        "PM Surya Ghar subsidy assistance",
+        "10-year workmanship warranty",
+        "Free annual maintenance",
+        "Net metering registration",
+        "Real-time monitoring app"
+      ],
+      "startingPrice": "₹60,000",
+      "timeline": "3–7 days installation"
+    },
+    {
+      "id": "commercial",
+      "title": "Commercial Solar",
+      "shortDescription": "Reduce operational costs and achieve sustainability targets for your business with scalable commercial solar systems.",
+      "description": "Commercial solar installations from Solarelites help businesses across India achieve significant cost savings while meeting sustainability goals. Our systems scale from small offices to large corporate campuses.",
+      "icon": "building-2",
+      "href": "/services#commercial",
+      "color": "blue",
+      "features": [
+        "Scalable 10kW to 1MW+ systems",
+        "Accelerated depreciation benefit (40%)",
+        "Turnkey EPC solutions",
+        "Remote monitoring and reporting",
+        "O&M contracts available",
+        "DISCOM grid connectivity"
+      ],
+      "startingPrice": "₹4,50,000",
+      "timeline": "2–4 weeks installation"
+    },
+    {
+      "id": "industrial",
+      "title": "Industrial Solar",
+      "shortDescription": "Large-scale industrial solar parks and rooftop solutions that drive massive cost reductions and energy independence.",
+      "description": "Industrial solar solutions from Solarelites are engineered for heavy power consumers. We design and deploy large-scale solar systems that provide predictable, low-cost energy for factories, warehouses, and industrial facilities.",
+      "icon": "factory",
+      "href": "/services#industrial",
+      "color": "purple",
+      "features": [
+        "MW-scale solar installations",
+        "Ground-mounted and rooftop options",
+        "PPA and CAPEX models available",
+        "High-efficiency mono PERC panels",
+        "Custom engineering and design",
+        "Dedicated project management team"
+      ],
+      "startingPrice": "₹35,00,000",
+      "timeline": "4–12 weeks installation"
+    },
+    {
+      "id": "agriculture",
+      "title": "Agricultural Solar",
+      "shortDescription": "Solar-powered irrigation pumps and agri-solar systems that reduce farming costs and improve water security.",
+      "description": "Agricultural solar helps Indian farmers achieve energy independence for irrigation and farm operations. Our agri-solar systems are subsidized under PM-KUSUM and provide reliable power for pumps and other farm equipment.",
+      "icon": "sprout",
+      "href": "/services#agriculture",
+      "color": "green",
+      "features": [
+        "PM-KUSUM scheme assistance",
+        "Solar pumping systems (2HP–10HP)",
+        "Dual-use agri-solar installations",
+        "Drip irrigation integration",
+        "Water management systems",
+        "Lifetime pump warranty"
+      ],
+      "startingPrice": "₹1,50,000",
+      "timeline": "1–2 weeks installation"
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Free Consultation",
+      "description": "Our solar experts analyze your electricity bills, usage patterns, and property details to design the optimal solar system for you.",
+      "icon": "phone-call"
+    },
+    {
+      "step": 2,
+      "title": "Site Inspection",
+      "description": "A certified engineer visits your property to assess roof structure, shading analysis, electrical infrastructure, and feasibility.",
+      "icon": "clipboard-check"
+    },
+    {
+      "step": 3,
+      "title": "Custom Design",
+      "description": "Our engineering team creates a detailed system design, energy simulation, financial analysis, and subsidy calculation.",
+      "icon": "pencil-ruler"
+    },
+    {
+      "step": 4,
+      "title": "Subsidy & Approvals",
+      "description": "We handle all DISCOM applications, government subsidy filings, net metering registration, and municipal permissions on your behalf.",
+      "icon": "file-check"
+    },
+    {
+      "step": 5,
+      "title": "Professional Installation",
+      "description": "Our certified installation team sets up your solar system with premium components, proper wiring, and structural safety standards.",
+      "icon": "hard-hat"
+    },
+    {
+      "step": 6,
+      "title": "Commissioning & Support",
+      "description": "After testing and commissioning, we set up your monitoring app and provide ongoing maintenance support for the lifetime of your system.",
+      "icon": "activity"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Rajesh Sharma",
+      "location": "Mumbai, Maharashtra",
+      "role": "Homeowner",
+      "content": "Solarelites made the entire process incredibly smooth. From the initial consultation to the final installation, everything was professional. My electricity bill dropped from ₹8,000 to under ₹400 per month.",
+      "rating": 5,
+      "system": "6.6 kW On-Grid System",
+      "savings": "₹90,000/year"
+    },
+    {
+      "id": 2,
+      "name": "Priya Desai",
+      "location": "Pune, Maharashtra",
+      "role": "Restaurant Owner",
+      "content": "As a commercial client, I was skeptical. But the team did a detailed energy audit and designed a system that has genuinely transformed our running costs. ROI is already visible after 8 months.",
+      "rating": 5,
+      "system": "25 kW Commercial System",
+      "savings": "₹3.6L/year"
+    },
+    {
+      "id": 3,
+      "name": "Suresh Patel",
+      "location": "Ahmedabad, Gujarat",
+      "role": "Farmer",
+      "content": "PM-KUSUM yojana ke through mujhe bahut fayda mila. Solarelites ne poori subsidy process sambhali aur mera pump bilkul free mein chalta hai ab. Bahut bahut shukriya.",
+      "rating": 5,
+      "system": "5 HP Solar Pump",
+      "savings": "₹1.2L/year"
+    },
+    {
+      "id": 4,
+      "name": "Anita Krishnan",
+      "location": "Chennai, Tamil Nadu",
+      "role": "Factory Manager",
+      "content": "Our 500 kW industrial installation has been flawless for 2 years. The remote monitoring system gives us full visibility and the O&M team is extremely responsive. Best investment we've made.",
+      "rating": 5,
+      "system": "500 kW Industrial System",
+      "savings": "₹48L/year"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How much does a solar system cost in India?",
+      "answer": "Solar system costs in India typically range from ₹45,000 to ₹75,000 per kW depending on the type of system (on-grid, off-grid, or hybrid), panel quality, and location. A typical 3 kW residential system costs ₹1.5L–₹2.25L before subsidies. After PM Surya Ghar subsidy, the net cost reduces significantly."
+    },
+    {
+      "question": "What is the PM Surya Ghar Muft Bijli Yojana?",
+      "answer": "PM Surya Ghar Muft Bijli Yojana is the Government of India's flagship solar subsidy scheme for residential consumers. It provides subsidies of ₹30,000 for 1 kW, ₹60,000 for 2 kW, and ₹78,000 for 3 kW systems. The scheme aims to provide free electricity to 1 crore households."
+    },
+    {
+      "question": "How long does solar installation take?",
+      "answer": "Residential solar installations typically take 1–3 days for the physical installation. However, the complete process including consultation, design, approvals, and net metering registration takes 2–4 weeks. Commercial and industrial projects may take 4–12 weeks depending on scale."
+    },
+    {
+      "question": "What is the lifespan of a solar panel?",
+      "answer": "High-quality solar panels last 25–30 years with gradual degradation of about 0.5% per year. The solar inverter typically has a lifespan of 10–15 years. Most premium panels come with a 25-year performance warranty guaranteeing at least 80% output after 25 years."
+    },
+    {
+      "question": "What happens during grid failures?",
+      "answer": "On-grid solar systems automatically shut down during grid failures for safety reasons. If you need power during outages, we recommend a hybrid system with battery storage. Off-grid systems operate completely independently and provide power 24/7."
+    },
+    {
+      "question": "Do you provide maintenance services?",
+      "answer": "Yes, Solarelites provides comprehensive Annual Maintenance Contracts (AMC). Our maintenance includes regular panel cleaning, performance monitoring, inverter servicing, and 24/7 remote diagnostics. First-year maintenance is included free with every installation."
+    },
+    {
+      "question": "Can solar panels work during monsoon and cloudy days?",
+      "answer": "Solar panels still generate electricity on cloudy days, typically at 10–25% of peak capacity. Modern high-efficiency panels are designed to perform better in diffused light conditions. Net metering allows you to export surplus summer energy and draw grid power during rainy seasons."
+    },
+    {
+      "question": "How do I apply for a government subsidy?",
+      "answer": "Solarelites handles the entire subsidy application process on your behalf. We prepare all documents, submit applications to the National Portal for Rooftop Solar (https://pmsuryagarh.gov.in), coordinate with your local DISCOM, and follow up until subsidy disbursement."
+    }
+  ],
+  "subsidyInfo": {
+    "pmSuryaGhar": {
+      "name": "PM Surya Ghar Muft Bijli Yojana",
+      "description": "Central government subsidy for residential rooftop solar installations.",
+      "subsidyRates": [
+        {
+          "capacity": "Up to 1 kW",
+          "subsidy": "₹30,000"
+        },
+        {
+          "capacity": "1 kW to 2 kW",
+          "subsidy": "₹60,000"
+        },
+        {
+          "capacity": "2 kW to 3 kW",
+          "subsidy": "₹78,000"
+        },
+        {
+          "capacity": "Above 3 kW",
+          "subsidy": "₹78,000 (max)"
+        }
+      ],
+      "eligibility": [
+        "Must be an Indian residential consumer",
+        "Property must have an electricity connection",
+        "Must have a valid Aadhaar card",
+        "Bank account linked to Aadhaar",
+        "Must use an approved installer (Solarelites is empanelled)"
+      ],
+      "documents": [
+        "Aadhaar Card",
+        "PAN Card",
+        "Latest Electricity Bill",
+        "Bank Account Details",
+        "Roof Ownership Proof",
+        "Passport-size Photos"
+      ]
+    },
+    "pmKusum": {
+      "name": "PM-KUSUM (Kisan Urja Suraksha evam Utthaan Mahabhiyan)",
+      "description": "Subsidy scheme for farmers to install solar pumps and small solar power plants.",
+      "subsidyRates": [
+        {
+          "component": "Component A (Small solar plants)",
+          "subsidy": "Up to 30% central + 30% state"
+        },
+        {
+          "component": "Component B (Solar pumps up to 7.5 HP)",
+          "subsidy": "30% central + 30% state + 40% loan"
+        },
+        {
+          "component": "Component C (Feeder separation)",
+          "subsidy": "60% central + state contribution"
+        }
+      ]
+    },
+    "commercialIncentives": [
+      "Accelerated Depreciation: 40% in first year",
+      "No GST on solar panel installations",
+      "Priority sector lending for MSMEs",
+      "Renewable Purchase Obligation (RPO) compliance credit",
+      "Net metering benefits"
+    ]
+  },
+  "coverage": {
+    "states": [
+      "Maharashtra",
+      "Gujarat",
+      "Rajasthan",
+      "Tamil Nadu",
+      "Karnataka",
+      "Telangana",
+      "Andhra Pradesh",
+      "Madhya Pradesh",
+      "Uttar Pradesh",
+      "Delhi NCR"
+    ],
+    "primaryCities": [
+      {
+        "city": "Mumbai",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Pune",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Nashik",
+        "state": "Maharashtra"
+      },
+      {
+        "city": "Ahmedabad",
+        "state": "Gujarat"
+      },
+      {
+        "city": "Surat",
+        "state": "Gujarat"
+      },
+      {
+        "city": "Jaipur",
+        "state": "Rajasthan"
+      },
+      {
+        "city": "Chennai",
+        "state": "Tamil Nadu"
+      },
+      {
+        "city": "Bangalore",
+        "state": "Karnataka"
+      },
+      {
+        "city": "Hyderabad",
+        "state": "Telangana"
+      },
+      {
+        "city": "Delhi",
+        "state": "Delhi NCR"
+      }
+    ]
+  },
+  "calculator": {
+    "electricityTariff": 7.5,
+    "systemCostPerKw": 65000,
+    "panelDegradationRate": 0.005,
+    "systemEfficiency": 0.8,
+    "solarIrradiation": 5.5,
+    "co2PerKwh": 0.82,
+    "subsidyRates": {
+      "upTo1kw": 30000,
+      "upTo2kw": 60000,
+      "upTo3kw": 78000,
+      "above3kw": 78000
+    },
+    "states": [
+      {
+        "name": "Maharashtra",
+        "irradiation": 5.5,
+        "tariff": 8.0
+      },
+      {
+        "name": "Gujarat",
+        "irradiation": 6.0,
+        "tariff": 5.5
+      },
+      {
+        "name": "Rajasthan",
+        "irradiation": 6.5,
+        "tariff": 6.5
+      },
+      {
+        "name": "Tamil Nadu",
+        "irradiation": 5.8,
+        "tariff": 7.0
+      },
+      {
+        "name": "Karnataka",
+        "irradiation": 5.5,
+        "tariff": 6.0
+      },
+      {
+        "name": "Telangana",
+        "irradiation": 5.7,
+        "tariff": 7.5
+      },
+      {
+        "name": "Delhi NCR",
+        "irradiation": 5.3,
+        "tariff": 8.0
+      },
+      {
+        "name": "Andhra Pradesh",
+        "irradiation": 5.8,
+        "tariff": 6.5
+      },
+      {
+        "name": "Madhya Pradesh",
+        "irradiation": 5.7,
+        "tariff": 6.0
+      },
+      {
+        "name": "Uttar Pradesh",
+        "irradiation": 5.2,
+        "tariff": 5.5
+      }
+    ]
+  },
+  "emailProvider": {
+    "provider": "smtp",
+    "host": "",
+    "port": 587,
+    "secure": false,
+    "user": "",
+    "recipients": [
+      "info@solarelites.in"
+    ],
+    "fromName": "Solarelites Website",
+    "fromEmail": "noreply@solarelites.in"
+  },
+  "team": [
+    {
+      "name": "Vikram Mehta",
+      "role": "Founder & CEO",
+      "bio": "15+ years in renewable energy. Former VP at Adani Solar. IIT Bombay alumnus with a mission to democratize solar access across India.",
+      "image": "/images/team/vikram-mehta.jpg"
+    },
+    {
+      "name": "Naina Patel",
+      "role": "Chief Technical Officer",
+      "bio": "Solar engineer with expertise in large-scale MW installations. Led 50+ industrial projects across 8 states. Certified by MNRE.",
+      "image": "/images/team/naina-patel.jpg"
+    },
+    {
+      "name": "Arjun Krishnaswamy",
+      "role": "Head of Operations",
+      "bio": "Operations specialist ensuring every installation meets our quality standards. Former operations head at Tata Power Solar.",
+      "image": "/images/team/arjun-krishnaswamy.jpg"
+    },
+    {
+      "name": "Meera Joshi",
+      "role": "Government Relations Lead",
+      "bio": "Subsidy specialist with deep knowledge of MNRE policies, PM Surya Ghar, and PM-KUSUM schemes. Has secured ₹48Cr+ in subsidies.",
+      "image": "/images/team/meera-joshi.jpg"
+    }
+  ],
+  "certifications": [
+    "MNRE Empanelled Installer",
+    "ISO 9001:2015 Certified",
+    "BIS Certified Products",
+    "NABCEP Certified Engineers",
+    "MahaDiscom Approved Vendor",
+    "Green Building Council Member"
+  ],
+  "values": [
+    {
+      "title": "Integrity",
+      "description": "Transparent pricing, honest assessments, and no hidden costs. We tell you exactly what you'll get and deliver on our promise.",
+      "icon": "shield-check"
+    },
+    {
+      "title": "Excellence",
+      "description": "Premium components, certified installations, and quality standards that exceed industry benchmarks at every project.",
+      "icon": "award"
+    },
+    {
+      "title": "Sustainability",
+      "description": "Every installation we complete contributes to a cleaner India. We're committed to measurable environmental impact.",
+      "icon": "leaf"
+    },
+    {
+      "title": "Innovation",
+      "description": "We continuously adopt the latest solar technology, monitoring systems, and engineering practices to maximize your returns.",
+      "icon": "lightbulb"
+    }
+  ]
+}

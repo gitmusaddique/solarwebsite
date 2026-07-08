@@ -1,0 +1,526 @@
+---
+import Layout from '../layouts/Layout.astro';
+import site from '../../config/site.json';
+---
+
+<Layout
+  title="Solar Savings Calculator – Estimate Your Solar ROI"
+  description="Calculate your solar system size, estimated cost, government subsidy, annual savings, payback period and 25-year returns. Free interactive solar calculator."
+>
+  <!-- Hero — band-light, display-xl weight 400 -->
+  <section class="relative pt-48 pb-16 band-light" aria-labelledby="calc-hero-heading">
+    <div class="container text-center">
+      <h1 id="calc-hero-heading" class="type-display-xl" style="margin-bottom: 24px;">Calculate Your Solar Savings</h1>
+      <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
+        Enter your details to get an instant estimate of your solar system size, cost, subsidy, and lifetime savings.
+      </p>
+    </div>
+  </section>
+
+  <!-- Calculator — band-light or band-soft rotating -->
+  <section class="section band-soft" style="border-top: 1px solid var(--hairline);" aria-label="Solar savings calculator">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Inputs -->
+        <div>
+          <h2 class="type-display-sm" style="margin-bottom: 32px;">Your Details</h2>
+          <form id="calc-form" class="space-y-6" novalidate>
+
+            <!-- State -->
+            <div>
+              <label for="state-select" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">State</label>
+              <select id="state-select" name="state" class="cb-select">
+                {site.calculator.states.map(s => (
+                  <option value={s.name} data-irradiation={s.irradiation} data-tariff={s.tariff}>{s.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Monthly Bill -->
+            <!-- Calculation Mode Toggle -->
+            <div class="calc-mode-container" style="margin-bottom: 24px;">
+              <button type="button" id="calc-mode-bill" class="btn-calc-mode active">By Bill (₹)</button>
+              <button type="button" id="calc-mode-units" class="btn-calc-mode">By Units (kWh)</button>
+            </div>
+
+            <!-- Monthly Bill -->
+            <div id="bill-container">
+              <label for="monthly-bill" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">
+                Monthly Electricity Bill (₹)
+                <span style="font-weight: 400; color: var(--muted); margin-left: 4px;" id="bill-display">₹3,000</span>
+              </label>
+              <input type="range" id="monthly-bill" name="monthlyBill" min="500" max="50000" step="500" value="3000"
+                class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
+                style="accent-color: #0052ff;"
+                aria-describedby="bill-display"
+              />
+              <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
+                <span>₹500</span><span>₹50,000</span>
+              </div>
+            </div>
+
+            <!-- Monthly Units -->
+            <div id="units-container" class="hidden">
+              <label for="monthly-units" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">
+                Monthly Units Consumed (kWh)
+                <span style="font-weight: 400; color: var(--muted); margin-left: 4px;" id="units-display">400 kWh</span>
+              </label>
+              <input type="range" id="monthly-units" name="monthlyUnits" min="50" max="5000" step="50" value="400"
+                class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
+                style="accent-color: #0052ff;"
+                aria-describedby="units-display"
+              />
+              <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
+                <span>50 kWh</span><span>5,000 kWh</span>
+              </div>
+            </div>
+
+            <!-- Connection Type -->
+            <div>
+              <fieldset>
+                <legend style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 12px;">Connection Type</legend>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" role="group">
+                  {['Residential', 'Commercial', 'Industrial', 'Agricultural'].map((type, i) => (
+                    <label class="relative">
+                      <input type="radio" name="connectionType" value={type} class="sr-only calc-radio-input" checked={i === 0} />
+                      <span class="calc-radio-label">{type}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Roof Area -->
+            <div>
+              <label for="roof-area" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;">
+                Available Roof Area (sq ft)
+                <span style="font-weight: 400; color: var(--muted); margin-left: 4px;" id="roof-display">500 sq ft</span>
+              </label>
+              <input type="range" id="roof-area" name="roofArea" min="100" max="10000" step="100" value="500"
+                class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
+                style="accent-color: #0052ff;"
+                aria-describedby="roof-display"
+              />
+              <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
+                <span>100 sq ft</span><span>10,000 sq ft</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary-lg w-full justify-center">
+              Calculate My Savings
+            </button>
+          </form>
+        </div>
+
+        <!-- Results -->
+        <div id="calc-results" aria-live="polite" aria-label="Calculation results">
+          <h2 class="type-display-sm" style="margin-bottom: 32px;">Your Solar Estimate</h2>
+          <div class="space-y-4">
+
+            <!-- Primary Metrics — card-on-card layering -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="feature-card" style="padding: 24px; background: var(--canvas);">
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 8px;">Recommended Size</div>
+                <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-size">3.0 kW</div>
+              </div>
+              <div class="feature-card" style="padding: 24px; background: var(--canvas);">
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #0052ff; margin-bottom: 8px;">Payback Period</div>
+                <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-payback">3.2 yrs</div>
+              </div>
+            </div>
+
+            <!-- Cost Breakdown -->
+            <div class="feature-card" style="background: var(--canvas);">
+              <h3 class="type-title-sm" style="margin-bottom: 16px;">Cost Breakdown</h3>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                {[
+                  { label: 'Gross Installation Cost', id: 'result-gross' },
+                  { label: 'Government Subsidy', id: 'result-subsidy', highlight: true },
+                  { label: 'Net Investment', id: 'result-net', bold: true },
+                ].map(item => (
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
+                    <span style={item.highlight ? 'font-weight: 500; color: var(--semantic-up);' : 'font-size: 14px; color: var(--muted);'} id={item.id + '-label'}>{item.label}</span>
+                    <span style={item.highlight ? 'font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--semantic-up);' : item.bold ? 'font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--ink);' : 'font-family: var(--font-mono); font-size: 14px; color: var(--body-color);'} id={item.id}>—</span>
+                  </div>
+                ))}
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
+                  <span style="font-size: 14px; color: var(--muted);" id="result-roof-util-label">Roof Space Utilized</span>
+                  <span style="font-family: var(--font-mono); font-size: 14px; color: var(--body-color);" id="result-roof-util">—</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Savings -->
+            <div class="feature-card" style="background: var(--canvas);">
+              <h3 class="type-title-sm" style="margin-bottom: 16px;">Projected Savings</h3>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                {[
+                  { label: 'Monthly Savings', id: 'result-monthly' },
+                  { label: 'Annual Savings', id: 'result-annual' },
+                  { label: '10-Year Savings', id: 'result-10y' },
+                  { label: '25-Year Savings', id: 'result-25y' },
+                ].map(item => (
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
+                    <span style="font-size: 14px; color: var(--muted);">{item.label}</span>
+                    <span style="font-family: var(--font-mono); font-size: 14px; font-weight: 500; color: var(--ink);" id={item.id}>—</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Environmental Impact -->
+            <div class="feature-card" style="background: var(--canvas);">
+              <h3 class="type-title-sm" style="margin-bottom: 16px;">Environmental Impact (Annual)</h3>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 14px; color: var(--muted);">CO₂ Reduction</span>
+                <span style="font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--semantic-up);" id="result-co2">—</span>
+              </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <p style="font-size: 12px; line-height: 1.5; color: var(--muted);">
+              *Estimates are indicative based on average solar irradiation and electricity tariffs. Actual savings may vary based on panel orientation, shading, tariff changes, and government policy. Contact us for a precise assessment.
+            </p>
+
+            <a href="/contact" class="btn-primary w-full justify-center">
+              Get Accurate Quote from Our Experts
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ calcConfig: site.calculator }}>
+  const fmt = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
+  const fmtNum = (n) => Math.round(n).toLocaleString('en-IN');
+
+  const billSlider = document.getElementById('monthly-bill');
+  const unitsSlider = document.getElementById('monthly-units');
+  const roofSlider = document.getElementById('roof-area');
+  const stateEl = document.getElementById('state-select');
+
+  const billDisplay = document.getElementById('bill-display');
+  const unitsDisplay = document.getElementById('units-display');
+  const roofDisplay = document.getElementById('roof-display');
+
+  const modeBillBtn = document.getElementById('calc-mode-bill');
+  const modeUnitsBtn = document.getElementById('calc-mode-units');
+  const billContainer = document.getElementById('bill-container');
+  const unitsContainer = document.getElementById('units-container');  // Save/Load Settings in localStorage
+  function saveSettings() {
+    const settings = {
+      state: stateEl.value,
+      activeMode: activeMode,
+      bill: billSlider.value,
+      units: unitsSlider.value,
+      connectionType: getConnectionType(),
+      roofArea: roofSlider.value
+    };
+    try {
+      localStorage.setItem('solarelites_calc_settings', JSON.stringify(settings));
+    } catch (e) {
+      console.warn("Storage write blocked: ", e);
+    }
+  }
+
+  function loadSettings() {
+    try {
+      const saved = localStorage.getItem('solarelites_calc_settings');
+      if (!saved) return false;
+      const settings = JSON.parse(saved);
+      if (settings.state) stateEl.value = settings.state;
+      if (settings.activeMode) {
+        activeMode = settings.activeMode;
+        if (activeMode === 'bill') {
+          modeBillBtn?.classList.add('active');
+          modeUnitsBtn?.classList.remove('active');
+          billContainer?.classList.remove('hidden');
+          unitsContainer?.classList.add('hidden');
+        } else {
+          modeUnitsBtn?.classList.add('active');
+          modeBillBtn?.classList.remove('active');
+          unitsContainer?.classList.remove('hidden');
+          billContainer?.classList.add('hidden');
+        }
+      }
+      if (settings.connectionType) {
+        const radio = document.querySelector(`input[name="connectionType"][value="${settings.connectionType}"]`);
+        if (radio) radio.checked = true;
+      }
+      
+      // Update limits based on connection type first, bypassing resets
+      handleConnectionTypeChange(true);
+
+      if (settings.bill) billSlider.value = settings.bill;
+      if (settings.units) unitsSlider.value = settings.units;
+      if (settings.roofArea) roofSlider.value = settings.roofArea;
+
+      syncSliders(activeMode);
+      calculate();
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  // Toggle Mode functions
+  modeBillBtn?.addEventListener('click', () => {
+    activeMode = 'bill';
+    modeBillBtn.classList.add('active');
+    modeUnitsBtn?.classList.remove('active');
+    billContainer?.classList.remove('hidden');
+    unitsContainer?.classList.add('hidden');
+    syncSliders('bill');
+    saveSettings();
+    calculate();
+  });
+
+  modeUnitsBtn?.addEventListener('click', () => {
+    activeMode = 'units';
+    modeUnitsBtn.classList.add('active');
+    modeBillBtn?.classList.remove('active');
+    unitsContainer?.classList.remove('hidden');
+    billContainer?.classList.add('hidden');
+    syncSliders('units');
+    saveSettings();
+    calculate();
+  });
+
+  function getTariff() {
+    const selectedOption = stateEl?.options[stateEl.selectedIndex];
+    return parseFloat(selectedOption?.dataset.tariff || calcConfig.electricityTariff);
+  }
+
+  function getIrradiation() {
+    const selectedOption = stateEl?.options[stateEl.selectedIndex];
+    return parseFloat(selectedOption?.dataset.irradiation || calcConfig.solarIrradiation);
+  }
+
+  function getConnectionType() {
+    return document.querySelector('input[name="connectionType"]:checked')?.value || 'Residential';
+  }
+
+  // Handle connection type limits dynamically
+  function handleConnectionTypeChange(preventReset = false) {
+    const type = getConnectionType();
+    
+    // Save current values before changing limits if preventReset is true
+    const oldBill = billSlider.value;
+    const oldUnits = unitsSlider.value;
+    const oldRoof = roofSlider.value;
+
+    if (type === 'Commercial' || type === 'Industrial') {
+      billSlider.min = "5000";
+      billSlider.max = "1000000";
+      billSlider.step = "5000";
+      if (!preventReset) billSlider.value = "100000";
+
+      unitsSlider.min = "500";
+      unitsSlider.max = "150000";
+      unitsSlider.step = "500";
+      
+      roofSlider.min = "500";
+      roofSlider.max = "100000";
+      roofSlider.step = "500";
+      if (!preventReset) roofSlider.value = "10000";
+    } else if (type === 'Agricultural') {
+      billSlider.min = "500";
+      billSlider.max = "25000";
+      billSlider.step = "500";
+      if (!preventReset) billSlider.value = "4000";
+
+      unitsSlider.min = "50";
+      unitsSlider.max = "4000";
+      unitsSlider.step = "50";
+
+      roofSlider.min = "100";
+      roofSlider.max = "10000";
+      roofSlider.step = "100";
+      if (!preventReset) roofSlider.value = "1000";
+    } else {
+      billSlider.min = "500";
+      billSlider.max = "50000";
+      billSlider.step = "500";
+      if (!preventReset) billSlider.value = "5000";
+
+      unitsSlider.min = "50";
+      unitsSlider.max = "5000";
+      unitsSlider.step = "50";
+
+      roofSlider.min = "100";
+      roofSlider.max = "10000";
+      roofSlider.step = "100";
+      if (!preventReset) roofSlider.value = "800";
+    }
+
+    if (preventReset) {
+      billSlider.value = oldBill;
+      unitsSlider.value = oldUnits;
+      roofSlider.value = oldRoof;
+    }
+
+    syncSliders(activeMode);
+    calculate();
+  }
+
+  function syncSliders(origin) {
+    const tariff = getTariff();
+    if (origin === 'bill') {
+      const billVal = parseFloat(billSlider.value);
+      unitsSlider.value = Math.round(billVal / tariff);
+    } else {
+      const unitsVal = parseFloat(unitsSlider.value);
+      billSlider.value = Math.round(unitsVal * tariff);
+    }
+
+    // Update labels
+    billDisplay.textContent = '₹' + Number(billSlider.value).toLocaleString('en-IN');
+    unitsDisplay.textContent = Number(unitsSlider.value).toLocaleString('en-IN') + ' kWh';
+    roofDisplay.textContent = Number(roofSlider.value).toLocaleString('en-IN') + ' sq ft';
+  }
+
+  // Bind events for range sliders
+  billSlider?.addEventListener('input', () => {
+    syncSliders('bill');
+    saveSettings();
+    calculate();
+  });
+
+  unitsSlider?.addEventListener('input', () => {
+    syncSliders('units');
+    saveSettings();
+    calculate();
+  });
+
+  roofSlider?.addEventListener('input', () => {
+    roofDisplay.textContent = Number(roofSlider.value).toLocaleString('en-IN') + ' sq ft';
+    saveSettings();
+    calculate();
+  });
+
+  stateEl?.addEventListener('change', () => {
+    syncSliders(activeMode);
+    saveSettings();
+    calculate();
+  });
+
+  document.querySelectorAll('input[name="connectionType"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      handleConnectionTypeChange();
+      saveSettings();
+    });
+  });
+
+  // Handle Form Submit Event
+  const calcForm = document.getElementById('calc-form');
+  calcForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    saveSettings();
+    calculate();
+    // Smooth scroll to results
+    document.getElementById('calc-results')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  function calculate() {
+    const tariff = getTariff();
+    const irradiation = getIrradiation();
+    const roofAreaSqFt = parseFloat(roofSlider.value);
+    const type = getConnectionType();
+
+    // Read units consumed based on current mode
+    let monthlyUnits = 0;
+    if (activeMode === 'bill') {
+      const billVal = parseFloat(billSlider.value);
+      monthlyUnits = billVal / tariff;
+    } else {
+      monthlyUnits = parseFloat(unitsSlider.value);
+    }
+
+    // 1. Recommended system size
+    const annualUnits = monthlyUnits * 12;
+    const systemSizeByUnits = annualUnits / (irradiation * 365 * calcConfig.systemEfficiency);
+    const maxByRoof = roofAreaSqFt / 100;
+    
+    let systemSize = Math.min(systemSizeByUnits, maxByRoof);
+    
+    if (type === 'Commercial' || type === 'Industrial') {
+      systemSize = Math.max(10, systemSize);
+    } else {
+      systemSize = Math.max(1, systemSize);
+    }
+    
+    const roundedSize = Math.round(systemSize * 10) / 10;
+    const grossCost = roundedSize * calcConfig.systemCostPerKw;
+
+    // 3. Government Subsidy & label updates
+    let subsidy = 0;
+    const subsidyLabelEl = document.getElementById('result-subsidy-label');
+    const subsidyValEl = document.getElementById('result-subsidy');
+
+    if (type === 'Residential') {
+      subsidyLabelEl.textContent = 'Government Subsidy (PM Surya Ghar)';
+      subsidyLabelEl.style.color = 'var(--semantic-up)';
+      subsidyValEl.style.color = 'var(--semantic-up)';
+      
+      if (roundedSize <= 1) subsidy = calcConfig.subsidyRates.upTo1kw;
+      else if (roundedSize <= 2) subsidy = calcConfig.subsidyRates.upTo2kw;
+      else if (roundedSize <= 3) subsidy = calcConfig.subsidyRates.upTo3kw;
+      else subsidy = calcConfig.subsidyRates.above3kw;
+      
+      subsidyValEl.textContent = '- ' + fmt(subsidy);
+    } else if (type === 'Agricultural') {
+      subsidyLabelEl.textContent = 'Government Subsidy (PM-KUSUM 60%)';
+      subsidyLabelEl.style.color = 'var(--semantic-up)';
+      subsidyValEl.style.color = 'var(--semantic-up)';
+      subsidy = grossCost * 0.60;
+      subsidyValEl.textContent = '- ' + fmt(subsidy);
+    } else {
+      subsidyLabelEl.textContent = 'Tax Benefit (40% Depreciation)';
+      subsidyLabelEl.style.color = 'var(--muted)';
+      subsidyValEl.style.color = 'var(--body-color)';
+      subsidy = 0;
+      const taxSavings = grossCost * 0.40 * 0.25;
+      subsidyValEl.textContent = '₹' + Math.round(taxSavings).toLocaleString('en-IN') + ' saved';
+    }
+
+    const netCost = Math.max(0, grossCost - subsidy);
+    const annualGen = roundedSize * irradiation * 365 * calcConfig.systemEfficiency;
+    const annualSavings = annualGen * tariff;
+    const monthlySavings = annualSavings / 12;
+    const payback = netCost / (annualSavings || 1);
+
+    let savings10 = 0, savings25 = 0;
+    let currentTariff = tariff, currentGen = annualGen;
+    for (let y = 1; y <= 25; y++) {
+      const yearSavings = currentGen * currentTariff;
+      if (y <= 10) savings10 += yearSavings;
+      savings25 += yearSavings;
+      currentTariff *= 1.06;
+      currentGen *= (1 - calcConfig.panelDegradationRate);
+    }
+
+    const co2 = annualGen * calcConfig.co2PerKwh;
+    const spaceUsed = roundedSize * 100;
+    const utilPercent = Math.min(100, Math.round((spaceUsed / roofAreaSqFt) * 100));
+
+    document.getElementById('result-size').textContent = roundedSize.toFixed(1) + ' kW';
+    document.getElementById('result-payback').textContent = roundedSize > 0 ? payback.toFixed(1) + ' yrs' : '—';
+    document.getElementById('result-gross').textContent = fmt(grossCost);
+    document.getElementById('result-net').textContent = fmt(netCost);
+    document.getElementById('result-monthly').textContent = fmt(monthlySavings) + '/mo';
+    document.getElementById('result-annual').textContent = fmt(annualSavings) + '/yr';
+    document.getElementById('result-10y').textContent = fmt(savings10);
+    document.getElementById('result-25y').textContent = fmt(savings25);
+    document.getElementById('result-co2').textContent = fmtNum(co2) + ' kg CO₂';
+    document.getElementById('result-roof-util').textContent = `${Math.round(spaceUsed).toLocaleString('en-IN')} / ${Math.round(roofAreaSqFt).toLocaleString('en-IN')} sq ft (${utilPercent}%)`;
+  }
+
+  // Initialize
+  const loaded = loadSettings();
+  if (!loaded) {
+    handleConnectionTypeChange();
+  }
+</script>
