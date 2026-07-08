@@ -68,7 +68,7 @@ export const translations = {
 
     // About Page
     "about.hero.title": "We believe every home and business deserves clean, affordable energy.",
-    "about.hero.subtitle": "Founded in 2018 as Vicky Enterprises and rebranded as Solar Elites in 2024, we are Maharashtra's most trusted solar energy company — completing 1,000+ installations and 3MW+ capacity across the state.",
+    "about.hero.subtitle": "Founded in 2019 as Vicky Enterprises and rebranded as Solar Elites in 2024, we are Maharashtra's most trusted solar energy company — completing 1,000+ installations and 3MW+ capacity across the state.",
     "about.mission.title": "Our Mission",
     "about.mission.desc": "To accelerate Maharashtra's transition to renewable energy by making world-class solar installations accessible and affordable for every home, farm, and business — while ensuring maximum financial returns for our customers through government subsidies and premium engineering.",
     "about.vision.title": "Our Vision",
@@ -455,7 +455,7 @@ export const translations = {
 
     // About Page
     "about.hero.title": "हमारा मानना है कि हर घर और व्यवसाय स्वच्छ, किफायती ऊर्जा का हकदार है।",
-    "about.hero.subtitle": "2018 में विक्की एंटरप्राइजेज के रूप में स्थापित और 2024 में सोलर एलीट्स के रूप में रीब्रांड किया गया, हम महाराष्ट्र की सबसे भरोसेमंद सौर ऊर्जा कंपनी हैं — जिसने राज्य भर में 1,000+ इंस्टॉलेशन और 3MW+ क्षमता पूरी की है।",
+    "about.hero.subtitle": "2019 में विक्की एंटरप्राइजेज के रूप में स्थापित और 2024 में सोलर एलीट्स के रूप में रीब्रांड किया गया, हम महाराष्ट्र की सबसे भरोसेमंद सौर ऊर्जा कंपनी हैं — जिसने राज्य भर में 1,000+ इंस्टॉलेशन और 3MW+ क्षमता पूरी की है।",
     "about.mission.title": "हमारा उद्देश्य",
     "about.mission.desc": "विश्व स्तर का सौर स्थापनाओं को हर घर, खेत और व्यवसाय के लिए सुलभ और किफायती बनाकर महाराष्ट्र के नवीकरणीय ऊर्जा में संक्रमण को तेज करना — साथ ही सरकारी सब्सिडी और प्रीमियम इंजीनियरिंग के माध्यम से हमारे ग्राहकों के लिए अधिकतम वित्तीय रिटर्न सुनिश्चित करना।",
     "about.vision.title": "हमारा दृष्टिकोण",
@@ -842,7 +842,7 @@ export const translations = {
 
     // About Page
     "about.hero.title": "आमचा असा विश्वास आहे की प्रत्येक घर आणि व्यवसाय स्वच्छ, परवडणाऱ्या ऊर्जेचा हक्कदार आहे.",
-    "about.hero.subtitle": "2018 मध्ये विकी एंटरप्रायजेस म्हणून स्थापित आणि 2024 मध्ये सोलर एलिट्स म्हणून रीब्रँड केलेले, आम्ही महाराष्ट्रातील सर्वात विश्वासू सौर ऊर्जा कंपनी आहोत — संपूर्ण राज्यात 1,000+ इन्स्टॉलेशन्स आणि 3MW+ क्षमता पूर्ण केली आहे.",
+    "about.hero.subtitle": "2019 मध्ये विकी एंटरप्रायजेस म्हणून स्थापित आणि 2024 मध्ये सोलर एलिट्स म्हणून रीब्रँड केलेले, आम्ही महाराष्ट्रातील सर्वात विश्वासू सौर ऊर्जा कंपनी आहोत — संपूर्ण राज्यात 1,000+ इन्स्टॉलेशन्स आणि 3MW+ क्षमता पूर्ण केली आहे.",
     "about.mission.title": "आमचे ध्येय",
     "about.mission.desc": "जागतिक दर्जाचे सोलर इन्स्टॉलेशन्स प्रत्येक घर, शेत आणि व्यवसायासाठी सुलभ आणि परवडणारे बनवून महाराष्ट्राचे नूतनीकरणक्षम ऊर्जेकडील मार्गक्रमण गतिमान करणे — आणि सरकारी अनुदान व प्रीमियम इंजिनिअरिंगद्वारे ग्राहकांसाठी जास्तीत जास्त आर्थिक नफा सुनिश्चित करणे.",
     "about.vision.title": "आमचे स्वप्न",
