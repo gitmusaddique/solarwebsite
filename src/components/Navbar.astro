@@ -192,43 +192,55 @@ function isActive(href: string) {
   <!-- Mobile menu -->
   <div
     id="mobile-menu"
-    class="hidden lg:hidden"
-    style="background: #ffffff; border-top: 1px solid rgba(10, 11, 13, 0.1);"
+    class="fixed top-[64px] left-0 right-0 bottom-0 bg-white/98 backdrop-blur-md z-40 overflow-y-auto lg:hidden opacity-0 pointer-events-none -translate-y-4 transition-all duration-300 ease-out hidden"
+    style="height: calc(100dvh - 64px); border-top: 1px solid rgba(10, 11, 13, 0.08);"
     role="dialog"
     aria-label="Mobile navigation"
   >
-    <div class="container py-4">
-      <!-- Language Switcher (Mobile) -->
-      <div class="mb-4 px-3 flex justify-between items-center">
-        <span style="font-size: 13px; font-weight: 600; color: var(--muted);">Language / भाषा</span>
-        <select class="lang-select-dropdown" aria-label="Change Language">
-          <option value="en">English</option>
-          <option value="hi">हिंदी</option>
-          <option value="mr">मराठी</option>
-        </select>
+    <div class="container py-6 flex flex-col justify-between min-h-full">
+      <div>
+        <!-- Language Switcher (Mobile) -->
+        <div class="mb-6 px-4 py-4 rounded-2xl" style="background: var(--surface-soft); border: 1px solid var(--hairline-soft);">
+          <div class="flex justify-between items-center mb-3">
+            <span style="font-size: 13px; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.5px;">Language / भाषा</span>
+          </div>
+          <div class="flex gap-2">
+            <button type="button" class="mobile-lang-btn flex-1 py-2 rounded-full text-xs font-semibold border text-center transition-all cursor-pointer" data-lang="en" style="height: 36px;">
+              English
+            </button>
+            <button type="button" class="mobile-lang-btn flex-1 py-2 rounded-full text-xs font-semibold border text-center transition-all cursor-pointer" data-lang="hi" style="height: 36px;">
+              हिंदी
+            </button>
+            <button type="button" class="mobile-lang-btn flex-1 py-2 rounded-full text-xs font-semibold border text-center transition-all cursor-pointer" data-lang="mr" style="height: 36px;">
+              मराठी
+            </button>
+          </div>
+        </div>
+        
+        <ul class="flex flex-col gap-2.5" role="list">
+          {navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class="flex items-center justify-between px-4 py-3.5 rounded-xl transition-all"
+                style={`font-size: 15px; font-weight: 600; color: ${isActive(link.href) ? '#e57c00' : 'var(--ink)'}; text-decoration: none; background: ${isActive(link.href) ? 'rgba(229, 124, 0, 0.05)' : 'var(--surface-soft)'}; border: 1px solid ${isActive(link.href) ? 'rgba(229,124,0,0.15)' : 'var(--hairline-soft)'};`}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                data-i18n={link.i18nKey}
+              >
+                <span>{link.label}</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style={`color: ${isActive(link.href) ? '#e57c00' : 'var(--muted)'};`}><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-      
-      <ul class="flex flex-col gap-1" role="list">
-        {navLinks.map(link => (
-          <li>
-            <a
-              href={link.href}
-              class="flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
-              style={`font-size: 14px; font-weight: 500; color: ${isActive(link.href) ? '#e57c00' : 'rgba(10, 11, 13, 0.6)'}; text-decoration: none; background: ${isActive(link.href) ? 'rgba(229, 124, 0, 0.05)' : 'transparent'};`}
-              aria-current={isActive(link.href) ? 'page' : undefined}
-              data-i18n={link.i18nKey}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <div class="mt-4 pt-4 flex flex-col gap-3" style="border-top: 1px solid rgba(10, 11, 13, 0.1);">
-        <a href={`tel:${site.contact.phoneRaw}`} class="btn-secondary justify-center gap-2" style="height: 44px; border: 1px solid var(--hairline);">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+
+      <div class="mt-8 pt-6 flex flex-col gap-3" style="border-top: 1px solid rgba(10, 11, 13, 0.08);">
+        <a href={`tel:${site.contact.phoneRaw}`} class="btn-outline-dark justify-center gap-2" style="height: 48px; font-size: 15px; border: 1px solid var(--hairline); width: 100%;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>{site.contact.phone}</span>
         </a>
-        <a href="/contact" class="btn-primary justify-center" style="height: 44px;" data-i18n="nav.quote">Get Free Quote</a>
+        <a href="/contact" class="btn-primary justify-center" style="height: 48px; font-size: 15px; width: 100%; box-shadow: 0 4px 14px rgba(229,124,0,0.15);" data-i18n="nav.quote">Get Free Quote</a>
       </div>
     </div>
   </div>
@@ -254,21 +266,47 @@ function isActive(href: string) {
 
   // Mobile toggle
   let open = false;
-  toggle.addEventListener('click', () => {
-    open = !open;
-    menu.classList.toggle('hidden', !open);
+
+  function setMenuOpen(shouldOpen: boolean) {
+    open = shouldOpen;
     toggle.setAttribute('aria-expanded', String(open));
     iconMenu.classList.toggle('hidden', open);
     iconClose.classList.toggle('hidden', !open);
+    
+    if (open) {
+      menu.classList.remove('hidden');
+      // Force browser reflow to enable transition
+      menu.offsetHeight;
+      menu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+      menu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      document.body.style.overflow = 'hidden';
+    } else {
+      menu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+      menu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      document.body.style.overflow = '';
+      // Wait for transition to complete before setting display hidden
+      setTimeout(() => {
+        if (!open) {
+          menu.classList.add('hidden');
+        }
+      }, 300);
+    }
+  }
+
+  toggle.addEventListener('click', () => {
+    setMenuOpen(!open);
+  });
+
+  // Close menu when links are clicked
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      setMenuOpen(false);
+    });
   });
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && open) {
-      open = false;
-      menu.classList.add('hidden');
-      toggle.setAttribute('aria-expanded', 'false');
-      iconMenu.classList.remove('hidden');
-      iconClose.classList.add('hidden');
+      setMenuOpen(false);
       toggle.focus();
     }
   });

@@ -751,3 +751,23 @@ main {
     height: 48px;
   }
 }
+
+/* ---- Subpage Hero Padding ---- */
+.subpage-hero {
+  padding-top: 100px !important;
+  padding-bottom: 48px !important;
+}
+
+@media (min-width: 768px) {
+  .subpage-hero {
+    padding-top: 140px !important;
+    padding-bottom: 64px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subpage-hero {
+    padding-top: 180px !important;
+    padding-bottom: 80px !important;
+  }
+}

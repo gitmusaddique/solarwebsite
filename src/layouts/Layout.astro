@@ -326,6 +326,24 @@ const companySchema = {
           (sel as HTMLSelectElement).value = lang;
         });
 
+        // Sync mobile language buttons
+        document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
+          const btnLang = btn.getAttribute('data-lang');
+          if (btnLang === lang) {
+            btn.classList.add('bg-[#e57c00]', 'text-white', 'border-[#e57c00]');
+            btn.classList.remove('bg-transparent', 'text-[rgba(10,11,13,0.6)]', 'border-[rgba(10,11,13,0.1)]');
+            (btn as HTMLButtonElement).style.backgroundColor = '#e57c00';
+            (btn as HTMLButtonElement).style.color = '#ffffff';
+            (btn as HTMLButtonElement).style.borderColor = '#e57c00';
+          } else {
+            btn.classList.remove('bg-[#e57c00]', 'text-white', 'border-[#e57c00]');
+            btn.classList.add('bg-transparent', 'text-[rgba(10,11,13,0.6)]', 'border-[rgba(10,11,13,0.1)]');
+            (btn as HTMLButtonElement).style.backgroundColor = 'transparent';
+            (btn as HTMLButtonElement).style.color = 'rgba(10, 11, 13, 0.6)';
+            (btn as HTMLButtonElement).style.borderColor = 'rgba(10, 11, 13, 0.1)';
+          }
+        });
+
         // Set document language attribute
         document.documentElement.setAttribute('lang', lang === 'en' ? 'en-IN' : lang === 'hi' ? 'hi-IN' : 'mr-IN');
 
@@ -363,6 +381,17 @@ const companySchema = {
             const newLang = (e.target as HTMLSelectElement).value;
             setStoredLanguage(newLang);
             translatePage(newLang);
+          });
+        });
+
+        // Attach listeners to mobile buttons
+        document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const newLang = btn.getAttribute('data-lang');
+            if (newLang) {
+              setStoredLanguage(newLang);
+              translatePage(newLang);
+            }
           });
         });
       }
