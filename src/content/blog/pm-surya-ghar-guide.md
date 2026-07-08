@@ -127,6 +127,6 @@ At Solarelites, we handle the entire PM Surya Ghar application process from star
 6. Subsidy follow-up until disbursement
 7. Commissioning certificate management
 
-We've successfully secured **₹48 crore+ in subsidies** for our clients. Let us handle yours.
+We've successfully secured government subsidies for our clients. Let us handle yours.
 
-**Get in touch: +91-98765-43210**
+**Get in touch: +91-98226-25918**

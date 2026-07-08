@@ -126,5 +126,5 @@ The best time to install solar was 10 years ago. The second best time is today.
 
 Contact our solar experts for a free consultation and site assessment. We'll analyze your electricity bills, assess your roof, and give you an honest recommendation with a detailed financial projection.
 
-**Call us: +91-98765-43210**
-**WhatsApp: +91-98765-43210**
+**Call us: +91-98226-25918**
+**WhatsApp: +91-98226-25918**

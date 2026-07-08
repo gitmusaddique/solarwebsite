@@ -27,7 +27,7 @@ import site from '../../config/site.json';
         <!-- Form -->
         <div>
           <h2 class="type-display-sm" style="margin-bottom: 32px;">Request a Free Quote</h2>
-          <form id="contact-form" class="space-y-5" novalidate aria-label="Contact and quote request form">
+          <form id="contact-form" class="space-y-5" novalidate aria-label="Contact and quote request form" data-email={site.contact.email}>
 
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
@@ -45,7 +45,7 @@ import site from '../../config/site.json';
                   <input type="tel" id="phone" name="phone" required maxlength="10" pattern="[6-9][0-9]{9}" autocomplete="tel"
                     class="cb-input flex-1"
                     style="border-top-left-radius: 0; border-bottom-left-radius: 0;"
-                    placeholder="9876543210"
+                    placeholder="9822625918"
                   />
                 </div>
                 <span class="hidden text-xs mt-1" style="color: var(--semantic-down);" id="phone-error" role="alert">Enter a valid 10-digit Indian mobile number.</span>
@@ -255,7 +255,8 @@ import site from '../../config/site.json';
     const body = encodeURIComponent(
       Object.entries(data).map(([k,v]) => `${k}: ${v}`).join('\n')
     );
-    const mailtoLink = `mailto:info@solarelites.in?subject=${subject}&body=${body}`;
+    const formEmail = form.getAttribute('data-email') || 'solarelites17@gmail.com';
+    const mailtoLink = `mailto:${formEmail}?subject=${subject}&body=${body}`;
 
     setTimeout(() => {
       submitBtn.textContent = 'Submit Request';

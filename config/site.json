@@ -6,23 +6,23 @@
     "description": "Solarelites is India's premier solar energy company, delivering world-class residential, commercial, industrial, and agricultural solar installations with government subsidy assistance.",
     "founded": "2018",
     "registrationNumber": "",
-    "gstNumber": ""
+    "gstNumber": "27CDRPB3047G1ZK"
   },
   "contact": {
-    "phone": "+91-98765-43210",
-    "phoneRaw": "+919876543210",
-    "whatsapp": "+919876543210",
+    "phone": "+91-98226-25918",
+    "phoneRaw": "+919822625918",
+    "whatsapp": "+919822625918",
     "whatsappMessage": "Hello, I'm interested in solar installation for my property.",
-    "email": "info@solarelites.in",
-    "supportEmail": "support@solarelites.in",
-    "salesEmail": "sales@solarelites.in",
-    "emergencyPhone": "+91-98765-43211",
+    "email": "solarelites17@gmail.com",
+    "supportEmail": "solarelites17@gmail.com",
+    "salesEmail": "solarelites17@gmail.com",
+    "emergencyPhone": "+91-98226-25918",
     "address": {
-      "line1": "4th Floor, Solarelites Tower, Tech Park",
-      "line2": "Navi Mumbai, Maharashtra - 400703",
-      "city": "Navi Mumbai",
+      "line1": "Ambajogai Road Near Late Prayagbai Patil Collage",
+      "line2": "Mayurban Colony, Sawe Wadi, Latur, Maharashtra - 413512",
+      "city": "Latur",
       "state": "Maharashtra",
-      "pincode": "400703",
+      "pincode": "413512",
       "country": "India"
     },
     "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.6!2d73.0!3d19.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDAwJzAwLjAiTiA3M8KwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
@@ -69,22 +69,22 @@
   },
   "statistics": [
     {
-      "value": "5000+",
+      "value": "1000+",
       "label": "Installations Completed",
       "icon": "zap"
     },
     {
-      "value": "150MW+",
+      "value": "3MW+",
       "label": "Total Capacity Installed",
       "icon": "sun"
     },
     {
-      "value": "₹48Cr+",
-      "label": "Subsidy Secured for Clients",
-      "icon": "indian-rupee"
+      "value": "8+",
+      "label": "Years of Experience",
+      "icon": "award"
     },
     {
-      "value": "98%",
+      "value": "100%",
       "label": "Customer Satisfaction",
       "icon": "star"
     }
@@ -350,38 +350,15 @@
       "Maharashtra"
     ],
     "primaryCities": [
-      {
-        "city": "Mumbai",
-        "state": "Maharashtra"
-      },
-      {
-        "city": "Pune",
-        "state": "Maharashtra"
-      },
-      {
-        "city": "Nashik",
-        "state": "Maharashtra"
-      },
-      {
-        "city": "Nagpur",
-        "state": "Maharashtra"
-      },
-      {
-        "city": "Thane",
-        "state": "Maharashtra"
-      },
-      {
-        "city": "Chhatrapati Sambhajinagar",
-        "state": "Maharashtra"
-      },
-      {
-        "city": "Solapur",
-        "state": "Maharashtra"
-      },
-      {
-        "city": "Kalyan-Dombivli",
-        "state": "Maharashtra"
-      }
+      { "city": "Latur", "state": "Maharashtra" },
+      { "city": "Ausa", "state": "Maharashtra" },
+      { "city": "Solapur", "state": "Maharashtra" },
+      { "city": "Pune", "state": "Maharashtra" },
+      { "city": "Mumbai", "state": "Maharashtra" },
+      { "city": "Sambhaji Nager", "state": "Maharashtra" },
+      { "city": "Beed", "state": "Maharashtra" },
+      { "city": "Dharashiv", "state": "Maharashtra" },
+      { "city": "Tuljapur", "state": "Maharashtra" }
     ]
   },
   "calculator": {
@@ -412,10 +389,10 @@
     "secure": false,
     "user": "",
     "recipients": [
-      "info@solarelites.in"
+      "solarelites17@gmail.com"
     ],
     "fromName": "Solarelites Website",
-    "fromEmail": "noreply@solarelites.in"
+    "fromEmail": "solarelites17@gmail.com"
   },
   "team": [
     {

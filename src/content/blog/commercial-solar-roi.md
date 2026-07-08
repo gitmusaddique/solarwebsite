@@ -101,5 +101,5 @@ Solarelites offers a completely free, detailed commercial solar assessment inclu
 - Detailed financial projection (NPV, IRR, payback)
 - Net metering and regulatory guidance
 
-**Call our commercial team: +91-98765-43210**
-**Email: sales@solarelites.in**
+**Call our commercial team: +91-98226-25918**
+**Email: solarelites17@gmail.com**
