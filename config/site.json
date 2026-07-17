@@ -146,25 +146,6 @@
       ],
       "startingPrice": "₹35,00,000",
       "timeline": "4–12 weeks installation"
-    },
-    {
-      "id": "agriculture",
-      "title": "Agricultural Solar",
-      "shortDescription": "Solar-powered irrigation pumps and agri-solar systems that reduce farming costs and improve water security.",
-      "description": "Agricultural solar helps Indian farmers achieve energy independence for irrigation and farm operations. Our agri-solar systems are subsidized under PM-KUSUM and provide reliable power for pumps and other farm equipment.",
-      "icon": "sprout",
-      "href": "/services#agriculture",
-      "color": "green",
-      "features": [
-        "PM-KUSUM scheme assistance",
-        "Solar pumping systems (2HP–10HP)",
-        "Dual-use agri-solar installations",
-        "Drip irrigation integration",
-        "Water management systems",
-        "Lifetime pump warranty"
-      ],
-      "startingPrice": "₹1,50,000",
-      "timeline": "1–2 weeks installation"
     }
   ],
   "process": [
@@ -225,16 +206,6 @@
       "rating": 5,
       "system": "25 kW Commercial System",
       "savings": "₹3.6L/year"
-    },
-    {
-      "id": 3,
-      "name": "Suresh Patel",
-      "location": "Ahmedabad, Gujarat",
-      "role": "Farmer",
-      "content": "PM-KUSUM yojana ke through mujhe bahut fayda mila. Solarelites ne poori subsidy process sambhali aur mera pump bilkul free mein chalta hai ab. Bahut bahut shukriya.",
-      "rating": 4,
-      "system": "5 HP Solar Pump",
-      "savings": "₹1.2L/year"
     },
     {
       "id": 4,

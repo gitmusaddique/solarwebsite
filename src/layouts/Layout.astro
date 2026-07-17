@@ -78,7 +78,7 @@ const companySchema = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#e57c00" />
+    <meta name="theme-color" content="#b8e1ff" />
     
     <script is:inline define:vars={{ translations }}>
       window.__translations = translations;
@@ -109,7 +109,8 @@ const companySchema = {
     {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
     <!-- Preload critical assets -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" />
 
     <style is:inline>
       /* Hide Google Translate top bar and banners */
@@ -145,6 +146,9 @@ const companySchema = {
     <main id="main-content">
       <slot />
     </main>
+
+    <!-- Sunset Stripe Band -->
+    <div class="sunset-stripe-band" aria-hidden="true"></div>
 
     <!-- Footer -->
     <Footer />
@@ -330,17 +334,17 @@ const companySchema = {
         document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
           const btnLang = btn.getAttribute('data-lang');
           if (btnLang === lang) {
-            btn.classList.add('bg-[#e57c00]', 'text-white', 'border-[#e57c00]');
-            btn.classList.remove('bg-transparent', 'text-[rgba(10,11,13,0.6)]', 'border-[rgba(10,11,13,0.1)]');
-            (btn as HTMLButtonElement).style.backgroundColor = '#e57c00';
-            (btn as HTMLButtonElement).style.color = '#ffffff';
-            (btn as HTMLButtonElement).style.borderColor = '#e57c00';
+            btn.classList.add('bg-[var(--primary)]', 'text-[var(--on-primary)]', 'border-[var(--primary)]');
+            btn.classList.remove('bg-[var(--canvas)]', 'text-[var(--muted)]', 'border-[var(--hairline)]');
+            (btn as HTMLButtonElement).style.backgroundColor = 'var(--primary)';
+            (btn as HTMLButtonElement).style.color = 'var(--on-primary)';
+            (btn as HTMLButtonElement).style.borderColor = 'var(--primary)';
           } else {
-            btn.classList.remove('bg-[#e57c00]', 'text-white', 'border-[#e57c00]');
-            btn.classList.add('bg-transparent', 'text-[rgba(10,11,13,0.6)]', 'border-[rgba(10,11,13,0.1)]');
-            (btn as HTMLButtonElement).style.backgroundColor = 'transparent';
-            (btn as HTMLButtonElement).style.color = 'rgba(10, 11, 13, 0.6)';
-            (btn as HTMLButtonElement).style.borderColor = 'rgba(10, 11, 13, 0.1)';
+            btn.classList.remove('bg-[var(--primary)]', 'text-[var(--on-primary)]', 'border-[var(--primary)]');
+            btn.classList.add('bg-[var(--canvas)]', 'text-[var(--muted)]', 'border-[var(--hairline)]');
+            (btn as HTMLButtonElement).style.backgroundColor = 'var(--canvas)';
+            (btn as HTMLButtonElement).style.color = 'var(--muted)';
+            (btn as HTMLButtonElement).style.borderColor = 'var(--hairline)';
           }
         });
 
@@ -396,23 +400,80 @@ const companySchema = {
         });
       }
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupLanguage);
-      } else {
+      // Gooey buttons initializer
+      function initGooeyButtons() {
+        const buttons = document.querySelectorAll(
+          '.btn-primary, .btn-primary-lg, .btn-outline-lg, .btn-secondary, .btn-secondary-dark, .btn-outline-dark, .btn-tertiary'
+        );
+        buttons.forEach(btn => {
+          if (btn.classList.contains('gooey-initialized')) return;
+          btn.classList.add('gooey-initialized');
+
+          // Create wrapper span for original contents
+          const wrapper = document.createElement('span');
+          wrapper.style.position = 'relative';
+          wrapper.style.zIndex = '2';
+          wrapper.style.pointerEvents = 'none';
+          wrapper.style.display = 'inline-flex';
+          wrapper.style.alignItems = 'center';
+          wrapper.style.justifyContent = 'center';
+          wrapper.style.gap = 'inherit';
+          wrapper.style.width = '100%';
+          wrapper.style.height = '100%';
+
+          // Move data-i18n attribute if present on the button
+          if (btn.hasAttribute('data-i18n')) {
+            wrapper.setAttribute('data-i18n', btn.getAttribute('data-i18n')!);
+            btn.removeAttribute('data-i18n');
+          }
+
+          while (btn.firstChild) {
+            wrapper.appendChild(btn.firstChild);
+          }
+          btn.appendChild(wrapper);
+
+          // Create inner gooey blobs container
+          const inner = document.createElement('div');
+          inner.className = 'blob-btn-inner';
+          inner.innerHTML = `
+            <div class="blob-btn-blobs">
+              <div class="blob-btn-blob"></div>
+              <div class="blob-btn-blob"></div>
+              <div class="blob-btn-blob"></div>
+              <div class="blob-btn-blob"></div>
+            </div>
+          `;
+          btn.appendChild(inner);
+        });
+      }
+
+      function setupAll() {
+        initGooeyButtons();
         setupLanguage();
+        if (typeof MutationObserver !== 'undefined') {
+          const observer = new MutationObserver(() => {
+            initGooeyButtons();
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupAll);
+      } else {
+        setupAll();
       }
     </script>
 
-    <!-- WhatsApp Redirection Dialog -->
-    <div id="whatsapp-modal" class="fixed inset-0 z-[9999] flex items-center justify-center hidden bg-[rgba(10,11,13,0.4)] backdrop-blur-[2px] transition-opacity duration-200" aria-modal="true" role="dialog" aria-labelledby="whatsapp-modal-title">
-      <div class="relative bg-white rounded-[24px] p-8 max-w-sm w-full mx-4 shadow-2xl border border-[rgba(10,11,13,0.1)]">
-        <button id="whatsapp-modal-close-btn" class="absolute top-4 right-4 text-[rgba(10,11,13,0.6)] hover:text-[#0a0b0d] cursor-pointer" aria-label="Close dialog" style="background: none; border: none;">
+    <div id="whatsapp-modal" class="fixed inset-0 z-[9999] flex items-center justify-center hidden bg-[color-mix(in_srgb,var(--black)_40%,var(--canvas))] transition-opacity duration-200" aria-modal="true" role="dialog" aria-labelledby="whatsapp-modal-title">
+      <div class="relative rounded-[24px] p-8 max-w-sm w-full mx-4 border border-[var(--hairline)]" style="background: var(--canvas);">
+        <button id="whatsapp-modal-close-btn" class="absolute top-4 right-4 text-[var(--muted)] hover:text-black cursor-pointer" aria-label="Close dialog" style="background: none; border: none;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
         
         <div class="text-center" style="display: flex; flex-direction: column; align-items: center;">
-          <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-[rgba(229,124,0,0.08)] mb-4" style="margin-bottom: 16px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-[var(--accent-highlight)] mb-4" style="margin-bottom: 16px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
           </div>
@@ -447,5 +508,16 @@ const companySchema = {
       };
     </script>
     <script is:inline src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Gooey filter for buttons -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; width: 0; height: 0; position: absolute; pointer-events: none;" aria-hidden="true">
+      <defs>
+        <filter id="gooey-btn-filter">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+        </filter>
+      </defs>
+    </svg>
   </body>
 </html>

@@ -10,7 +10,15 @@ import site from '../../config/site.json';
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative subpage-hero band-light" aria-labelledby="calc-hero-heading">
     <div class="container text-center">
-      <h1 id="calc-hero-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="calc.hero.title">Calculate Your Solar Savings</h1>
+      <h1 id="calc-hero-heading" class="aurora-title" style="font-size: clamp(36px, 7vw, 72px); margin-bottom: 24px;" data-i18n="calc.hero.title">
+        Calculate Your Solar Savings
+        <span class="aurora-overlay" aria-hidden="true">
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+        </span>
+      </h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="calc.hero.subtitle">
         Enter your details to get an instant estimate of your solar system size, cost, subsidy, and lifetime savings in Maharashtra.
       </p>
@@ -24,7 +32,7 @@ import site from '../../config/site.json';
         <!-- Inputs -->
         <div>
           <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="calc.details.title">Your Details</h2>
-          <form id="calc-form" class="space-y-6" novalidate>
+          <form id="calc-form" style="display: flex; flex-direction: column; gap: 24px;" novalidate>
 
             <!-- State -->
             <div>
@@ -51,7 +59,7 @@ import site from '../../config/site.json';
               </label>
               <input type="range" id="monthly-bill" name="monthlyBill" min="500" max="50000" step="500" value="3000"
                 class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
-                style="accent-color: #e57c00;"
+                style="accent-color: var(--primary);"
                 aria-describedby="bill-display"
               />
               <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
@@ -67,7 +75,7 @@ import site from '../../config/site.json';
               </label>
               <input type="range" id="monthly-units" name="monthlyUnits" min="50" max="5000" step="50" value="400"
                 class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
-                style="accent-color: #e57c00;"
+                style="accent-color: var(--primary);"
                 aria-describedby="units-display"
               />
               <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
@@ -75,15 +83,14 @@ import site from '../../config/site.json';
               </div>
             </div>
 
-            <!-- Connection Type -->
             <div>
               <fieldset>
                 <legend style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 12px;" data-i18n="calc.connectionType">Connection Type</legend>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" role="group">
-                  {['Residential', 'Commercial', 'Industrial', 'Agricultural'].map((type, i) => (
+                <div class="grid grid-cols-3 gap-2" role="group">
+                  {['Residential', 'Commercial', 'Industrial'].map((type, i) => (
                     <label class="relative">
                       <input type="radio" name="connectionType" value={type} class="sr-only calc-radio-input" checked={i === 0} />
-                      <span class="calc-radio-label" data-i18n={`calc.connection.${type.toLowerCase().replace('agricultural', 'agricultural')}`}>{type}</span>
+                      <span class="calc-radio-label" data-i18n={`calc.connection.${type.toLowerCase()}`}>{type}</span>
                     </label>
                   ))}
                 </div>
@@ -98,7 +105,7 @@ import site from '../../config/site.json';
               </label>
               <input type="range" id="roof-area" name="roofArea" min="100" max="10000" step="100" value="500"
                 class="w-full h-1 bg-[var(--hairline)] rounded-full appearance-none cursor-pointer"
-                style="accent-color: #e57c00;"
+                style="accent-color: var(--primary);"
                 aria-describedby="roof-display"
               />
               <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px;">
@@ -115,16 +122,16 @@ import site from '../../config/site.json';
         <!-- Results -->
         <div id="calc-results" aria-live="polite" aria-label="Calculation results">
           <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="calc.estimate.title">Your Solar Estimate</h2>
-          <div class="space-y-4">
+          <div style="display: flex; flex-direction: column; gap: 24px;">
 
             <!-- Primary Metrics — card-on-card layering -->
             <div class="grid grid-cols-2 gap-4">
               <div class="feature-card" style="padding: 24px; background: var(--canvas);">
-                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;" data-i18n="calc.metrics.size">Recommended Size</div>
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--primary); margin-bottom: 8px;" data-i18n="calc.metrics.size">Recommended Size</div>
                 <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-size">3.0 kW</div>
               </div>
               <div class="feature-card" style="padding: 24px; background: var(--canvas);">
-                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 8px;" data-i18n="calc.metrics.payback">Payback Period</div>
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--primary); margin-bottom: 8px;" data-i18n="calc.metrics.payback">Payback Period</div>
                 <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px;" id="result-payback">3.2 yrs</div>
               </div>
             </div>
@@ -347,20 +354,6 @@ import site from '../../config/site.json';
       roofSlider.max = "100000";
       roofSlider.step = "500";
       if (!preventReset) roofSlider.value = "10000";
-    } else if (type === 'Agricultural') {
-      billSlider.min = "500";
-      billSlider.max = "25000";
-      billSlider.step = "500";
-      if (!preventReset) billSlider.value = "4000";
-
-      unitsSlider.min = "50";
-      unitsSlider.max = "4000";
-      unitsSlider.step = "50";
-
-      roofSlider.min = "100";
-      roofSlider.max = "10000";
-      roofSlider.step = "100";
-      if (!preventReset) roofSlider.value = "1000";
     } else {
       billSlider.min = "500";
       billSlider.max = "50000";
@@ -482,7 +475,19 @@ import site from '../../config/site.json';
     }
     
     const roundedSize = Math.round(systemSize * 10) / 10;
-    const grossCost = roundedSize * calcConfig.systemCostPerKw;
+    
+    let grossCost = roundedSize * calcConfig.systemCostPerKw;
+    if (type === 'Residential') {
+      if (roundedSize <= 3.3) {
+        grossCost = roundedSize * (200000 / 3.3);
+      } else if (roundedSize <= 4.0) {
+        grossCost = 200000 + ((roundedSize - 3.3) / 0.7) * 40000;
+      } else if (roundedSize <= 5.0) {
+        grossCost = 240000 + (roundedSize - 4.0) * 40000;
+      } else {
+        grossCost = 280000 + (roundedSize - 5.0) * 40000;
+      }
+    }
 
     // 3. Government Subsidy & label updates
     let subsidy = 0;
@@ -502,12 +507,6 @@ import site from '../../config/site.json';
       else if (roundedSize <= 3) subsidy = calcConfig.subsidyRates.upTo3kw;
       else subsidy = calcConfig.subsidyRates.above3kw;
       
-      subsidyValEl.textContent = '- ' + fmt(subsidy);
-    } else if (type === 'Agricultural') {
-      subsidyLabelEl.textContent = trans['calc.subsidy.agricultural_label'] || 'Government Subsidy (PM-KUSUM 60%)';
-      subsidyLabelEl.style.color = 'var(--semantic-up)';
-      subsidyValEl.style.color = 'var(--semantic-up)';
-      subsidy = grossCost * 0.60;
       subsidyValEl.textContent = '- ' + fmt(subsidy);
     } else {
       subsidyLabelEl.textContent = trans['calc.subsidy.commercial_label'] || 'Tax Benefit (40% Depreciation)';
@@ -581,9 +580,74 @@ import site from '../../config/site.json';
     }
   });
 
+  function loadQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    let hasParams = false;
+    
+    const state = params.get('state');
+    if (state && stateEl) {
+      stateEl.value = state;
+      hasParams = true;
+    }
+    
+    const connectionType = params.get('connectionType');
+    if (connectionType) {
+      const radio = document.querySelector(`input[name="connectionType"][value="${connectionType}"]`);
+      if (radio) {
+        radio.checked = true;
+        hasParams = true;
+      }
+    }
+    
+    // Update limits based on connection type before setting slider values
+    handleConnectionTypeChange(true);
+    
+    const monthlyBill = params.get('monthlyBill');
+    if (monthlyBill && billSlider) {
+      billSlider.value = monthlyBill;
+      activeMode = 'bill';
+      hasParams = true;
+    }
+    
+    const monthlyUnits = params.get('monthlyUnits');
+    if (monthlyUnits && unitsSlider) {
+      unitsSlider.value = monthlyUnits;
+      activeMode = 'units';
+      hasParams = true;
+    }
+    
+    const roofArea = params.get('roofArea');
+    if (roofArea && roofSlider) {
+      roofSlider.value = roofArea;
+      hasParams = true;
+    }
+    
+    if (hasParams) {
+      // Toggle mode button UI if units mode was activated
+      if (activeMode === 'units') {
+        modeUnitsBtn?.classList.add('active');
+        modeBillBtn?.classList.remove('active');
+        unitsContainer?.classList.remove('hidden');
+        billContainer?.classList.add('hidden');
+      } else {
+        modeBillBtn?.classList.add('active');
+        modeUnitsBtn?.classList.remove('active');
+        billContainer?.classList.remove('hidden');
+        unitsContainer?.classList.add('hidden');
+      }
+      syncSliders(activeMode);
+      calculate();
+      return true;
+    }
+    return false;
+  }
+
   // Initialize
-  const loaded = loadSettings();
-  if (!loaded) {
-    handleConnectionTypeChange();
+  const paramsLoaded = loadQueryParams();
+  if (!paramsLoaded) {
+    const loaded = loadSettings();
+    if (!loaded) {
+      handleConnectionTypeChange();
+    }
   }
 </script>

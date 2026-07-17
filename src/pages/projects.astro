@@ -5,13 +5,19 @@ import site from '../../config/site.json';
 
 <Layout
   title="Completed Solar Projects – Case Studies in Maharashtra"
-  description="Explore Solarelites' completed solar installation projects — residential, commercial, industrial, and agricultural case studies from across Maharashtra."
+  description="Explore Solarelites' completed solar installation projects — residential, commercial, and industrial case studies from across Maharashtra."
 >
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative subpage-hero band-light" aria-labelledby="projects-heading">
     <div class="container text-center">
-      <h1 id="projects-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="projects.hero.title">
+      <h1 id="projects-heading" class="aurora-title" style="font-size: clamp(36px, 7vw, 72px); margin-bottom: 24px;" data-i18n="projects.hero.title">
         Real Projects, Real Savings
+        <span class="aurora-overlay" aria-hidden="true">
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+        </span>
       </h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="projects.hero.subtitle">
         Every project we complete is a step towards a cleaner Maharashtra. Here are some of our most impactful solar installations.
@@ -22,11 +28,11 @@ import site from '../../config/site.json';
   <!-- Stats — light band -->
   <section class="band-light" style="padding-block: 48px;" aria-label="Company statistics">
     <div class="container">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {site.statistics.map(stat => (
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: #0a0b0d; letter-spacing: -0.5px; margin-bottom: 4px;">{stat.value}</div>
-            <div style="font-size: 14px; color: var(--body-color);" data-i18n={stat.label === "Installations Completed" ? "stats.installations" : stat.label === "Total Capacity Installed" ? "stats.capacity" : stat.label === "Subsidy Secured" ? "stats.subsidy" : "stats.satisfaction"}>{stat.label}</div>
+          <div class="card-cream text-center" style="background: var(--cream); border: 1px solid var(--beige-deep); border-radius: var(--radius-lg); padding: var(--spacing-xl); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); font-weight: 400; color: var(--ink); letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 8px;">{stat.value}</div>
+            <div style="font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4;" data-i18n={stat.label === "Installations Completed" ? "stats.installations" : stat.label === "Total Capacity Installed" ? "stats.capacity" : stat.label === "Subsidy Secured" ? "stats.subsidy" : "stats.satisfaction"}>{stat.label}</div>
           </div>
         ))}
       </div>
@@ -81,24 +87,10 @@ import site from '../../config/site.json';
             description: 'A premium hybrid solar system with 10 kWh battery storage for a large family bungalow in South Mumbai. The system provides uninterrupted power during grid outages and has reduced the monthly electricity bill from ₹12,000 to under ₹800.',
             tags: ['Residential', 'Hybrid', 'Battery Storage'],
           },
-          {
-            id: 'project4',
-            title: '5 HP Solar Pump – Farm, Nashik, Maharashtra',
-            category: 'Agricultural',
-            client: 'Grape Farmer',
-            size: '5 HP',
-            savings: '₹1.2L/year',
-            panels: '12 panels (3.6 kW)',
-            inverter: 'IOCL Solar Pump Controller',
-            time: '3 days',
-            subsidy: 'PM-KUSUM – 60% subsidy',
-            description: 'A PM-KUSUM subsidised 5 HP solar pump installed on a grape farm in Nashik. The system powers drip irrigation for 5 acres, eliminating diesel pump costs and providing reliable daytime irrigation without grid dependency.',
-            tags: ['Agriculture', 'PM-KUSUM', 'Drip Irrigation'],
-          },
         ].map((project) => (
           <div class="feature-card" style="display: grid; grid-template-columns: 1fr; gap: 32px; background: var(--canvas);" class="md:grid-cols-2">
             <div>
-              <span class="badge-pill" style="margin-bottom: 16px;" data-i18n={"services." + project.category.toLowerCase().replace("agricultural", "agriculture") + ".title"}>{project.category}</span>
+              <span class="badge-pill" style="margin-bottom: 16px;" data-i18n={"services." + project.category.toLowerCase() + ".title"}>{project.category}</span>
               <h3 class="type-title-lg" style="margin-bottom: 16px; font-weight: 600;" data-i18n={"projects." + project.id + ".title"}>{project.title}</h3>
               <p style="font-size: 15px; line-height: 1.6; color: var(--body-color); margin-bottom: 24px;" data-i18n={"projects." + project.id + ".desc"}>{project.description}</p>
               <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
@@ -106,7 +98,7 @@ import site from '../../config/site.json';
                   <span class="badge-pill" style="background: var(--surface-soft); color: var(--body-color); font-size: 11px; font-weight: 500;" data-i18n={tag === 'Rooftop' ? 'projects.tag.rooftop' : tag === 'Smart Monitoring' ? 'projects.tag.smart_monitoring' : tag === 'Green Building' ? 'projects.tag.green_building' : tag === 'Hybrid' ? 'projects.tag.hybrid' : tag === 'Battery Storage' ? 'projects.tag.battery_storage' : tag === 'PM-KUSUM' ? 'projects.tag.pm_kusum' : tag === 'Drip Irrigation' ? 'projects.tag.drip_irrigation' : tag === 'Net Metering' ? 'process.step5.title' : tag === 'Industrial' ? 'services.industrial.title' : tag === 'Commercial' ? 'services.commercial.title' : tag === 'Residential' ? 'services.residential.title' : 'services.agriculture.title'}>{tag}</span>
                 ))}
               </div>
-              <a href="/contact" style="font-size: 14px; font-weight: 600; color: #e57c00; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" data-i18n="projects.cta.similar_quote">
+              <a href="/contact" style="font-size: 14px; font-weight: 600; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" data-i18n="projects.cta.similar_quote">
                 Get similar system quote →
               </a>
             </div>
@@ -135,7 +127,7 @@ import site from '../../config/site.json';
   <section class="section band-light" aria-labelledby="coverage-heading">
     <div class="container">
       <div style="text-align: center; margin-bottom: 48px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="projects.coverage.badge">Coverage</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--primary); margin-bottom: 16px;" data-i18n="projects.coverage.badge">Coverage</p>
         <h2 id="coverage-heading" class="type-display-md" style="margin-bottom: 16px;" data-i18n="projects.coverage.title">We serve Maharashtra.</h2>
         <p style="font-size: 16px; color: var(--body-color);" data-i18n="projects.coverage.subtitle">Providing premium solar engineering and empanelled subsidies across key districts.</p>
       </div>

@@ -10,8 +10,14 @@ import site from '../../config/site.json';
   <!-- Hero — hero-band-light: canvas bg, display-xl weight 400 headline -->
   <section class="relative subpage-hero band-light" aria-labelledby="services-hero-heading">
     <div class="container text-center">
-      <h1 id="services-hero-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="services.hero.title">
+      <h1 id="services-hero-heading" class="aurora-title" style="font-size: clamp(36px, 7vw, 72px); margin-bottom: 24px;" data-i18n="services.hero.title">
         End-to-End Solar Solutions
+        <span class="aurora-overlay" aria-hidden="true">
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+        </span>
       </h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="services.hero.subtitle">
         From a single rooftop to a multi-megawatt industrial park — we deliver precision-engineered solar systems that maximise your returns in Maharashtra.
@@ -20,77 +26,81 @@ import site from '../../config/site.json';
   </section>
 
   <!-- Services Detail — rotating bands -->
-  {site.services.map((service, i) => (
-    <section
-      id={service.id}
-      class={`section ${i % 2 !== 0 ? 'band-soft' : 'band-light'}`}
-      aria-labelledby={`service-${service.id}-heading`}
-    >
-      <div class="container">
-        <div class={`grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
-          <div class={i % 2 !== 0 ? 'md:order-2' : ''}>
-            <div class="badge-pill" style="margin-bottom: 24px;">
-              <span data-i18n="services.starting_from">Starting from</span> {service.startingPrice}
+  {site.services.map((service, i) => {
+    const cardClasses = ["feature-card-coral", "feature-card-blue", "feature-card-magenta", "feature-card-cream"];
+    const cardClass = cardClasses[i % cardClasses.length];
+    return (
+      <section
+        id={service.id}
+        class={`section ${i % 2 !== 0 ? 'band-soft' : 'band-light'}`}
+        aria-labelledby={`service-${service.id}-heading`}
+      >
+        <div class="container">
+          <div class={`grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+            <div class={i % 2 !== 0 ? 'md:order-2' : ''}>
+              <div class="badge-pill" style="margin-bottom: 24px;">
+                <span data-i18n="services.starting_from">Starting from</span> {service.startingPrice}
+              </div>
+              <h2 id={`service-${service.id}-heading`} class="type-display-lg" style="margin-bottom: 24px;" data-i18n={`services.${service.id}.title`}>
+                {service.title}
+              </h2>
+              <p style="font-size: 16px; line-height: 1.6; color: var(--body-color); margin-bottom: 32px;" data-i18n={`services.${service.id}.desc`}>
+                {service.description}
+              </p>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;" role="list">
+                {service.features.map((feature, idx) => (
+                  <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--body-color);" data-i18n={`services.${service.id}.feature.${idx}`}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"/></svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                <a href="/contact" class="btn-primary" data-i18n="services.cta.quote">
+                  Get {service.title} Quote
+                </a>
+                <span style="font-size: 14px; color: var(--muted);" data-i18n={`services.timeline.${service.id}`}>{service.timeline}</span>
+              </div>
             </div>
-            <h2 id={`service-${service.id}-heading`} class="type-display-lg" style="margin-bottom: 24px;" data-i18n={`services.${service.id}.title`}>
-              {service.title}
-            </h2>
-            <p style="font-size: 16px; line-height: 1.6; color: var(--body-color); margin-bottom: 32px;" data-i18n={`services.${service.id}.desc`}>
-              {service.description}
-            </p>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;" role="list">
-              {service.features.map((feature, idx) => (
-                <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--body-color);" data-i18n={`services.${service.id}.feature.${idx}`}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"/></svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-              <a href="/contact" class="btn-primary" data-i18n="services.cta.quote">
-                Get {service.title} Quote
-              </a>
-              <span style="font-size: 14px; color: var(--muted);" data-i18n={`services.timeline.${service.id}`}>{service.timeline}</span>
-            </div>
-          </div>
 
-          <!-- Why choose card: product-ui-card or feature-card -->
-          <div class={`${i % 2 !== 0 ? 'md:order-1' : ''} feature-card`} style="background: var(--canvas);">
-            <div style="width: 44px; height: 44px; border-radius: 9999px; background: var(--surface-strong); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                {service.id === 'residential' && <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>}
-                {service.id === 'commercial' && <><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></>}
-                {service.id === 'industrial' && <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>}
-                {service.id === 'agriculture' && <><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></>}
-              </svg>
-            </div>
-            <h3 class="type-title-md" style="margin-bottom: 16px;">
-              <span data-i18n="services.why_choose">Why choose</span> {service.title}?
-            </h3>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              {[
-                { label: 'Installation Time', value: service.timeline, key: 'services.table.installation_time', valKey: `services.timeline.${service.id}` },
-                { label: 'Starting Price', value: service.startingPrice, key: 'services.table.starting_price' },
-                { label: 'Warranty', value: '25-year panel performance', key: 'services.table.warranty', valKey: 'services.warranty.value' },
-                { label: 'Subsidy', value: service.id === 'residential' ? 'Up to ₹78,000' : service.id === 'agriculture' ? 'PM-KUSUM – 60% subsidy' : 'Accelerated depreciation 40%', key: 'services.table.subsidy', valKey: `services.subsidy.${service.id}` },
-              ].map(item => (
-                <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
-                  <span style="font-size: 14px; color: var(--muted);" data-i18n={item.key}>{item.label}</span>
-                  <span style="font-size: 14px; font-weight: 600; color: var(--ink);" data-i18n={item.valKey}>{item.value}</span>
-                </div>
-              ))}
+            <!-- Why choose card: product-ui-card or feature-card -->
+            <div class={`${i % 2 !== 0 ? 'md:order-1' : ''} feature-card ${cardClass}`} style="border: 1px solid var(--hairline-soft);">
+              <div style="width: 44px; height: 44px; border-radius: 9999px; background: var(--canvas); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--black)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  {service.id === 'residential' && <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>}
+                  {service.id === 'commercial' && <><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></>}
+                  {service.id === 'industrial' && <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>}
+                  {service.id === 'agriculture' && <><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></>}
+                </svg>
+              </div>
+              <h3 class="type-title-md" style="margin-bottom: 16px;">
+                <span data-i18n="services.why_choose">Why choose</span> {service.title}?
+              </h3>
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                {[
+                  { label: 'Installation Time', value: service.timeline, key: 'services.table.installation_time', valKey: `services.timeline.${service.id}` },
+                  { label: 'Starting Price', value: service.startingPrice, key: 'services.table.starting_price' },
+                  { label: 'Warranty', value: '25-year panel performance', key: 'services.table.warranty', valKey: 'services.warranty.value' },
+                  { label: 'Subsidy', value: service.id === 'residential' ? 'Up to ₹78,000' : service.id === 'agriculture' ? 'PM-KUSUM – 60% subsidy' : 'Accelerated depreciation 40%', key: 'services.table.subsidy', valKey: `services.subsidy.${service.id}` },
+                ].map(item => (
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--hairline-soft);" class="last:border-0">
+                    <span style="font-size: 14px; color: var(--muted);" data-i18n={item.key}>{item.label}</span>
+                    <span style="font-size: 14px; font-weight: 600; color: var(--ink);" data-i18n={item.valKey}>{item.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  ))}
+      </section>
+    );
+  })}
 
   <!-- Process — band-soft -->
   <section class="section band-soft" aria-labelledby="services-process-heading">
     <div class="container">
       <div style="max-width: 480px; margin-bottom: 64px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="services.process.badge">Our Process</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--primary); margin-bottom: 16px;" data-i18n="services.process.badge">Our Process</p>
         <h2 id="services-process-heading" class="type-display-md" data-i18n="services.process.title">
           How we deliver every project.
         </h2>
@@ -111,7 +121,7 @@ import site from '../../config/site.json';
   <section class="section band-light" id="maintenance" aria-labelledby="maintenance-heading">
     <div class="container max-w-4xl mx-auto">
       <div style="text-align: center; margin-bottom: 48px;">
-        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #e57c00; margin-bottom: 16px;" data-i18n="services.after_sales.badge">After-Sales</p>
+        <p style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--primary); margin-bottom: 16px;" data-i18n="services.after_sales.badge">After-Sales</p>
         <h2 id="maintenance-heading" class="type-display-md" style="margin-bottom: 16px;" data-i18n="services.after_sales.title">
           Lifetime maintenance & support.
         </h2>
@@ -125,7 +135,7 @@ import site from '../../config/site.json';
         ].map(card => (
           <div class="feature-card" style="text-align: center;">
             <div style="width: 40px; height: 40px; border-radius: 9999px; background: var(--surface-strong); display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 20px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 {card.icon === 'gift' && <><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></>}
                 {card.icon === 'activity' && <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>}
                 {card.icon === 'headphones' && <><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></>}

@@ -10,8 +10,14 @@ import site from '../../config/site.json';
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative subpage-hero band-light" aria-labelledby="contact-heading">
     <div class="container text-center">
-      <h1 id="contact-heading" class="type-display-xl" style="margin-bottom: 24px;" data-i18n="contact.hero.title">
+      <h1 id="contact-heading" class="aurora-title" style="font-size: clamp(36px, 7vw, 72px); margin-bottom: 24px;" data-i18n="contact.hero.title">
         Let's Talk Solar
+        <span class="aurora-overlay" aria-hidden="true">
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+        </span>
       </h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="contact.hero.subtitle">
         Our solar experts are ready to help you make the switch. Free consultation, no obligation.
@@ -27,9 +33,9 @@ import site from '../../config/site.json';
         <!-- Form -->
         <div>
           <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="contact.form.title">Request a Free Quote</h2>
-          <form id="contact-form" class="space-y-5" novalidate aria-label="Contact and quote request form" data-email={site.contact.email} data-whatsapp={site.contact.whatsapp}>
+          <form id="contact-form" class="space-y-8" novalidate aria-label="Contact and quote request form" data-email={site.contact.email} data-whatsapp={site.contact.whatsapp}>
 
-            <div class="grid sm:grid-cols-2 gap-5">
+            <div class="grid sm:grid-cols-2 gap-x-6 gap-y-8">
               <div>
                 <label for="name" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;"><span data-i18n="contact.form.name">Full Name</span> <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
                 <input type="text" id="name" name="name" required autocomplete="name"
@@ -60,7 +66,7 @@ import site from '../../config/site.json';
               />
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-5">
+            <div class="grid sm:grid-cols-2 gap-x-6 gap-y-8">
               <div>
                 <label for="state" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;"><span data-i18n="contact.form.state">State</span> <span aria-label="required" style="color: var(--semantic-down);">*</span></label>
                 <select id="state" name="state" required class="cb-select w-full">
@@ -85,7 +91,7 @@ import site from '../../config/site.json';
               />
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-5">
+            <div class="grid sm:grid-cols-2 gap-x-6 gap-y-8">
               <div>
                 <label for="propertyType" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.propertyType">Property Type</label>
                 <select id="propertyType" name="propertyType" class="cb-select w-full">
@@ -95,7 +101,6 @@ import site from '../../config/site.json';
                   <option value="Commercial – Office" data-i18n="contact.form.prop_com_off">Commercial – Office</option>
                   <option value="Commercial – Retail" data-i18n="contact.form.prop_com_ret">Commercial – Retail</option>
                   <option value="Industrial – Factory/Warehouse" data-i18n="contact.form.prop_ind">Industrial – Factory/Warehouse</option>
-                  <option value="Agricultural – Farm" data-i18n="contact.form.prop_agri">Agricultural – Farm</option>
                 </select>
               </div>
               <div>
@@ -107,7 +112,7 @@ import site from '../../config/site.json';
               </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-5">
+            <div class="grid sm:grid-cols-2 gap-x-6 gap-y-8">
               <div>
                 <label for="roofArea" style="display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px;" data-i18n="contact.form.roofArea">Approximate Roof Area (sq ft)</label>
                 <input type="number" id="roofArea" name="roofArea" min="0" inputmode="numeric"
@@ -127,8 +132,8 @@ import site from '../../config/site.json';
             </div>
 
             <!-- Subsidy checkbox -->
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <input type="checkbox" id="subsidyRequired" name="subsidyRequired" class="w-4 h-4 rounded" style="accent-color: #e57c00; cursor: pointer;" />
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: 32px; margin-bottom: 32px;">
+              <input type="checkbox" id="subsidyRequired" name="subsidyRequired" class="cb-checkbox" />
               <label for="subsidyRequired" style="font-size: 14px; color: var(--body-color); cursor: pointer;" data-i18n="contact.form.subsidyRequired">I need assistance with government subsidy application</label>
             </div>
 
@@ -147,10 +152,10 @@ import site from '../../config/site.json';
             </button>
 
             <!-- Success/Error messages -->
-            <div id="form-success" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(229,124,0,0.06); color: #e57c00; border: 1px solid rgba(229,124,0,0.15);" role="alert" data-i18n="contact.form.success">
+            <div id="form-success" class="hidden p-4 rounded-xl text-sm font-500" style="background: color-mix(in srgb, var(--light-green) 20%, var(--canvas)); color: var(--black); border: 1px solid var(--light-green);" role="alert" data-i18n="contact.form.success">
               Thank you! We've received your request and will contact you within 24 hours.
             </div>
-            <div id="form-error" class="hidden p-4 rounded-xl text-sm font-500" style="background: rgba(232,93,117,0.06); color: var(--semantic-down); border: 1px solid rgba(232,93,117,0.15);" role="alert" data-i18n="contact.form.error">
+            <div id="form-error" class="hidden p-4 rounded-xl text-sm font-500" style="background: color-mix(in srgb, var(--semantic-down) 6%, var(--canvas)); color: var(--semantic-down); border: 1px solid color-mix(in srgb, var(--semantic-down) 15%, var(--canvas));" role="alert" data-i18n="contact.form.error">
               Something went wrong. Please call us directly.
             </div>
           </form>
@@ -166,11 +171,11 @@ import site from '../../config/site.json';
             { icon: 'phone', labelKey: 'contact.sidebar.emergency', value: site.contact.emergencyPhone, href: `tel:${site.contact.emergencyPhone.replace(/-/g,'')}`, descKey: 'contact.sidebar.urgent_issues' },
           ].map(card => (
             <a href={card.href} target={card.icon === 'message-circle' ? '_blank' : undefined} rel={card.icon === 'message-circle' ? 'noopener noreferrer' : undefined}
-              class="feature-card block hover:border-[#e57c00]/40"
+              class="feature-card block hover:border-[var(--primary)]/40"
               style="text-decoration: none; background: var(--canvas); display: flex; align-items: start; gap: 16px; padding: 20px; transition: border-color 0.15s ease;"
             >
               <div style="width: 40px; height: 40px; border-radius: 9999px; background: var(--surface-strong); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   {card.icon === 'phone' && <><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.63 4.35 2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></>}
                   {card.icon === 'message-circle' && <><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></>}
                   {card.icon === 'mail' && <><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></>}
@@ -186,7 +191,7 @@ import site from '../../config/site.json';
 
           <!-- Address -->
           <div class="feature-card" style="background: var(--canvas); display: flex; align-items: start; gap: 16px; padding: 20px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e57c00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             <div>
               <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;" data-i18n="contact.sidebar.addressTitle">Office Address</div>
               <address style="font-size: 13px; color: var(--body-color); not-italic; line-height: 1.6;">
@@ -321,8 +326,7 @@ import site from '../../config/site.json';
         const mapping: Record<string, string> = {
           'Residential': 'Residential – Independent House',
           'Commercial': 'Commercial – Office',
-          'Industrial': 'Industrial – Factory/Warehouse',
-          'Agricultural': 'Agricultural – Farm'
+          'Industrial': 'Industrial – Factory/Warehouse'
         };
         if (mapping[settings.connectionType]) {
           propertyTypeEl.value = mapping[settings.connectionType];

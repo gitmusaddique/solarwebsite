@@ -98,9 +98,9 @@ const categories = ['All', ...new Set(posts.map(p => p.data.category))];
       b.style.borderColor = 'var(--hairline)';
     });
     activeBtn.setAttribute('aria-selected', 'true');
-    activeBtn.style.background = '#e57c00';
-    activeBtn.style.color = '#ffffff';
-    activeBtn.style.borderColor = '#e57c00';
+    activeBtn.style.background = 'var(--primary)';
+    activeBtn.style.color = 'var(--on-primary)';
+    activeBtn.style.borderColor = 'var(--primary)';
   }
 
   btns.forEach(btn => {

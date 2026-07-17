@@ -7,7 +7,7 @@ import { readdir } from 'fs/promises';
 import { join } from 'path';
 
 const galleryBase = join(process.cwd(), 'public/gallery');
-const categories = ['residential','commercial','industrial','agriculture'];
+const categories = ['residential','commercial','industrial'];
 
 const images: { src: string; category: string; alt: string }[] = [];
 
@@ -37,8 +37,6 @@ if (images.length === 0) {
     { src: '/gallery/commercial/mall-solar-1.jpg', category: 'commercial', alt: 'Shopping mall rooftop solar system' },
     { src: '/gallery/industrial/factory-solar-1.jpg', category: 'industrial', alt: 'Industrial factory solar installation' },
     { src: '/gallery/industrial/warehouse-solar-1.jpg', category: 'industrial', alt: 'Warehouse rooftop solar panels' },
-    { src: '/gallery/agriculture/farm-solar-1.jpg', category: 'agriculture', alt: 'Agricultural solar pump installation' },
-    { src: '/gallery/agriculture/agri-solar-2.jpg', category: 'agriculture', alt: 'Farm solar water pump system' },
   ];
   images.push(...placeholders);
 }
@@ -46,12 +44,20 @@ if (images.length === 0) {
 
 <Layout
   title="Solar Project Gallery – Installations in Maharashtra"
-  description="Browse our gallery of completed solar installations across Maharashtra. Residential, commercial, industrial, and agricultural solar projects."
+  description="Browse our gallery of completed solar installations across Maharashtra. Residential, commercial, and industrial solar projects."
 >
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative subpage-hero band-light">
     <div class="container text-center">
-      <h1 class="type-display-xl" style="margin-bottom: 24px;" data-i18n="gallery.hero.title">Our Installations</h1>
+      <h1 class="aurora-title" style="font-size: clamp(36px, 7vw, 72px); margin-bottom: 24px;" data-i18n="gallery.hero.title">
+        Our Installations
+        <span class="aurora-overlay" aria-hidden="true">
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+        </span>
+      </h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;" data-i18n="gallery.hero.subtitle">
         Every photo is a clean energy story. Browse our portfolio of completed solar installations across Maharashtra.
       </p>
@@ -67,8 +73,7 @@ if (images.length === 0) {
           { name: 'All', key: 'all' },
           { name: 'Residential', key: 'residential' },
           { name: 'Commercial', key: 'commercial' },
-          { name: 'Industrial', key: 'industrial' },
-          { name: 'Agriculture', key: 'agriculture' }
+          { name: 'Industrial', key: 'industrial' }
         ].map(cat => (
           <button
             type="button"
@@ -102,9 +107,6 @@ if (images.length === 0) {
                 height="300"
                 onerror="this.parentElement.style.minHeight='200px'; this.style.display='none'; this.parentElement.innerHTML += '<div style=\'display:flex;align-items:center;justify-content:center;height:200px;font-size:12px;color:var(--muted);\'>' + this.alt + '</div>';"
               />
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4" style="background: linear-gradient(to top, rgba(10,11,13,0.8), transparent);">
-                <span style="color: #ffffff; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n={`gallery.category.${img.category}`}>{img.category} Installation</span>
-              </div>
             </div>
           </div>
         ))}
@@ -143,9 +145,9 @@ if (images.length === 0) {
       b.style.borderColor = 'var(--hairline)';
     });
     activeBtn.setAttribute('aria-pressed', 'true');
-    activeBtn.style.background = '#e57c00';
-    activeBtn.style.color = '#ffffff';
-    activeBtn.style.borderColor = '#e57c00';
+    activeBtn.style.background = 'var(--primary)';
+    activeBtn.style.color = 'var(--on-primary)';
+    activeBtn.style.borderColor = 'var(--primary)';
   }
 
   filters.forEach(btn => {

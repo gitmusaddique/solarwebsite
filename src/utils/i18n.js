@@ -91,7 +91,8 @@ export const translations = {
     "about.value.support.desc": "24/7 client care, instant AMC response.",
     "about.timeline.2019": "Founded Vicky Enterprises.",
     "about.timeline.2021": "First major solar installation project: 2MW solar installation at Sambhaji Nager.",
-    "about.timeline.2024": "Rebranded as Solar Elites and received MNRE approval.",
+    "about.timeline.2024": "Rebranded as Solar Elites and became an MNRE government regulated vendor.",
+    "about.timeline.2026": "Completed 250+ projects across Maharashtra.",
     "about.team.vicky.role": "CEO & Founder",
     "about.team.vicky.bio": "7+ years in solar engineering. Leading the mission for a greener Maharashtra.",
     "about.team.swati.role": "COO",
@@ -103,7 +104,7 @@ export const translations = {
     "about.cert.mnre": "MNRE Empanelled Vendor",
     "about.cert.iso": "ISO 9001:2015 Certified",
     "about.cert.meda": "MEDA Registered",
-    "about.cert.msme": "MSME Registered",
+    "about.cert.msme": "MNRE Registered",
 
     // Services Page
     "services.hero.title": "End-to-End Solar Solutions",
@@ -478,7 +479,8 @@ export const translations = {
     "about.value.support.desc": "24/7 ग्राहक सेवा, त्वरित AMC प्रतिक्रिया।",
     "about.timeline.2019": "विक्की एंटरप्राइजेज की स्थापना।",
     "about.timeline.2021": "पहला बड़ा सौर स्थापना प्रोजेक्ट: संभाजी नगर में 2MW सौर स्थापना।",
-    "about.timeline.2024": "सोलर एलीट्स के रूप में रीब्रांड किया गया और MNRE मंजूरी प्राप्त की।",
+    "about.timeline.2024": "किसानों के लिए / या सोलर एलीट्स के रूप में रीब्रांड किया गया और MNRE सरकारी विनियमित विक्रेता बने।",
+    "about.timeline.2026": "महाराष्ट्र भर में 250+ सौर परियोजनाएं पूरी कीं।",
     "about.team.vicky.role": "सीईओ और संस्थापक",
     "about.team.vicky.bio": "सौर इंजीनियरिंग में 7+ वर्ष। हरित महाराष्ट्र के मिशन का नेतृत्व कर रहे हैं।",
     "about.team.swati.role": "सीओओ",
@@ -490,7 +492,7 @@ export const translations = {
     "about.cert.mnre": "MNRE पैनलबद्ध वेंडर",
     "about.cert.iso": "ISO 9001:2015 प्रमाणित",
     "about.cert.meda": "MEDA पंजीकृत",
-    "about.cert.msme": "MSME पंजीकृत",
+    "about.cert.msme": "MNRE पंजीकृत",
 
     // Services Page
     "services.hero.title": "शुरू से अंत तक सोलर समाधान",
@@ -865,7 +867,8 @@ export const translations = {
     "about.value.support.desc": "24/7 ग्राहक सेवा, त्वरित AMC प्रतिसाद.",
     "about.timeline.2019": "विकी एंटरप्रायजेसची स्थापना.",
     "about.timeline.2021": "पहला मोठा सौर प्रकल्प: संभाजी नगर येथे 2MW सौर ऊर्जा इन्स्टॉलेशन.",
-    "about.timeline.2024": "सोलर एलिट्स म्हणून रीब्रँड केले आणि MNRE मंजुरी मिळाली.",
+    "about.timeline.2024": "सोलर एलिट्स म्हणून रीब्रँड केले आणि MNRE सरकारी मान्यताप्राप्त वेंडर बनले.",
+    "about.timeline.2026": "महाराष्ट्रभरात 250+ सौर प्रकल्प यशस्वीरित्या पूर्ण केले.",
     "about.team.vicky.role": "सीईओ आणि संस्थापक",
     "about.team.vicky.bio": "सोलर इंजिनिअरिंगमध्ये ७+ वर्षे. हरित महाराष्ट्राच्या ध्येयाचे नेतृत्व करत आहेत.",
     "about.team.swati.role": "सीओओ",
@@ -877,7 +880,7 @@ export const translations = {
     "about.cert.mnre": "MNRE अधिकृत वेंडर",
     "about.cert.iso": "ISO 9001:2015 प्रमाणित",
     "about.cert.meda": "MEDA नोंदणीकृत",
-    "about.cert.msme": "MSME नोंदणीकृत",
+    "about.cert.msme": "MNRE नोंदणीकृत",
 
     // Services Page
     "services.hero.title": "सुरुवातीपासून शेवटपर्यंत सोलर सोल्यूशन्स",

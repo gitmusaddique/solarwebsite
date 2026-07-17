@@ -50,7 +50,7 @@ const articleSchema = {
       <h1 class="type-display-md" style="margin-bottom: 24px; line-height: 1.25;">{post.data.title}</h1>
       <p style="font-size: 18px; line-height: 1.6; color: var(--body-color); margin-bottom: 32px;">{post.data.description}</p>
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="width: 40px; height: 40px; border-radius: 9999px; background: var(--surface-strong); color: #e57c00; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600;">
+        <div style="width: 40px; height: 40px; border-radius: 9999px; background: var(--surface-strong); color: var(--muted-teal); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600;">
           {post.data.author.split(' ').map((n: string) => n[0]).join('').slice(0,2)}
         </div>
         <div>
@@ -102,8 +102,8 @@ const articleSchema = {
           </div>
 
           <!-- CTA -->
-          <div class="feature-card" style="background: var(--canvas); border-color: #e57c00; padding: 20px; box-shadow: 0 4px 20px rgba(229,124,0,0.05);">
-            <h3 class="type-title-sm" style="margin-bottom: 8px; color: #e57c00;">Ready to Go Solar?</h3>
+          <div class="feature-card" style="background: var(--canvas); border-color: var(--primary); padding: 20px;">
+            <h3 class="type-title-sm" style="margin-bottom: 8px; color: var(--muted-teal);">Ready to Go Solar?</h3>
             <p style="font-size: 12px; line-height: 1.5; color: var(--body-color); margin-bottom: 16px;">Get a free consultation and site assessment from our experts.</p>
             <a href="/contact" class="btn-primary" style="display: flex; justify-content: center; width: 100%; font-size: 13px; height: 36px; padding: 0 12px;">Get Free Quote</a>
           </div>

@@ -3,7 +3,7 @@ import site from '../../config/site.json';
 
 const links = {
   company:   [{ label: 'About', href: '/about' }, { label: 'Projects', href: '/projects' }, { label: 'Gallery', href: '/gallery' }, { label: 'Blog', href: '/blog' }],
-  services:  [{ label: 'Residential', href: '/services#residential' }, { label: 'Commercial', href: '/services#commercial' }, { label: 'Industrial', href: '/services#industrial' }, { label: 'Agricultural', href: '/services#agriculture' }, { label: 'Maintenance', href: '/services#maintenance' }],
+  services:  [{ label: 'Residential', href: '/services#residential' }, { label: 'Commercial', href: '/services#commercial' }, { label: 'Industrial', href: '/services#industrial' }, { label: 'Maintenance', href: '/services#maintenance' }],
   resources: [{ label: 'Solar Calculator', href: '/calculator' }, { label: 'Government Subsidy', href: '/subsidy' }, { label: 'FAQ', href: '/#faq' }],
   legal:     [{ label: 'Privacy Policy', href: '/privacy' }, { label: 'Terms & Conditions', href: '/terms' }],
 };
@@ -11,9 +11,9 @@ const links = {
 const year = new Date().getFullYear();
 ---
 
-<!-- footer-light: canvas bg, body color text, body-sm type -->
+<!-- footer-light: cream bg, body color text, body-sm type -->
 <footer
-  style="background: var(--canvas); border-top: 1px solid var(--hairline);"
+  style="background: var(--cream); border-top: 1px solid var(--hairline);"
   role="contentinfo"
 >
   <div class="container" style="padding-top: 64px; padding-bottom: 48px;">
@@ -55,7 +55,7 @@ const year = new Date().getFullYear();
           <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
             {items.map(link => (
               <li>
-                <a href={link.href} style="font-size: 14px; font-weight: 400; color: var(--body-color); text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#e57c00'" onmouseout="this.style.color='var(--body-color)'">
+                <a href={link.href} style="font-size: 14px; font-weight: 400; color: var(--body-color); text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--body-color)'">
                   {link.label}
                 </a>
               </li>
