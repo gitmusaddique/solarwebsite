@@ -627,7 +627,7 @@ main {
   align-items: center;
   padding: 4px 10px;
   background: var(--accent-highlight);
-  color: var(--brand-coral);
+  color: var(--ink);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.5px;
