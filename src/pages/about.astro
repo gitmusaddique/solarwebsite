@@ -88,11 +88,14 @@ import site from '../../config/site.json';
           { year: '2021', key: '2021', event: 'First major solar installation project: 2MW solar installation at Sambhaji Nager.' },
           { year: '2024', key: '2024', event: 'Rebranded as Solar Elites and became an MNRE government regulated vendor.' },
           { year: '2026', key: '2026', event: 'Completed 250+ solar projects across Maharashtra.' },
-        ].map((item) => (
+        ].map((item, index, arr) => (
           <div style="display: flex; gap: 32px; margin-bottom: 48px;" class="last:mb-0">
             <div style="flex-shrink: 0; width: 100px; font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--primary); padding-top: 2px;">{item.year}</div>
-            <div style="position: relative; padding-left: 32px; border-left: 1px solid var(--hairline);">
-              <div style="position: absolute; left: 0; top: 6px; width: 8px; height: 8px; border-radius: 9999px; background: var(--primary); transform: translateX(-50%);"></div>
+            <div style="position: relative; padding-left: 32px;">
+              <div style="position: absolute; left: 0; top: 6px; width: 8px; height: 8px; border-radius: 9999px; background: var(--primary); transform: translateX(-50%); z-index: 2;"></div>
+              {index < arr.length - 1 && (
+                <div style="position: absolute; left: 0; top: 6px; bottom: -54px; width: 2px; background: var(--primary); transform: translateX(-50%); z-index: 1;"></div>
+              )}
               <p style="font-size: 14px; line-height: 1.6; color: var(--body-color);" data-i18n={"about.timeline." + item.key}>{item.event}</p>
             </div>
           </div>

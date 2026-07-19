@@ -73,7 +73,7 @@ const articleSchema = {
 
   <!-- Cover Image -->
   <div class="container pb-12">
-    <div style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--hairline); background: var(--surface-soft);" class="max-w-4xl aspect-[16/7]">
+    <div style="border-radius: var(--radius-xl); overflow: hidden; border: 2px solid var(--primary); background: var(--surface-soft);" class="max-w-4xl aspect-[16/7]">
       <img src={post.data.coverImage} alt={post.data.title} class="w-full h-full object-cover" width="800" height="350" />
     </div>
   </div>
@@ -94,7 +94,7 @@ const articleSchema = {
               <h3 class="type-title-sm" style="margin-bottom: 16px;">Tags</h3>
               <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                 {post.data.tags.map(tag => (
-                  <span class="badge-pill" style="font-size: 11px; padding: 4px 10px; background: var(--surface-soft); color: var(--body-color);">{tag}</span>
+                  <span class="badge-pill" style="font-size: 11px; padding: 4px 10px; background: var(--surface-soft); color: var(--body-color); border: 1.5px solid var(--primary);">{tag}</span>
                 ))}
               </div>
             </div>
@@ -125,22 +125,24 @@ const articleSchema = {
     <section class="section band-soft" aria-labelledby="related-heading">
       <div class="container">
         <h2 id="related-heading" class="type-display-sm" style="margin-bottom: 40px;">Related Articles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {related.map(relPost => (
-            <article class="feature-card flex flex-col group" style="background: var(--canvas); padding: 24px;">
-              <a href={`/blog/${relPost.id}`} class="group block" style="text-decoration: none;">
-                <div class="aspect-[16/9] rounded-xl mb-4 overflow-hidden" style="background: var(--surface-soft); border: 1px solid var(--hairline-soft);">
-                  <img src={relPost.data.coverImage} alt={relPost.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="300" height="170" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {related.map((relPost, idx) => {
+            return (
+              <article class="feature-card feature-card-cream flex flex-col group" style="padding: 24px; border: 2px solid var(--primary) !important;">
+                <a href={`/blog/${relPost.id}`} class="group block" style="text-decoration: none;">
+                  <div class="aspect-[16/9] rounded-xl overflow-hidden" style="background: var(--surface-soft); border: 2px solid var(--primary); margin-bottom: 16px;">
+                    <img src={relPost.data.coverImage} alt={relPost.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="300" height="170" />
+                  </div>
+                </a>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                  <span class="badge-pill" style="font-size: 10px; padding: 2px 8px; border: 1.5px solid var(--primary);">{relPost.data.category}</span>
                 </div>
-              </a>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                <span class="badge-pill" style="font-size: 10px; padding: 2px 8px;">{relPost.data.category}</span>
-              </div>
-              <h3 class="type-title-sm" style="margin-bottom: 0;">
-                <a href={`/blog/${relPost.id}`} style="color: var(--ink); text-decoration: none;" class="hover:opacity-80 transition-opacity">{relPost.data.title}</a>
-              </h3>
-            </article>
-          ))}
+                <h3 class="type-title-sm" style="margin-bottom: 0;">
+                  <a href={`/blog/${relPost.id}`} style="color: var(--ink); text-decoration: none;" class="hover:opacity-80 transition-opacity">{relPost.data.title}</a>
+                </h3>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
