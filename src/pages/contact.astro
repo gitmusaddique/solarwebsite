@@ -33,7 +33,22 @@ import site from '../../config/site.json';
         <!-- Form -->
         <div>
           <h2 class="type-display-sm" style="margin-bottom: 32px;" data-i18n="contact.form.title">Request a Free Quote</h2>
-          <form id="contact-form" class="space-y-8" novalidate aria-label="Contact and quote request form" data-email={site.contact.email} data-whatsapp={site.contact.whatsapp}>
+          <form
+            id="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="space-y-8"
+            novalidate
+            aria-label="Contact and quote request form"
+            data-email={site.contact.email}
+            data-whatsapp={site.contact.whatsapp}
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden" aria-hidden="true">
+              <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
 
             <div class="grid sm:grid-cols-2 gap-x-6 gap-y-8">
               <div>
@@ -284,13 +299,7 @@ import site from '../../config/site.json';
 
     const whatsappNumber = form.getAttribute('data-whatsapp') || '919822625918';
 
-    setTimeout(() => {
-      submitBtn.textContent = 'Submit Request';
-      submitBtn.disabled = false;
-      successMsg?.classList.remove('hidden');
-      form.reset();
-      
-      // Redirect to WhatsApp message automatically using our smart helper
+    function goToWhatsApp() {
       if (typeof (window as any).openWhatsApp === 'function') {
         (window as any).openWhatsApp(whatsappNumber, text, false);
       } else {
@@ -298,7 +307,55 @@ import site from '../../config/site.json';
         const finalNumber = cleanNumber.startsWith('91') && cleanNumber.length > 10 ? cleanNumber : `91${cleanNumber}`;
         window.location.href = `https://wa.me/${finalNumber}?text=${encodeURIComponent(text)}`;
       }
-    }, 1000);
+    }
+
+    const leadPayload = {
+      name, phone, email, state, city, address,
+      propertyType, monthlyBill, roofArea, callbackTime,
+      subsidyRequired, message,
+    };
+
+    // Silent backup copy in the Netlify Forms dashboard — fire and forget,
+    // does not gate the UI. Free safety net if the function below fails.
+    const formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData as any).toString(),
+    }).catch((err) => console.warn('Netlify Forms backup submission failed:', err));
+
+    // Primary path: writes the lead to Google Sheets and emails
+    // contact@solarelites.in with the query, via the submit-lead function.
+    fetch('/.netlify/functions/submit-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(leadPayload),
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error(`submit-lead failed: ${res.status} ${body}`);
+        }
+
+        submitBtn.textContent = 'Submit Request';
+        submitBtn.disabled = false;
+        successMsg?.classList.remove('hidden');
+        errorMsg?.classList.add('hidden');
+        form.reset();
+
+        goToWhatsApp();
+      })
+      .catch((err) => {
+        console.error('Contact form submission error:', err);
+        submitBtn.textContent = 'Submit Request';
+        submitBtn.disabled = false;
+        errorMsg?.classList.remove('hidden');
+        successMsg?.classList.add('hidden');
+        // Sheet/email path failed, but the Netlify Forms backup above
+        // still has a copy — still route the visitor to WhatsApp so
+        // their enquiry reaches you one way or another.
+        goToWhatsApp();
+      });
   });
 
   // Live phone validation
