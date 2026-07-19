@@ -47,7 +47,15 @@ const articleSchema = {
         <span class="badge-pill" style="font-weight: 600;">{post.data.category}</span>
         <span style="font-size: 12px; color: var(--muted);">{post.data.readingTime}</span>
       </div>
-      <h1 class="type-display-md" style="margin-bottom: 24px; line-height: 1.25;">{post.data.title}</h1>
+      <h1 class="aurora-title" style="font-size: clamp(32px, 5.5vw, 56px); margin-bottom: 24px; line-height: 1.2;" id="blog-title">
+        {post.data.title}
+        <span class="aurora-overlay" aria-hidden="true">
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+        </span>
+      </h1>
       <p style="font-size: 18px; line-height: 1.6; color: var(--body-color); margin-bottom: 32px;">{post.data.description}</p>
       <div style="display: flex; align-items: center; gap: 12px;">
         <div style="width: 40px; height: 40px; border-radius: 9999px; background: var(--surface-strong); color: var(--muted-teal); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600;">
@@ -65,7 +73,7 @@ const articleSchema = {
 
   <!-- Cover Image -->
   <div class="container pb-12">
-    <div style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--hairline); background: var(--surface-soft);" class="max-w-4xl aspect-[16/7]">
+    <div style="border-radius: var(--radius-xl); overflow: hidden; border: 2px solid var(--primary); background: var(--surface-soft);" class="max-w-4xl aspect-[16/7]">
       <img src={post.data.coverImage} alt={post.data.title} class="w-full h-full object-cover" width="800" height="350" />
     </div>
   </div>
@@ -82,19 +90,19 @@ const articleSchema = {
         <div class="sticky top-24 space-y-6">
           <!-- Tags -->
           {post.data.tags.length > 0 && (
-            <div class="feature-card" style="background: var(--canvas); padding: 20px;">
-              <h3 class="type-title-sm" style="margin-bottom: 12px;">Tags</h3>
+            <div class="feature-card" style="background: var(--canvas); padding: 24px;">
+              <h3 class="type-title-sm" style="margin-bottom: 16px;">Tags</h3>
               <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                 {post.data.tags.map(tag => (
-                  <span class="badge-pill" style="font-size: 11px; padding: 4px 10px; background: var(--surface-soft); color: var(--body-color);">{tag}</span>
+                  <span class="badge-pill" style="font-size: 11px; padding: 4px 10px; background: var(--surface-soft); color: var(--body-color); border: 1.5px solid var(--primary);">{tag}</span>
                 ))}
               </div>
             </div>
           )}
 
           <!-- Share -->
-          <div class="feature-card" style="background: var(--canvas); padding: 20px;">
-            <h3 class="type-title-sm" style="margin-bottom: 12px;">Share</h3>
+          <div class="feature-card" style="background: var(--canvas); padding: 24px;">
+            <h3 class="type-title-sm" style="margin-bottom: 16px;">Share</h3>
             <div style="display: flex; gap: 8px;">
               <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent('https://www.solarelites.in/blog/' + post.id)}`} target="_blank" rel="noopener noreferrer" class="btn-secondary" style="flex: 1; justify-content: center; font-size: 12px; height: 36px; padding: 0 12px;" aria-label="Share on Twitter">Twitter</a>
               <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://www.solarelites.in/blog/' + post.id)}`} target="_blank" rel="noopener noreferrer" class="btn-secondary" style="flex: 1; justify-content: center; font-size: 12px; height: 36px; padding: 0 12px;" aria-label="Share on LinkedIn">LinkedIn</a>
@@ -102,9 +110,9 @@ const articleSchema = {
           </div>
 
           <!-- CTA -->
-          <div class="feature-card" style="background: var(--canvas); border-color: var(--primary); padding: 20px;">
-            <h3 class="type-title-sm" style="margin-bottom: 8px; color: var(--muted-teal);">Ready to Go Solar?</h3>
-            <p style="font-size: 12px; line-height: 1.5; color: var(--body-color); margin-bottom: 16px;">Get a free consultation and site assessment from our experts.</p>
+          <div class="feature-card" style="background: var(--canvas); border-color: var(--primary); padding: 24px;">
+            <h3 class="type-title-sm" style="margin-bottom: 12px; color: var(--muted-teal);">Ready to Go Solar?</h3>
+            <p style="font-size: 12px; line-height: 1.5; color: var(--body-color); margin-bottom: 20px;">Get a free consultation and site assessment from our experts.</p>
             <a href="/contact" class="btn-primary" style="display: flex; justify-content: center; width: 100%; font-size: 13px; height: 36px; padding: 0 12px;">Get Free Quote</a>
           </div>
         </div>
@@ -117,22 +125,24 @@ const articleSchema = {
     <section class="section band-soft" aria-labelledby="related-heading">
       <div class="container">
         <h2 id="related-heading" class="type-display-sm" style="margin-bottom: 40px;">Related Articles</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {related.map(relPost => (
-            <article class="feature-card flex flex-col group" style="background: var(--canvas); padding: 16px;">
-              <a href={`/blog/${relPost.id}`} class="group block" style="text-decoration: none;">
-                <div class="aspect-[16/9] rounded-xl mb-4 overflow-hidden" style="background: var(--surface-soft); border: 1px solid var(--hairline-soft);">
-                  <img src={relPost.data.coverImage} alt={relPost.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="300" height="170" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {related.map((relPost, idx) => {
+            return (
+              <article class="feature-card feature-card-cream flex flex-col group" style="padding: 24px; border: 2px solid var(--primary) !important;">
+                <a href={`/blog/${relPost.id}`} class="group block" style="text-decoration: none;">
+                  <div class="aspect-[16/9] rounded-xl overflow-hidden" style="background: var(--surface-soft); border: 2px solid var(--primary); margin-bottom: 16px;">
+                    <img src={relPost.data.coverImage} alt={relPost.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" width="300" height="170" />
+                  </div>
+                </a>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                  <span class="badge-pill" style="font-size: 10px; padding: 2px 8px; border: 1.5px solid var(--primary);">{relPost.data.category}</span>
                 </div>
-              </a>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <span class="badge-pill" style="font-size: 10px; padding: 2px 8px;">{relPost.data.category}</span>
-              </div>
-              <h3 class="type-title-sm" style="margin-bottom: 0;">
-                <a href={`/blog/${relPost.id}`} style="color: var(--ink); text-decoration: none;" class="hover:opacity-80 transition-opacity">{relPost.data.title}</a>
-              </h3>
-            </article>
-          ))}
+                <h3 class="type-title-sm" style="margin-bottom: 0;">
+                  <a href={`/blog/${relPost.id}`} style="color: var(--ink); text-decoration: none;" class="hover:opacity-80 transition-opacity">{relPost.data.title}</a>
+                </h3>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

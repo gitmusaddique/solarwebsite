@@ -13,9 +13,9 @@
     "phoneRaw": "+919822625918",
     "whatsapp": "+919822625918",
     "whatsappMessage": "Hello, I'm interested in solar installation for my property.",
-    "email": "contact@solarelites.in",
-    "supportEmail": "contact@solarelites.in",
-    "salesEmail": "contact@solarelites.in",
+    "email": "contact@solarelites.com",
+    "supportEmail": "contact@solarelites.com",
+    "salesEmail": "contact@solarelites.com",
     "emergencyPhone": "+91-98226-25918",
     "address": {
       "line1": "Ambajogai Road Near Late Prayagbai Patil Collage",
@@ -387,10 +387,10 @@
     "secure": false,
     "user": "",
     "recipients": [
-      "contact@solarelites.in"
+      "contact@solarelites.com"
     ],
     "fromName": "Solarelites Website",
-    "fromEmail": "contact@solarelites.in"
+    "fromEmail": "contact@solarelites.com"
   },
   "team": [
     {

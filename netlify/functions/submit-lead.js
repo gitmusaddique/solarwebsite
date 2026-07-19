@@ -2,7 +2,7 @@
 //
 // Receives the contact form submission as JSON, then in parallel:
 //   1. Appends a row to a Google Sheet (via a Google service account)
-//   2. Emails contact@solarelites.in the query details (via Resend)
+//   2. Emails contact@solarelites.com the query details (via Resend)
 //
 // Required environment variables (set in Netlify: Site settings ->
 // Environment variables):
@@ -11,8 +11,8 @@
 //   GOOGLE_SHEET_ID                the long id in the sheet's URL
 //   GOOGLE_SHEET_TAB               tab/sheet name to append to, e.g. "Leads"
 //   RESEND_API_KEY                 from resend.com
-//   RESEND_FROM_EMAIL              a verified sender on your domain, e.g. leads@solarelites.in
-//   NOTIFY_EMAIL                   optional, defaults to contact@solarelites.in
+//   RESEND_FROM_EMAIL              a verified sender on your domain, e.g. leads@solarelites.com
+//   NOTIFY_EMAIL                   optional, defaults to contact@solarelites.com
 
 import { GoogleAuth } from 'google-auth-library';
 
@@ -22,8 +22,8 @@ const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
 const PRIVATE_KEY = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'leads@solarelites.in';
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'contact@solarelites.in';
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'leads@solarelites.com';
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'contact@solarelites.com';
 
 async function getSheetsAccessToken() {
   const auth = new GoogleAuth({

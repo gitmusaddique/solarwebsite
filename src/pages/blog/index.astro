@@ -15,7 +15,15 @@ const categories = ['All', ...new Set(posts.map(p => p.data.category))];
   <!-- Hero — band-light, display-xl weight 400 -->
   <section class="relative subpage-hero band-light">
     <div class="container text-center">
-      <h1 class="type-display-xl" style="margin-bottom: 24px;">From Our Blog</h1>
+      <h1 class="aurora-title" style="font-size: clamp(36px, 7vw, 72px); margin-bottom: 24px;">
+        From Our Blog
+        <span class="aurora-overlay" aria-hidden="true">
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+          <span class="aurora-overlay__item"></span>
+        </span>
+      </h1>
       <p style="font-size: 18px; color: var(--body-color); max-width: 600px; margin-inline: auto; line-height: 1.6;">
         Expert guides, case studies, and policy updates to help you make the most of solar energy in Maharashtra.
       </p>
@@ -23,15 +31,15 @@ const categories = ['All', ...new Set(posts.map(p => p.data.category))];
   </section>
 
   <!-- Blog Grid — band-soft -->
-  <section class="section band-soft" aria-label="Blog posts">
+  <section class="section band-soft pb-28" aria-label="Blog posts">
     <div class="container">
       <!-- Category Filter — Coinbase pill buttons -->
-      <div class="flex flex-wrap gap-2 mb-12" role="tablist" aria-label="Filter blog posts by category">
+      <div class="flex flex-wrap gap-x-3 gap-y-4" style="margin-top: 32px; margin-bottom: 48px;" role="tablist" aria-label="Filter blog posts by category">
         {categories.map(cat => (
           <button
             type="button"
             class="category-btn"
-            style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; height: 36px; font-size: 13px; font-weight: 600; border-radius: var(--radius-pill); border: 1px solid var(--hairline); background: var(--canvas); color: var(--body-color); cursor: pointer; transition: all 0.15s ease;"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; height: 38px; font-size: 13px; font-weight: 600; border-radius: var(--radius-pill); border: 2px solid var(--primary); background: var(--canvas); color: var(--body-color); cursor: pointer; transition: all 0.15s ease;"
             data-category={cat}
             role="tab"
             aria-selected={cat === 'All' ? 'true' : 'false'}
@@ -43,38 +51,44 @@ const categories = ['All', ...new Set(posts.map(p => p.data.category))];
 
       <!-- Posts Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
-        {posts.map(post => (
-          <article
-            class="feature-card flex flex-col group"
-            style="background: var(--canvas); padding: 20px; transition: transform 0.2s ease, border-color 0.2s ease;"
-            data-category={post.data.category}
-          >
-            <a href={`/blog/${post.id}`} class="group block" style="text-decoration: none;" aria-label={`Read: ${post.data.title}`}>
-              <div class="aspect-[16/9] rounded-xl mb-5 overflow-hidden" style="background: var(--surface-soft); border: 1px solid var(--hairline-soft);">
-                <img
-                  src={post.data.coverImage}
-                  alt={post.data.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  width="400"
-                  height="225"
-                />
+        {posts.map((post, idx) => {
+          return (
+            <article
+              class="feature-card feature-card-cream flex flex-col group"
+              style="padding: 32px; transition: transform 0.2s ease, border-color 0.2s ease; display: flex; border: 2px solid var(--primary) !important;"
+              data-category={post.data.category}
+            >
+              <a href={`/blog/${post.id}`} class="group block" style="text-decoration: none; margin-bottom: 24px;" aria-label={`Read: ${post.data.title}`}>
+                <div class="aspect-[16/9] rounded-xl overflow-hidden" style="background: var(--surface-soft); border: 2px solid var(--primary);">
+                  <img
+                    src={post.data.coverImage}
+                    alt={post.data.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    width="400"
+                    height="225"
+                  />
+                </div>
+              </a>
+              <div class="flex flex-col flex-1">
+                <div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                    <span class="badge-pill" style="font-size: 11px; padding: 4px 10px; font-weight: 600;">{post.data.category}</span>
+                    <span style="font-size: 12px; color: var(--ink); opacity: 0.8; font-weight: 500;">{post.data.readingTime}</span>
+                  </div>
+                  <h2 class="type-title-md" style="margin-bottom: 16px; font-weight: 600; line-height: 1.4;">
+                    <a href={`/blog/${post.id}`} style="color: var(--ink); text-decoration: none;" class="hover:opacity-80 transition-opacity">{post.data.title}</a>
+                  </h2>
+                  <p style="font-size: 14px; line-height: 1.6; color: var(--ink); margin-bottom: 24px; flex: 1; opacity: 0.9;">{post.data.description}</p>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink); border-top: 2px solid var(--primary); padding-top: 16px; margin-top: auto; opacity: 0.9;">
+                  <span style="font-weight: 600; color: var(--ink);">{post.data.author}</span>
+                  <time datetime={post.data.date} style="font-weight: 500;">{new Date(post.data.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+                </div>
               </div>
-            </a>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-              <span class="badge-pill" style="font-size: 11px; padding: 4px 10px; font-weight: 600;">{post.data.category}</span>
-              <span style="font-size: 12px; color: var(--muted);">{post.data.readingTime}</span>
-            </div>
-            <h2 class="type-title-md" style="margin-bottom: 12px; font-weight: 600; line-height: 1.4;">
-              <a href={`/blog/${post.id}`} style="color: var(--ink); text-decoration: none;" class="hover:opacity-80 transition-opacity">{post.data.title}</a>
-            </h2>
-            <p style="font-size: 14px; line-height: 1.6; color: var(--body-color); margin-bottom: 24px; flex: 1;">{post.data.description}</p>
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--hairline-soft); padding-top: 16px;">
-              <span style="font-weight: 500; color: var(--ink);">{post.data.author}</span>
-              <time datetime={post.data.date}>{new Date(post.data.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
 
       {posts.length === 0 && (
@@ -95,7 +109,7 @@ const categories = ['All', ...new Set(posts.map(p => p.data.category))];
       b.setAttribute('aria-selected', 'false');
       b.style.background = 'var(--canvas)';
       b.style.color = 'var(--body-color)';
-      b.style.borderColor = 'var(--hairline)';
+      b.style.borderColor = 'var(--primary)';
     });
     activeBtn.setAttribute('aria-selected', 'true');
     activeBtn.style.background = 'var(--primary)';

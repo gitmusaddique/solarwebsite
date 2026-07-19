@@ -12,7 +12,7 @@ export const translations = {
     "nav.blog": "Blog",
     
     "hero.title": "Clean energy.<br/>Measurable savings.",
-    "hero.subtitle": "From residential rooftops to industrial complexes — Solarelites delivers precision-engineered solar solutions backed by government subsidies and lifetime support.",
+    "hero.subtitle": "From residential rooftops to industrial complexes, Solarelites delivers precision-engineered solar solutions backed by government subsidies and lifetime support.",
     "hero.cta.consult": "Get Free Consultation",
     "hero.cta.calc": "Calculate Savings",
     
@@ -37,7 +37,7 @@ export const translations = {
     
     "subsidy.badge": "Government Scheme",
     "subsidy.title": "Get up to ₹78,000 subsidy.",
-    "subsidy.desc": "PM Surya Ghar Muft Bijli Yojana provides substantial subsidies for rooftop solar. We handle the entire application — from registration to disbursement.",
+    "subsidy.desc": "PM Surya Ghar Muft Bijli Yojana provides substantial subsidies for rooftop solar. We handle the entire application, from registration to disbursement.",
     "subsidy.cta.learn": "Learn About Subsidies",
     "subsidy.cta.talk": "Talk to an Expert",
     
@@ -68,11 +68,11 @@ export const translations = {
 
     // About Page
     "about.hero.title": "We believe every home and business deserves clean, affordable energy.",
-    "about.hero.subtitle": "Founded in 2019 as Vicky Enterprises and rebranded as Solar Elites in 2024, we are Maharashtra's most trusted solar energy company — completing 1,000+ installations and 3MW+ capacity across the state.",
+    "about.hero.subtitle": "Founded in 2019 as Vicky Enterprises and rebranded as Solar Elites in 2024, we are Maharashtra's most trusted solar energy company, completing 1,000+ installations and 3MW+ capacity across the state.",
     "about.mission.title": "Our Mission",
-    "about.mission.desc": "To accelerate Maharashtra's transition to renewable energy by making world-class solar installations accessible and affordable for every home, farm, and business — while ensuring maximum financial returns for our customers through government subsidies and premium engineering.",
+    "about.mission.desc": "To accelerate Maharashtra's transition to renewable energy by making world-class solar installations accessible and affordable for every home, farm, and business, while ensuring maximum financial returns for our customers through government subsidies and premium engineering.",
     "about.vision.title": "Our Vision",
-    "about.vision.desc": "A solar panel on every rooftop in Maharashtra. A clean energy future for every family. By 2030, we aim to complete 1 lakh solar installations — contributing to our state's green energy goals.",
+    "about.vision.desc": "A solar panel on every rooftop in Maharashtra. A clean energy future for every family. By 2030, we aim to complete 1 lakh solar installations, contributing to our state's green energy goals.",
     "about.journey.badge": "Our Journey",
     "about.journey.title": "Our legacy & journey.",
     "about.leadership.badge": "Leadership",
@@ -108,7 +108,7 @@ export const translations = {
 
     // Services Page
     "services.hero.title": "End-to-End Solar Solutions",
-    "services.hero.subtitle": "From a single rooftop to a multi-megawatt industrial park — we deliver precision-engineered solar systems that maximise your returns in Maharashtra.",
+    "services.hero.subtitle": "From a single rooftop to a multi-megawatt industrial park, we deliver precision-engineered solar systems that maximise your returns in Maharashtra.",
     "services.why_choose": "Why choose",
     "services.process.badge": "Our Process",
     "services.process.title": "How we deliver every project.",
@@ -122,7 +122,7 @@ export const translations = {
     "services.after_sales.headphones.title": "24/7 Emergency Support",
     "services.after_sales.headphones.desc": "Dedicated emergency helpline ensures any critical issue is resolved within 24 hours.",
     "services.cta.title": "Get a Free Site Assessment",
-    "services.cta.subtitle": "Our engineers will visit your property, assess your energy needs, and provide a detailed proposal — completely free of charge.",
+    "services.cta.subtitle": "Our engineers will visit your property, assess your energy needs, and provide a detailed proposal, completely free of charge.",
     "services.cta.btn": "Book Free Assessment",
     "services.residential.feature.0": "MNRE subsidy registration",
     "services.residential.feature.1": "Net-metering coordination",
@@ -214,7 +214,7 @@ export const translations = {
 
     // Subsidy Page
     "subsidy.hero.title": "Get Up to ₹78,000 Solar Subsidy",
-    "subsidy.hero.subtitle": "India's PM Surya Ghar Muft Bijli Yojana provides substantial subsidies for rooftop solar installations. Solarelites is an MNRE-empanelled installer in Maharashtra — we handle the entire application process on your behalf.",
+    "subsidy.hero.subtitle": "India's PM Surya Ghar Muft Bijli Yojana provides substantial subsidies for rooftop solar installations. Solarelites is an MNRE-empanelled installer in Maharashtra, and we handle the entire application process on your behalf.",
     "subsidy.cta.apply": "Apply for Subsidy Assistance",
     "subsidy.cta.calc": "Calculate Your Subsidy",
     "subsidy.scheme.badge": "Central Government Scheme",
@@ -400,7 +400,7 @@ export const translations = {
     "nav.blog": "ब्लॉग",
     
     "hero.title": "स्वच्छ ऊर्जा।<br/>मापन योग्य बचत।",
-    "hero.subtitle": "आवासीय छतों से लेकर औद्योगिक परिसरों तक — सोलरलाइट्स सरकारी सब्सिडी और आजीवन सहायता के साथ सटीक-इंजीनियर सोलर समाधान प्रदान करता है।",
+    "hero.subtitle": "आवासीय छतों से लेकर औद्योगिक परिसरों तक, सोलरलाइट्स सरकारी सब्सिडी और आजीवन सहायता के साथ सटीक-इंजीनियर सोलर समाधान प्रदान करता है।",
     "hero.cta.consult": "मुफ्त परामर्श प्राप्त करें",
     "hero.cta.calc": "बचत की गणना करें",
     
@@ -456,11 +456,11 @@ export const translations = {
 
     // About Page
     "about.hero.title": "हमारा मानना है कि हर घर और व्यवसाय स्वच्छ, किफायती ऊर्जा का हकदार है।",
-    "about.hero.subtitle": "2019 में विक्की एंटरप्राइजेज के रूप में स्थापित और 2024 में सोलर एलीट्स के रूप में रीब्रांड किया गया, हम महाराष्ट्र की सबसे भरोसेमंद सौर ऊर्जा कंपनी हैं — जिसने राज्य भर में 1,000+ इंस्टॉलेशन और 3MW+ क्षमता पूरी की है।",
+    "about.hero.subtitle": "2019 में विक्की एंटरप्राइजेज के रूप में स्थापित और 2024 में सोलर एलीट्स के रूप में रीब्रांड किया गया, हम महाराष्ट्र की सबसे भरोसेमंद सौर ऊर्जा कंपनी हैं, जिसने राज्य भर में 1,000+ इंस्टॉलेशन और 3MW+ क्षमता पूरी की है।",
     "about.mission.title": "हमारा उद्देश्य",
-    "about.mission.desc": "विश्व स्तर का सौर स्थापनाओं को हर घर, खेत और व्यवसाय के लिए सुलभ और किफायती बनाकर महाराष्ट्र के नवीकरणीय ऊर्जा में संक्रमण को तेज करना — साथ ही सरकारी सब्सिडी और प्रीमियम इंजीनियरिंग के माध्यम से हमारे ग्राहकों के लिए अधिकतम वित्तीय रिटर्न सुनिश्चित करना।",
+    "about.mission.desc": "विश्व स्तर का सौर स्थापनाओं को हर घर, खेत और व्यवसाय के लिए सुलभ और किफायती बनाकर महाराष्ट्र के नवीकरणीय ऊर्जा में संक्रमण को तेज करना, साथ ही सरकारी सब्सिडी और प्रीमियम इंजीनियरिंग के माध्यम से हमारे ग्राहकों के लिए अधिकतम वित्तीय रिटर्न सुनिश्चित करना।",
     "about.vision.title": "हमारा दृष्टिकोण",
-    "about.vision.desc": "महाराष्ट्र में हर छत पर एक सोलर पैनल। हर परिवार के लिए एक स्वच्छ ऊर्जा भविष्य। 2030 तक, हमारा लक्ष्य 1 लाख सोलर इंस्टॉलेशन पूरा करना है — जो हमारे राज्य के हरित ऊर्जा लक्ष्यों में योगदान देगा।",
+    "about.vision.desc": "महाराष्ट्र में हर छत पर एक सोलर पैनल। हर परिवार के लिए एक स्वच्छ ऊर्जा भविष्य। 2030 तक, हमारा लक्ष्य 1 लाख सोलर इंस्टॉलेशन पूरा करना है, जो हमारे राज्य के हरित ऊर्जा लक्ष्यों में योगदान देगा।",
     "about.journey.badge": "हमारी यात्रा",
     "about.journey.title": "हमारी विरासत और यात्रा।",
     "about.leadership.badge": "नेतृत्व",
@@ -496,7 +496,7 @@ export const translations = {
 
     // Services Page
     "services.hero.title": "शुरू से अंत तक सोलर समाधान",
-    "services.hero.subtitle": "एक छत से लेकर मल्टी-मेगावाट औद्योगिक पार्क तक — हम सटीक-इंजीनियर सोलर सिस्टम प्रदान करते हैं जो महाराष्ट्र में आपके रिटर्न को अधिकतम करते हैं।",
+    "services.hero.subtitle": "एक छत से लेकर मल्टी-मेगावाट औद्योगिक पार्क तक, हम सटीक-इंजीनियर सोलर सिस्टम प्रदान करते हैं जो महाराष्ट्र में आपके रिटर्न को अधिकतम करते हैं।",
     "services.why_choose": "क्यों चुनें",
     "services.process.badge": "हमारी प्रक्रिया",
     "services.process.title": "हम हर प्रोजेक्ट को कैसे डिलीवर करते हैं।",
@@ -510,7 +510,7 @@ export const translations = {
     "services.after_sales.headphones.title": "24/7 आपातकालीन सहायता",
     "services.after_sales.headphones.desc": "समर्पित आपातकालीन हेल्पलाइन सुनिश्चित करती है कि किसी भी महत्वपूर्ण समस्या का समाधान 24 घंटे के भीतर किया जाए।",
     "services.cta.title": "एक निःशुल्क साइट मूल्यांकन प्राप्त करें",
-    "services.cta.subtitle": "हमारे इंजीनियर आपकी संपत्ति का दौरा करेंगे, आपकी ऊर्जा आवश्यकताओं का आकलन करेंगे, और एक विस्तृत प्रस्ताव प्रदान करेंगे — पूरी तरह से निःशुल्क।",
+    "services.cta.subtitle": "हमारे इंजीनियर आपकी संपत्ति का दौरा करेंगे, आपकी ऊर्जा आवश्यकताओं का आकलन करेंगे, और एक विस्तृत प्रस्ताव प्रदान करेंगे, जो पूरी तरह से निःशुल्क है।",
     "services.cta.btn": "निःशुल्क मूल्यांकन बुक करें",
     "services.residential.feature.0": "MNRE सब्सिडी पंजीकरण",
     "services.residential.feature.1": "नेट-मीटरिंग समन्वय",
@@ -602,7 +602,7 @@ export const translations = {
 
     // Subsidy Page
     "subsidy.hero.title": "₹78,000 तक की सोलर सब्सिडी प्राप्त करें",
-    "subsidy.hero.subtitle": "भारत सरकार की पीएम सूर्य घर मुफ्त बिजली योजना छत पर सोलर लगाने के लिए भारी सब्सिडी प्रदान करती है। सोलरलाइट्स महाराष्ट्र में एक MNRE-मान्यता प्राप्त वेंडर है — हम आपकी ओर से पूरी आवेदन प्रक्रिया संभालते हैं।",
+    "subsidy.hero.subtitle": "भारत सरकार की पीएम सूर्य घर मुफ्त बिजली योजना छत पर सोलर लगाने के लिए भारी सब्सिडी प्रदान करती है। सोलरलाइट्स महाराष्ट्र में एक MNRE-मान्यता प्राप्त वेंडर है और हम आपकी ओर से पूरी आवेदन प्रक्रिया संभालते हैं।",
     "subsidy.cta.apply": "सब्सिडी सहायता के लिए आवेदन करें",
     "subsidy.cta.calc": "अपनी सब्सिडी की गणना करें",
     "subsidy.scheme.badge": "केंद्र सरकार की योजना",
@@ -788,7 +788,7 @@ export const translations = {
     "nav.blog": "ब्लॉग",
     
     "hero.title": "स्वच्छ ऊर्जा.<br/>मोजता येण्यासारखी बचत.",
-    "hero.subtitle": "आवासीय छतांपासून ते औद्योगिक संकुलांपर्यंत — सोलरलाईट्स सरकारी अनुदान आणि आजीवन सहाय्यासह अचूक-इंजिनिअर्ड सोलर सोल्यूशन्स प्रदान करते.",
+    "hero.subtitle": "आवासीय छतांपासून ते औद्योगिक संकुलांपर्यंत, सोलरलाईट्स सरकारी अनुदान आणि आजीवन सहाय्यासह अचूक-इंजिनिअर्ड सोलर सोल्यूशन्स प्रदान करते.",
     "hero.cta.consult": "मोफत सल्ला मिळवा",
     "hero.cta.calc": "बचतीची गणना करा",
     
@@ -844,11 +844,11 @@ export const translations = {
 
     // About Page
     "about.hero.title": "आमचा असा विश्वास आहे की प्रत्येक घर आणि व्यवसाय स्वच्छ, परवडणाऱ्या ऊर्जेचा हक्कदार आहे.",
-    "about.hero.subtitle": "2019 मध्ये विकी एंटरप्रायजेस म्हणून स्थापित आणि 2024 मध्ये सोलर एलिट्स म्हणून रीब्रँड केलेले, आम्ही महाराष्ट्रातील सर्वात विश्वासू सौर ऊर्जा कंपनी आहोत — संपूर्ण राज्यात 1,000+ इन्स्टॉलेशन्स आणि 3MW+ क्षमता पूर्ण केली आहे.",
+    "about.hero.subtitle": "2019 मध्ये विकी एंटरप्रायजेस म्हणून स्थापित आणि 2024 मध्ये सोलर एलिट्स म्हणून रीब्रँड केलेले, आम्ही महाराष्ट्रातील सर्वात विश्वासू सौर ऊर्जा कंपनी आहोत, ज्याने संपूर्ण राज्यात 1,000+ इन्स्टॉलेशन्स आणि 3MW+ क्षमता पूर्ण केली आहे.",
     "about.mission.title": "आमचे ध्येय",
-    "about.mission.desc": "जागतिक दर्जाचे सोलर इन्स्टॉलेशन्स प्रत्येक घर, शेत आणि व्यवसायासाठी सुलभ आणि परवडणारे बनवून महाराष्ट्राचे नूतनीकरणक्षम ऊर्जेकडील मार्गक्रमण गतिमान करणे — आणि सरकारी अनुदान व प्रीमियम इंजिनिअरिंगद्वारे ग्राहकांसाठी जास्तीत जास्त आर्थिक नफा सुनिश्चित करणे.",
+    "about.mission.desc": "जागतिक दर्जाचे सोलर इन्स्टॉलेशन्स प्रत्येक घर, शेत आणि व्यवसायासाठी सुलभ आणि परवडणारे बनवून महाराष्ट्राचे नूतनीकरणक्षम ऊर्जेकडील मार्गक्रमण गतिमान करणे, आणि सरकारी अनुदान व प्रीमियम इंजिनिअरिंगद्वारे ग्राहकांसाठी जास्तीत जास्त आर्थिक नफा सुनिश्चित करणे.",
     "about.vision.title": "आमचे स्वप्न",
-    "about.vision.desc": "महाराष्ट्रातील प्रत्येक छतावर सोलर पॅनेल. प्रत्येक कुटुंबासाठी स्वच्छ ऊर्जेचे भविष्य. 2030 पर्यंत, आमचे 1ख सोलर इन्स्टॉलेशन्स पूर्ण करण्याचे उद्दिष्ट आहे — जे आपल्या राज्याच्या हरित ऊर्जा उद्दिष्टांमध्ये योगदान देईल.",
+    "about.vision.desc": "महाराष्ट्रातील प्रत्येक छतावर सोलर पॅनेल. प्रत्येक कुटुंबासाठी स्वच्छ ऊर्जेचे भविष्य. 2030 पर्यंत, आमचे 1ख सोलर इन्स्टॉलेशन्स पूर्ण करण्याचे उद्दिष्ट आहे, जे आपल्या राज्याच्या हरित ऊर्जा उद्दिष्टांमध्ये योगदान देईल.",
     "about.journey.badge": "आमचा प्रवास",
     "about.journey.title": "आमचा वारसा आणि प्रवास.",
     "about.leadership.badge": "नेतृत्व",
@@ -884,7 +884,7 @@ export const translations = {
 
     // Services Page
     "services.hero.title": "सुरुवातीपासून शेवटपर्यंत सोलर सोल्यूशन्स",
-    "services.hero.subtitle": "एका छतापासून ते मल्टि-मेगावॅट औद्योगिक पार्कपर्यंत — आम्ही अचूक-इंजिनिअर्ड सोलर सिस्टम प्रदान करतो जे महाराष्ट्रात तुमच्या परताव्याला जास्तीत जास्त वाढवतात.",
+    "services.hero.subtitle": "एका छतापासून ते मल्टि-मेगावॅट औद्योगिक पार्कपर्यंत, आम्ही अचूक-इंजिनिअर्ड सोलर सिस्टम प्रदान करतो जे महाराष्ट्रात तुमच्या परताव्याला जास्तीत जास्त वाढवतात.",
     "services.why_choose": "का निवडावा",
     "services.process.badge": "आमची कार्यपद्धती",
     "services.process.title": "How we deliver every project.",
@@ -898,7 +898,7 @@ export const translations = {
     "services.after_sales.headphones.title": "२४/७ आपत्कालीन सहाय्य",
     "services.after_sales.headphones.desc": "Dedicated emergency helpline ensures any critical issue is resolved within 24 hours.",
     "services.cta.title": "मोफत साइट मूल्यांकन मिळवा",
-    "services.cta.subtitle": "Our engineers will visit your property, assess your energy needs, and provide a detailed proposal — completely free of charge.",
+    "services.cta.subtitle": "Our engineers will visit your property, assess your energy needs, and provide a detailed proposal, completely free of charge.",
     "services.cta.btn": "मोफत मूल्यांकन बुक करा",
     "services.residential.feature.0": "MNRE अनुदान नोंदणी",
     "services.residential.feature.1": "नेट-मीटरिंग समन्वय",
@@ -990,7 +990,7 @@ export const translations = {
 
     // Subsidy Page
     "subsidy.hero.title": "₹७८,००० पर्यंतचे सोलर अनुदान मिळवा",
-    "subsidy.hero.subtitle": "भारतातील पीएम सूर्य घर मोफत वीज योजना छतावरील सोलरसाठी भरीव अनुदान प्रदान करते. सोलरलाईट्स महाराष्ट्रात MNRE-अधिकृत इन्स्टॉलर आहे — आम्ही तुमच्या वतीने संपूर्ण अर्ज प्रक्रिया हाताळतो.",
+    "subsidy.hero.subtitle": "भारतातील पीएम सूर्य घर मोफत वीज योजना छतावरील सोलरसाठी भरीव अनुदान प्रदान करते. सोलरलाईट्स महाराष्ट्रात MNRE-अधिकृत इन्स्टॉलर आहे आणि आम्ही तुमच्या वतीने संपूर्ण अर्ज प्रक्रिया हाताळतो.",
     "subsidy.cta.apply": "अनुदान सहाय्यासाठी अर्ज करा",
     "subsidy.cta.calc": "तुमच्या अनुदानाची गणना करा",
     "subsidy.scheme.badge": "केंद्र सरकारची योजना",

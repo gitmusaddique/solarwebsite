@@ -325,7 +325,7 @@ import site from '../../config/site.json';
     }).catch((err) => console.warn('Netlify Forms backup submission failed:', err));
 
     // Primary path: writes the lead to Google Sheets and emails
-    // contact@solarelites.in with the query, via the submit-lead function.
+    // contact@solarelites.com with the query, via the submit-lead function.
     fetch('/.netlify/functions/submit-lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

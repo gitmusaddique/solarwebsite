@@ -102,4 +102,4 @@ Solarelites offers a completely free, detailed commercial solar assessment inclu
 - Net metering and regulatory guidance
 
 **Call our commercial team: +91-98226-25918**
-**Email: contact@solarelites.in**
+**Email: contact@solarelites.com**
