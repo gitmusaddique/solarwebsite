@@ -68,7 +68,7 @@ if (images.length === 0) {
   <section class="section band-soft" aria-label="Solar installation gallery">
     <div class="container">
       <!-- Filter Buttons — Coinbase pill buttons -->
-      <div class="flex flex-wrap gap-2 mb-12 justify-center" role="group" aria-label="Filter gallery by category">
+      <div class="flex flex-wrap gap-3 justify-center" style="margin-top: 32px; margin-bottom: 48px;" role="group" aria-label="Filter gallery by category">
         {[
           { name: 'All', key: 'all' },
           { name: 'Residential', key: 'residential' },
@@ -78,7 +78,7 @@ if (images.length === 0) {
           <button
             type="button"
             class="gallery-filter"
-            style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; height: 38px; font-size: 14px; font-weight: 600; border-radius: var(--radius-pill); border: 1px solid var(--hairline); background: var(--canvas); color: var(--body-color); cursor: pointer; transition: all 0.15s ease;"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 18px; height: 38px; font-size: 13px; font-weight: 600; border-radius: var(--radius-pill); border: 2px solid var(--primary); background: var(--canvas); color: var(--body-color); cursor: pointer; transition: all 0.15s ease;"
             data-filter={cat.key}
             data-i18n={`gallery.filter.${cat.key}`}
             aria-pressed={cat.key === 'all' ? 'true' : 'false'}
@@ -89,15 +89,15 @@ if (images.length === 0) {
       </div>
 
       <!-- Gallery Grid -->
-      <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4" id="gallery-grid" role="list" aria-label="Gallery images">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto" id="gallery-grid" role="list" aria-label="Gallery images">
         {images.map(img => (
           <div
-            class="gallery-item break-inside-avoid rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300 border"
-            style="border-color: var(--hairline); background: var(--canvas);"
+            class="gallery-item rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300"
+            style="border: 2px solid var(--primary); background: var(--canvas);"
             data-category={img.category}
             role="listitem"
           >
-            <div class="relative overflow-hidden" style="aspect-ratio: auto;">
+            <div class="relative overflow-hidden" style="aspect-ratio: 4/3;">
               <img
                 src={img.src}
                 alt={img.alt}
@@ -142,7 +142,7 @@ if (images.length === 0) {
       b.setAttribute('aria-pressed', 'false');
       b.style.background = 'var(--canvas)';
       b.style.color = 'var(--body-color)';
-      b.style.borderColor = 'var(--hairline)';
+      b.style.borderColor = 'var(--primary)';
     });
     activeBtn.setAttribute('aria-pressed', 'true');
     activeBtn.style.background = 'var(--primary)';
